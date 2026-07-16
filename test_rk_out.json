@@ -1,0 +1,1024 @@
+{
+  "search": {
+    "start_date": "2026-07-14",
+    "end_date": "2026-07-31"
+  },
+  "units": [
+    {
+      "room_type_id": 6205,
+      "room_type_name": "Golf Carts",
+      "unit_id": "39537:0",
+      "unit_name": "#2 Electric Golf Cart 0",
+      "dates": [
+        {
+          "date": "2026-07-14",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-15",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-16",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-17",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-18",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-19",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-20",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-21",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-22",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-23",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-24",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-25",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-27",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-28",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-29",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-30",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        }
+      ]
+    },
+    {
+      "room_type_id": 6205,
+      "room_type_name": "Golf Carts",
+      "unit_id": "92928:0",
+      "unit_name": "#3 Electric Golf Cart 0",
+      "dates": [
+        {
+          "date": "2026-07-14",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-15",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-16",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-17",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-18",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-19",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-20",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-21",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-22",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-23",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-24",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-25",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-27",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-28",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-29",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-30",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        }
+      ]
+    },
+    {
+      "room_type_id": 6205,
+      "room_type_name": "Golf Carts",
+      "unit_id": "73936:0",
+      "unit_name": "#6 Electric Golf Cart 0",
+      "dates": [
+        {
+          "date": "2026-07-14",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-15",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-16",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-17",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-18",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-19",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-20",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-21",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-22",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-23",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-24",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-25",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-27",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-28",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-29",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-30",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        }
+      ]
+    },
+    {
+      "room_type_id": 6205,
+      "room_type_name": "Golf Carts",
+      "unit_id": "49120:0",
+      "unit_name": "#11 Electric Golf Cart 0",
+      "dates": [
+        {
+          "date": "2026-07-14",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-15",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-16",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-17",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-18",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-19",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-20",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-21",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-22",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-23",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-24",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-25",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-27",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-28",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-29",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-30",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        }
+      ]
+    },
+    {
+      "room_type_id": 6205,
+      "room_type_name": "Golf Carts",
+      "unit_id": "92734:0",
+      "unit_name": "#36 Electric Golf Cart 0",
+      "dates": [
+        {
+          "date": "2026-07-14",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-15",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-16",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-17",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-18",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-19",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-20",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-21",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-22",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-23",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-24",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-25",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-27",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-28",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-29",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-30",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        }
+      ]
+    },
+    {
+      "room_type_id": 6205,
+      "room_type_name": "Golf Carts",
+      "unit_id": "49118:0",
+      "unit_name": "#41 Electric Golf Cart 0",
+      "dates": [
+        {
+          "date": "2026-07-14",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-15",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-16",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-17",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-18",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-19",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-20",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-21",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-22",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-23",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-24",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-25",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-27",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-28",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-29",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-30",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        }
+      ]
+    },
+    {
+      "room_type_id": 6205,
+      "room_type_name": "Golf Carts",
+      "unit_id": "49119:0",
+      "unit_name": "#65 Electric Golf Cart 0",
+      "dates": [
+        {
+          "date": "2026-07-14",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-15",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-16",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-17",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-18",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-19",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-20",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-21",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-22",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-23",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-24",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-25",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-27",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-28",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-29",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        },
+        {
+          "date": "2026-07-30",
+          "available": true,
+          "inventory": {
+            "available": true
+          }
+        }
+      ]
+    },
+    {
+      "room_type_id": 6205,
+      "room_type_name": "Golf Carts",
+      "unit_id": "39538:0",
+      "unit_name": "#4 Electric Golf Cart 0",
+      "dates": [
+        {
+          "date": "2026-07-14",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-15",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-16",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-17",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-18",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-19",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-20",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-21",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-22",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-23",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-24",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-25",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-26",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-27",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-28",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-29",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        },
+        {
+          "date": "2026-07-30",
+          "available": false,
+          "inventory": {
+            "available": false
+          }
+        }
+      ]
+    }
+  ]
+}

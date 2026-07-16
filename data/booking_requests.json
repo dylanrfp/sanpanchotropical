@@ -1,0 +1,72 @@
+[
+  {
+    "id": "bk_1783574996020",
+    "villaId": "villa-palmas",
+    "villaName": "Villa Palmas",
+    "checkIn": "2026-07-10",
+    "checkOut": "2026-07-12",
+    "guests": "1",
+    "total": "493",
+    "name": "teste r",
+    "email": "tester@gmail.com",
+    "phone": "+3221234567",
+    "stripeSetupIntentId": "mock_seti_123456789",
+    "createdAt": "2026-07-09T05:29:56.020Z"
+  },
+  {
+    "id": "bk_1783575745764",
+    "villaId": "villa-palmas",
+    "villaName": "Villa Palmas",
+    "checkIn": "2026-07-12",
+    "checkOut": "2026-07-13",
+    "guests": "1",
+    "total": "284",
+    "name": "tester three",
+    "email": "tests@mail.com",
+    "phone": "+1234567890",
+    "stripeSetupIntentId": "mock_seti_123456789",
+    "createdAt": "2026-07-09T05:42:25.764Z"
+  },
+  {
+    "id": "bk_1783620417440",
+    "villaId": "villa-palmas",
+    "villaName": "Villa Palmas",
+    "checkIn": "2026-07-13",
+    "checkOut": "2026-07-14",
+    "guests": "1",
+    "total": "284",
+    "name": "Dylan Robert Farmer",
+    "email": "dylansanpancho@gmail.com",
+    "phone": "3221492322",
+    "stripeSetupIntentId": "mock_seti_123456789",
+    "createdAt": "2026-07-09T18:06:57.440Z"
+  },
+  {
+    "id": "bk_1783620773634",
+    "villaId": "villa-palmas",
+    "villaName": "Villa Palmas",
+    "checkIn": "2026-07-14",
+    "checkOut": "2026-07-15",
+    "guests": "1",
+    "total": "284",
+    "name": "dylan farmer",
+    "email": "dylansanpancho@gmail.com",
+    "phone": "3221492322",
+    "stripeSetupIntentId": "seti_1TrMRLCiBRD6pENBdazOY60q",
+    "createdAt": "2026-07-09T18:12:53.634Z"
+  },
+  {
+    "id": "bk_1783622391571",
+    "villaId": "villa-palmas",
+    "villaName": "Villa Palmas",
+    "checkIn": "2026-07-15",
+    "checkOut": "2026-07-16",
+    "guests": "1",
+    "total": "284",
+    "name": "Dylan Farmer",
+    "email": "dylansanpancho@gmail.com",
+    "phone": "3221492322",
+    "stripeSetupIntentId": "seti_1TrMrPCiBRD6pENBjbo99QsX",
+    "createdAt": "2026-07-09T18:39:51.571Z"
+  }
+]

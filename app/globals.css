@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: var(--font-inter-display), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+  
+  --color-primary-green: #2D936C;
+  --color-ocean-teal: #19647E;
+  --color-base-light: #FFFFFE;
+  --color-sand-accent: #CF995F;
+  --color-base-dark: #30292F;
+  --color-accent-gold: #FCD385;
+  --color-accent-blue: #3A86E9;
+}
+
+body {
+  background-color: var(--color-base-light);
+  color: var(--color-base-dark);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom minimal scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-base-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sand-accent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-ocean-teal);
+}
+
+.text-shadow-black-sm {
+  text-shadow: 
+    0 0 12px rgba(0, 0, 0, 0.65),
+    0 0 25px rgba(0, 0, 0, 0.4),
+    0 0 45px rgba(0, 0, 0, 0.2);
+}
+
+.text-shadow-black-lg {
+  text-shadow: 
+    0 0 18px rgba(0, 0, 0, 0.75),
+    0 0 35px rgba(0, 0, 0, 0.5),
+    0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.animate-shake {
+  animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+}
