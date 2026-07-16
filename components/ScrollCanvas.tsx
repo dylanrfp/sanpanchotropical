@@ -38,8 +38,29 @@ function Experience({ images }: { images: HTMLImageElement[] }) {
         Math.floor(clampedProgress * frameCount)
       );
 
-      const img = images[frameIndex];
-      if (img) {
+      let img = images[frameIndex];
+      if (img && !img.complete) {
+        let fallbackImg = null;
+        for (let i = frameIndex - 1; i >= 0; i--) {
+          if (images[i] && images[i].complete) {
+            fallbackImg = images[i];
+            break;
+          }
+        }
+        if (!fallbackImg) {
+          for (let i = frameIndex + 1; i < frameCount; i++) {
+            if (images[i] && images[i].complete) {
+              fallbackImg = images[i];
+              break;
+            }
+          }
+        }
+        if (fallbackImg) {
+          img = fallbackImg;
+        }
+      }
+
+      if (img && img.complete) {
         const { width, height } = canvas;
         const imgRatio = img.width / img.height;
         const canvasRatio = width / height;
@@ -222,32 +243,48 @@ export default function ScrollCanvas() {
   useEffect(() => {
     let loadedCount = 0;
     const imgArray: HTMLImageElement[] = [];
+    const criticalFramesCount = 15; // Load first 15 frames to show page immediately
     
+    // Initialize empty images in the array first
     for (let i = 0; i < frameCount; i++) {
       const img = new Image();
-      const paddedIndex = i.toString().padStart(3, '0');
-      img.src = `/sequence/esperanza2.1/frame_${paddedIndex}_delay-0.066s.jpg`;
-      
-      img.onload = () => {
-        loadedCount++;
-        setLoadProgress(Math.round((loadedCount / frameCount) * 100));
-        if (loadedCount === frameCount) {
-          setLoaded(true);
-        }
-      };
-      
-      img.onerror = () => {
-        console.error(`Failed to load frame: ${img.src}`);
-        loadedCount++;
-        setLoadProgress(Math.round((loadedCount / frameCount) * 100));
-        if (loadedCount === frameCount) {
-          setLoaded(true);
-        }
-      };
-      
       imgArray.push(img);
     }
     setImages(imgArray);
+
+    const loadFrame = (index: number) => {
+      const paddedIndex = index.toString().padStart(3, '0');
+      imgArray[index].src = `/sequence/esperanza2.1/frame_${paddedIndex}_delay-0.066s.jpg`;
+      
+      imgArray[index].onload = () => {
+        handleFrameLoaded(index);
+      };
+      
+      imgArray[index].onerror = () => {
+        console.error(`Failed to load frame: ${imgArray[index].src}`);
+        handleFrameLoaded(index);
+      };
+    };
+
+    const handleFrameLoaded = (index: number) => {
+      loadedCount++;
+      // Use criticalFramesCount as base for loading screen progress, up to 100%
+      const progressPercent = Math.min(Math.round((loadedCount / criticalFramesCount) * 100), 100);
+      setLoadProgress(progressPercent);
+      
+      if (loadedCount === criticalFramesCount) {
+        setLoaded(true);
+        // Load remaining frames in the background
+        for (let i = criticalFramesCount; i < frameCount; i++) {
+          loadFrame(i);
+        }
+      }
+    };
+
+    // Start loading critical frames first
+    for (let i = 0; i < criticalFramesCount; i++) {
+      loadFrame(i);
+    }
   }, []);
 
   if (!loaded) {
