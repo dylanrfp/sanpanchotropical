@@ -99,8 +99,11 @@ function Experience({ images }: { images: HTMLImageElement[] }) {
     };
   }, [images, smoothProgress]);
 
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
     const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
       if (canvasRef.current) {
         canvasRef.current.width = window.innerWidth;
         canvasRef.current.height = window.innerHeight;
@@ -181,7 +184,7 @@ function Experience({ images }: { images: HTMLImageElement[] }) {
           </motion.div>
 
           {/* Beat A: The Hero */}
-          <motion.div style={{ opacity: beatAOpacity, y: beatAY, pointerEvents: beatAPointerEvents }} className="absolute text-center max-w-6xl select-none px-2 md:px-0">
+          <motion.div style={{ opacity: beatAOpacity, y: isMobile ? 0 : beatAY, pointerEvents: beatAPointerEvents }} className="absolute text-center max-w-6xl select-none px-2 md:px-0">
             <div className="flex flex-col items-center justify-center font-sans font-black italic uppercase leading-none">
               <span className="text-5xl md:text-8xl lg:text-[7rem] xl:text-[9rem] text-white tracking-[-0.09em] text-shadow-black-sm drop-shadow-sm">
                 Escape
@@ -203,7 +206,7 @@ function Experience({ images }: { images: HTMLImageElement[] }) {
           </motion.div>
 
           {/* Beat B: Core Features (The Three Pillars) */}
-          <motion.div style={{ opacity: beatBOpacity, y: beatBY, pointerEvents: beatBPointerEvents }} className="absolute max-w-6xl w-full px-3 md:px-4 z-30">
+          <motion.div style={{ opacity: beatBOpacity, y: isMobile ? 0 : beatBY, pointerEvents: beatBPointerEvents }} className="absolute max-w-6xl w-full px-3 md:px-4 z-30">
               <div className="relative w-full h-[55vh] flex items-center justify-center md:h-auto md:grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 pt-12 md:pt-12 pb-4">
                 {/* Feature 1 */}
                 <motion.div 
@@ -257,7 +260,7 @@ function Experience({ images }: { images: HTMLImageElement[] }) {
           </motion.div>
 
           {/* Beat C: CTA */}
-          <motion.div style={{ opacity: beatCOpacity, y: beatCY, pointerEvents: beatCPointerEvents }} className="absolute text-center max-w-2xl select-none px-4 md:px-0">
+          <motion.div style={{ opacity: beatCOpacity, y: isMobile ? 0 : beatCY, pointerEvents: beatCPointerEvents }} className="absolute text-center max-w-2xl select-none px-4 md:px-0 z-40">
             <h2 className="text-4xl md:text-7xl lg:text-8xl font-sans font-black italic tracking-tighter uppercase text-white text-shadow-black-lg mb-5 md:mb-8">
               Visit San Pancho
             </h2>
