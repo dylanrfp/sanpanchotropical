@@ -219,15 +219,15 @@ export default function Navbar() {
         {/* Mobile Hamburger / Menu Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex items-center gap-2 border-2 border-accent-blue px-3 py-1.5 rounded-full text-accent-blue hover:bg-accent-blue/5 transition-all duration-200 focus:outline-none"
+          className="md:hidden flex items-center gap-2 border-2 border-accent-blue bg-accent-blue px-4 py-2 rounded-full text-white hover:bg-accent-blue/90 active:scale-95 transition-all duration-200 focus:outline-none shadow-md"
           aria-label="Toggle Menu"
         >
-          <span className="font-sans font-black text-[10px] tracking-wider uppercase leading-none">Menu</span>
-          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span className="font-sans font-black text-[11.5px] tracking-widest uppercase leading-none">Menu</span>
+          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {isOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
