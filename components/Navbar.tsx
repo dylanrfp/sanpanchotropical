@@ -111,11 +111,11 @@ export default function Navbar() {
 
         {/* Content Container */}
         <div className={`transition-all duration-300 bg-base-light/90 border-b border-sand-accent/20 backdrop-blur-md md:backdrop-blur-none md:bg-transparent md:border-b-0 md:rounded-b-0 md:flex md:items-center flex items-center justify-between gap-2 relative z-10 ${
-          isScrolled ? 'py-1 px-4 md:py-1 md:px-16 md:gap-16' : 'py-2 px-4 md:py-2.5 md:px-20 md:gap-20'
+          isScrolled ? 'py-3 px-4 md:py-1 md:px-16 md:gap-16' : 'py-4.5 px-4 md:py-2.5 md:px-20 md:gap-20'
         }`}>
           {/* Logo */}
-          <Link href="/" className="font-sans font-black italic tracking-tighter text-[19px] md:text-[26px] uppercase text-base-dark hover:opacity-90 transition-opacity flex items-center gap-1.5 md:gap-2.5 shrink-0">
-            <img src="/monstera_leaf.png" alt="Tropical leaf" className="h-8 md:h-12 w-auto object-contain" />
+          <Link href="/" className="font-sans font-black italic tracking-tighter text-[20px] md:text-[26px] uppercase text-base-dark hover:opacity-90 transition-opacity flex items-center gap-1.5 md:gap-2.5 shrink-0">
+            <img src="/monstera_leaf.png" alt="Tropical leaf" className="h-9 md:h-12 w-auto object-contain" />
             SAN PANCHO <span className="text-accent-blue">TROPICAL</span>
           </Link>
 
@@ -216,17 +216,18 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Hamburger */}
+        {/* Mobile Hamburger / Menu Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-base-dark hover:text-accent-blue transition-colors focus:outline-none"
+          className="md:hidden flex items-center gap-2 border-2 border-accent-blue px-3 py-1.5 rounded-full text-accent-blue hover:bg-accent-blue/5 transition-all duration-200 focus:outline-none"
           aria-label="Toggle Menu"
         >
-          <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span className="font-sans font-black text-[10px] tracking-wider uppercase leading-none">Menu</span>
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {isOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
             )}
           </svg>
         </button>
@@ -325,13 +326,6 @@ export default function Navbar() {
             className="font-sans tracking-widest text-xs font-semibold text-base-dark hover:text-accent-blue transition-colors"
           >
             CONTACT
-          </Link>
-          <Link 
-            href="/contact"
-            onClick={() => setIsOpen(false)}
-            className="bg-accent-blue hover:bg-base-dark text-base-light font-sans tracking-widest text-xs font-semibold py-3.5 rounded-full transition-colors text-center w-full block shadow-md"
-          >
-            BOOK NOW
           </Link>
         </motion.div>
       )}

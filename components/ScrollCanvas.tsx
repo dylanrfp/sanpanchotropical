@@ -14,11 +14,6 @@ function Experience({ images }: { images: HTMLImageElement[] }) {
     offset: ['start start', 'end end'],
   });
 
-  const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const card1Ref = useRef<HTMLDivElement>(null);
-  const card2Ref = useRef<HTMLDivElement>(null);
-  const card3Ref = useRef<HTMLDivElement>(null);
-
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -116,79 +111,39 @@ function Experience({ images }: { images: HTMLImageElement[] }) {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  useEffect(() => {
-    const container = cardsContainerRef.current;
-    if (!container) return;
-
-    const updateLayout = () => {
-      const isMobile = window.innerWidth < 768;
-      const cards = [card1Ref.current, card2Ref.current, card3Ref.current];
-
-      if (!isMobile) {
-        cards.forEach((card) => {
-          if (!card) return;
-          card.style.transform = '';
-          card.style.opacity = '';
-          card.style.transition = '';
-        });
-        return;
-      }
-
-      const containerRect = container.getBoundingClientRect();
-      const containerCenter = containerRect.left + containerRect.width / 2;
-
-      cards.forEach((card) => {
-        if (!card) return;
-        const cardRect = card.getBoundingClientRect();
-        const cardCenter = cardRect.left + cardRect.width / 2;
-        const distanceFromCenter = Math.abs(containerCenter - cardCenter);
-        const normalizedDistance = Math.min(1, distanceFromCenter / (containerRect.width * 0.75));
-        
-        const scale = 1 - normalizedDistance * 0.08;
-        const opacity = 1 - normalizedDistance * 0.4;
-        
-        card.style.transform = `scale(${scale})`;
-        card.style.opacity = `${opacity}`;
-        card.style.transition = 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s cubic-bezier(0.16, 1, 0.3, 1)';
-      });
-    };
-
-    const handleScroll = () => {
-      if (window.innerWidth < 768) {
-        updateLayout();
-      }
-    };
-
-    container.addEventListener('scroll', handleScroll, { passive: true });
-    window.addEventListener('resize', updateLayout);
-    
-    // Initial run with delay to allow layout painting
-    const timer = setTimeout(updateLayout, 100);
-
-    return () => {
-      container.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', updateLayout);
-      clearTimeout(timer);
-    };
-  }, []);
-
   // Opacity & Position Mapping (3 sections, holding on the last frame)
-  // Beat A: 0 - 25% (Hero)
-  const beatAOpacity = useTransform(smoothProgress, [0, 0.2, 0.25], [1, 1, 0]);
-  const beatAY = useTransform(smoothProgress, [0, 0.2, 0.25], [0, 0, -20]);
+  // Beat A: 0 - 20% (Hero)
+  const beatAOpacity = useTransform(smoothProgress, [0, 0.15, 0.2], [1, 1, 0]);
+  const beatAY = useTransform(smoothProgress, [0, 0.15, 0.2], [0, 0, -20]);
 
-  // Beat B: 25% - 50% (Features)
-  const beatBOpacity = useTransform(smoothProgress, [0.25, 0.3, 0.45, 0.5], [0, 1, 1, 0]);
-  const beatBY = useTransform(smoothProgress, [0.25, 0.3, 0.45, 0.5], [20, 0, 0, -20]);
+  // Beat B: 20% - 65% (Features)
+  const beatBOpacity = useTransform(smoothProgress, [0.2, 0.25, 0.6, 0.65], [0, 1, 1, 0]);
+  const beatBY = useTransform(smoothProgress, [0.2, 0.25, 0.6, 0.65], [20, 0, 0, -20]);
 
-  // Beat C: 50% - 100% (CTA)
-  const beatCOpacity = useTransform(smoothProgress, [0.5, 0.6, 1], [0, 1, 1]);
-  const beatCY = useTransform(smoothProgress, [0.5, 0.6, 1], [20, 0, 0]);
+  // Mobile individual cards sequence (20% to 65% scroll depth)
+  // Card 1: active 20% to 35%
+  const card1Opacity = useTransform(smoothProgress, [0.2, 0.23, 0.32, 0.35], [0, 1, 1, 0]);
+  const card1Y = useTransform(smoothProgress, [0.2, 0.23, 0.32, 0.35], [30, 0, 0, -30]);
+  const card1Scale = useTransform(smoothProgress, [0.2, 0.23, 0.32, 0.35], [0.93, 1, 1, 0.93]);
+
+  // Card 2: active 35% to 50%
+  const card2Opacity = useTransform(smoothProgress, [0.35, 0.38, 0.47, 0.5], [0, 1, 1, 0]);
+  const card2Y = useTransform(smoothProgress, [0.35, 0.38, 0.47, 0.5], [30, 0, 0, -30]);
+  const card2Scale = useTransform(smoothProgress, [0.35, 0.38, 0.47, 0.5], [0.93, 1, 1, 0.93]);
+
+  // Card 3: active 50% to 65%
+  const card3Opacity = useTransform(smoothProgress, [0.5, 0.53, 0.62, 0.65], [0, 1, 1, 0]);
+  const card3Y = useTransform(smoothProgress, [0.5, 0.53, 0.62, 0.65], [30, 0, 0, -30]);
+  const card3Scale = useTransform(smoothProgress, [0.5, 0.53, 0.62, 0.65], [0.93, 1, 1, 0.93]);
+
+  // Beat C: 65% - 100% (CTA)
+  const beatCOpacity = useTransform(smoothProgress, [0.65, 0.72, 1], [0, 1, 1]);
+  const beatCY = useTransform(smoothProgress, [0.65, 0.72, 1], [20, 0, 0]);
 
   const scrollIndicatorOpacity = useTransform(smoothProgress, [0, 0.1], [1, 0]);
 
   return (
-    <div ref={containerRef} className="relative w-full bg-base-light text-base-dark" style={{ height: '400vh' }}>
+    <div ref={containerRef} className="relative w-full bg-base-light text-base-dark" style={{ height: '500vh' }}>
       <div className="sticky top-0 w-full h-screen overflow-hidden">
         {/* Canvas container with exact pure white background */}
         <canvas ref={canvasRef} className="absolute inset-0 w-full h-full object-contain pointer-events-none bg-base-light" />
@@ -236,46 +191,55 @@ function Experience({ images }: { images: HTMLImageElement[] }) {
 
           {/* Beat B: Core Features (The Three Pillars) */}
           <motion.div style={{ opacity: beatBOpacity, y: beatBY }} className="absolute max-w-6xl w-full px-3 md:px-4 pointer-events-auto z-30">
-              <div ref={cardsContainerRef} className="flex overflow-x-auto snap-x snap-proximity md:grid md:grid-cols-3 gap-4 md:gap-8 lg:gap-12 pt-12 md:pt-12 w-full pb-4 scrollbar-none [&::-webkit-scrollbar]:hidden [scrollbar-width:none]">
+              <div className="relative w-full h-[55vh] flex items-center justify-center md:h-auto md:grid md:grid-cols-3 gap-6 md:gap-8 lg:gap-12 pt-12 md:pt-12 pb-4">
                 {/* Feature 1 */}
-                <div ref={card1Ref} className="bg-white border border-sand-accent/20 px-4 md:px-8 pb-4 md:pb-8 pt-20 md:pt-32 rounded-2xl md:rounded-[2rem] shadow-2xl flex flex-col items-center text-center pointer-events-auto h-full relative w-[82vw] shrink-0 snap-center md:w-auto md:shrink md:snap-align-none">
+                <motion.div 
+                  style={{ opacity: card1Opacity, y: card1Y, scale: card1Scale }}
+                  className="bg-white border border-sand-accent/20 px-4 md:px-8 pb-4 md:pb-8 pt-20 md:pt-32 rounded-2xl md:rounded-[2rem] shadow-2xl flex flex-col items-center text-center pointer-events-auto h-auto absolute inset-x-0 mx-auto w-[88vw] md:relative md:w-auto md:inset-auto md:mx-0 md:!opacity-100 md:!transform-none md:!scale-100"
+                >
                   <img src="/villa5_icon2.png" alt="Villa 5" className="w-[10rem] md:w-[18rem] absolute -top-8 md:-top-16 left-1/2 -translate-x-1/2 z-20 drop-shadow-sm" />
                   <div className="flex-1 flex flex-col items-center relative z-10">
-                    <h3 className="text-lg md:text-[1.6rem] font-serif italic text-base-dark mb-1 md:mb-3">Your Home in Mexico</h3>
-                    <p className="font-sans text-base-dark/80 font-light text-xs md:text-[0.95rem] leading-relaxed mb-3 md:mb-6 text-justify">
+                    <h3 className="text-[1.35rem] md:text-[1.6rem] font-serif italic text-base-dark mb-1.5 md:mb-3">Your Home in Mexico</h3>
+                    <p className="font-sans text-base-dark/80 font-light text-[0.88rem] md:text-[0.95rem] leading-relaxed mb-4 md:mb-6 text-justify">
                       Think of our villas as your own second home in San Pancho. Cozy, private, and set up with all the comforts you need to drop your bags and instantly relax.
                     </p>
                   </div>
-                  <Link href="/villas" className="inline-block bg-[#19647E] hover:bg-[#f7f5f0] text-white hover:text-[#19647E] border border-transparent hover:border-[#19647E] font-sans tracking-widest text-[9px] md:text-[10px] uppercase font-semibold px-6 md:px-8 py-2.5 md:py-3.5 rounded-full transition-all duration-300 shadow-md z-10 w-full text-center">
+                  <Link href="/villas" className="inline-block bg-[#19647E] hover:bg-[#f7f5f0] text-white hover:text-[#19647E] border border-transparent hover:border-[#19647E] font-sans tracking-widest text-[10.5px] md:text-[10px] uppercase font-semibold px-6 md:px-8 py-3 md:py-3.5 rounded-full transition-all duration-300 shadow-md z-10 w-full text-center">
                     VIEW VILLAS
                   </Link>
-                </div>
+                </motion.div>
                 {/* Feature 2 */}
-                <div ref={card2Ref} className="bg-white border border-sand-accent/20 px-4 md:px-8 pb-4 md:pb-8 pt-6 md:pt-10 rounded-2xl md:rounded-[2rem] shadow-2xl flex flex-col items-center pointer-events-auto h-full relative overflow-hidden w-[82vw] shrink-0 snap-center md:w-auto md:shrink md:snap-align-none">
+                <motion.div 
+                  style={{ opacity: card2Opacity, y: card2Y, scale: card2Scale }}
+                  className="bg-white border border-sand-accent/20 px-4 md:px-8 pb-4 md:pb-8 pt-6 md:pt-10 rounded-2xl md:rounded-[2rem] shadow-2xl flex flex-col items-center pointer-events-auto h-auto absolute inset-x-0 mx-auto w-[88vw] md:relative md:w-auto md:inset-auto md:mx-0 md:!opacity-100 md:!transform-none md:!scale-100 overflow-hidden"
+                >
                   <div className="flex-1 w-full text-left relative z-10">
-                    <h3 className="text-lg md:text-[1.6rem] font-serif italic text-base-dark mb-1 md:mb-3">Golf Cart Rentals</h3>
-                    <p className="font-sans text-base-dark/80 font-light text-xs md:text-[0.95rem] leading-relaxed mb-3 md:mb-6 w-[58%] text-justify">
+                    <h3 className="text-[1.35rem] md:text-[1.6rem] font-serif italic text-base-dark mb-1.5 md:mb-3">Golf Cart Rentals</h3>
+                    <p className="font-sans text-base-dark/80 font-light text-[0.88rem] md:text-[0.95rem] leading-relaxed mb-4 md:mb-6 w-[58%] text-justify">
                       The ultimate beach town transport. Rent a cart with us to easily explore the village, beaches, and local shops.
                     </p>
                   </div>
                   <img src="/golfcart_icon2.png" alt="Golf Cart" className="w-[9rem] md:w-[13.2rem] absolute -right-4 bottom-16 md:bottom-28 z-0 opacity-90 drop-shadow-sm" />
-                  <Link href="/golf-carts" className="inline-block bg-[#19647E] hover:bg-[#f7f5f0] text-white hover:text-[#19647E] border border-transparent hover:border-[#19647E] font-sans tracking-widest text-[9px] md:text-[10px] uppercase font-semibold px-6 md:px-8 py-2.5 md:py-3.5 rounded-full transition-all duration-300 shadow-md z-10 w-full text-center">
+                  <Link href="/golf-carts" className="inline-block bg-[#19647E] hover:bg-[#f7f5f0] text-white hover:text-[#19647E] border border-transparent hover:border-[#19647E] font-sans tracking-widest text-[10.5px] md:text-[10px] uppercase font-semibold px-6 md:px-8 py-3 md:py-3.5 rounded-full transition-all duration-300 shadow-md z-10 w-full text-center">
                     RESERVE A CART
                   </Link>
-                </div>
+                </motion.div>
                 {/* Feature 3 */}
-                <div ref={card3Ref} className="bg-white border border-sand-accent/20 px-4 md:px-8 pb-4 md:pb-8 pt-6 md:pt-10 rounded-2xl md:rounded-[2rem] shadow-2xl flex flex-col items-center pointer-events-auto h-full relative w-[82vw] shrink-0 snap-center md:w-auto md:shrink md:snap-align-none">
+                <motion.div 
+                  style={{ opacity: card3Opacity, y: card3Y, scale: card3Scale }}
+                  className="bg-white border border-sand-accent/20 px-4 md:px-8 pb-4 md:pb-8 pt-6 md:pt-10 rounded-2xl md:rounded-[2rem] shadow-2xl flex flex-col items-center pointer-events-auto h-auto absolute inset-x-0 mx-auto w-[88vw] md:relative md:w-auto md:inset-auto md:mx-0 md:!opacity-100 md:!transform-none md:!scale-100"
+                >
                   <img src="/welcome_icon.svg" alt="Welcome Sign" className="w-[7rem] md:w-[10.5rem] absolute -right-3 md:-right-5 -top-8 md:-top-14 z-20 drop-shadow-sm" />
                   <div className="flex-1 w-full text-left relative z-10">
-                    <h3 className="text-lg md:text-[1.6rem] font-serif italic text-base-dark mb-1 md:mb-3 w-[55%]">Your Local Neighbors</h3>
-                    <p className="font-sans text-base-dark/80 font-light text-xs md:text-[0.95rem] leading-relaxed mb-3 md:mb-6 w-[60%] text-justify">
+                    <h3 className="text-[1.35rem] md:text-[1.6rem] font-serif italic text-base-dark mb-1.5 md:mb-3 w-[55%]">Your Local Neighbors</h3>
+                    <p className="font-sans text-base-dark/80 font-light text-[0.88rem] md:text-[0.95rem] leading-relaxed mb-4 md:mb-6 w-[60%] text-justify">
                       From a seamless check-in to pointing you toward the best street tacos, we live on-site and love helping you experience the real San Pancho.
                     </p>
                   </div>
-                  <Link href="/contact" className="inline-block bg-[#19647E] hover:bg-[#f7f5f0] text-white hover:text-[#19647E] border border-transparent hover:border-[#19647E] font-sans tracking-widest text-[9px] md:text-[10px] uppercase font-semibold px-6 md:px-8 py-2.5 md:py-3.5 rounded-full transition-all duration-300 shadow-md z-10 w-full text-center">
+                  <Link href="/contact" className="inline-block bg-[#19647E] hover:bg-[#f7f5f0] text-white hover:text-[#19647E] border border-transparent hover:border-[#19647E] font-sans tracking-widest text-[10.5px] md:text-[10px] uppercase font-semibold px-6 md:px-8 py-3 md:py-3.5 rounded-full transition-all duration-300 shadow-md z-10 w-full text-center">
                     MEET YOUR HOSTS
                   </Link>
-                </div>
+                </motion.div>
               </div>
           </motion.div>
 
