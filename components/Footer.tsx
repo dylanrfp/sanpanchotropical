@@ -4,10 +4,10 @@ import React from 'react';
 import Link from 'next/link';
 export default function Footer() {
   return (
-    <footer className="bg-base-light text-base-dark pt-20 pb-0 border-t border-sand-accent/10 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-16">
+    <footer className="bg-base-light text-base-dark pt-12 md:pt-20 pb-0 border-t border-sand-accent/10 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 lg:gap-16">
         {/* Brand identity */}
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-4 md:space-y-6 col-span-2 md:col-span-1">
           <Link href="/" className="font-sans font-black italic tracking-tighter text-2xl uppercase text-base-dark">
             SAN PANCHO <span className="text-accent-blue">TROPICAL</span>
           </Link>
@@ -17,7 +17,7 @@ export default function Footer() {
         </div>
 
         {/* Directory Links */}
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-3 md:space-y-6">
           <h4 className="font-sans text-[10px] tracking-widest text-sand-accent uppercase font-semibold">Explore</h4>
           <ul className="flex flex-col space-y-3 font-sans font-light text-xs text-base-dark/80">
             <li>
@@ -33,7 +33,7 @@ export default function Footer() {
         </div>
 
         {/* Social connections */}
-        <div className="flex flex-col space-y-6">
+        <div className="flex flex-col space-y-3 md:space-y-6">
           <h4 className="font-sans text-[10px] tracking-widest text-sand-accent uppercase font-semibold">Connect</h4>
           <ul className="flex flex-col space-y-3 font-sans font-light text-xs text-base-dark/80">
             <li>
@@ -46,7 +46,7 @@ export default function Footer() {
         </div>
 
         {/* WhatsApp Contact */}
-        <div className="flex flex-col space-y-5">
+        <div className="flex flex-col space-y-3 md:space-y-5 col-span-2 md:col-span-1">
           <h4 className="font-sans text-[10px] tracking-widest text-sand-accent uppercase font-semibold">Chat with us</h4>
           <p className="font-sans font-light text-xs text-base-dark/75 leading-relaxed">
             Have questions about a villa or need help booking? Send us a message on WhatsApp for the fastest response.
@@ -62,7 +62,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 border-t border-sand-accent/15 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-base-dark/40 font-sans font-light tracking-wider space-y-4 md:space-y-0">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 border-t border-sand-accent/15 mt-8 md:mt-16 pt-6 md:pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-base-dark/40 font-sans font-light tracking-wider space-y-3 md:space-y-0">
         <p>&copy; {new Date().getFullYear()} San Pancho Tropical. All rights reserved.</p>
         <div className="flex space-x-6">
           <Link href="/privacy" className="hover:text-primary-green transition-colors">Privacy Policy</Link>

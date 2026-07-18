@@ -72,6 +72,7 @@ export default function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [mobileVillasExpanded, setMobileVillasExpanded] = useState(false);
   const [villasHovered, setVillasHovered] = useState(false);
   const pathname = usePathname();
   const isVillasPage = pathname.startsWith('/villas');
@@ -109,12 +110,12 @@ export default function Navbar() {
         </div>
 
         {/* Content Container */}
-        <div className={`transition-all duration-300 bg-base-light/90 border-b border-sand-accent/20 backdrop-blur-md md:backdrop-blur-none md:bg-transparent md:border-b-0 md:rounded-b-0 md:flex md:items-center flex items-center justify-between gap-4 relative z-10 ${
-          isScrolled ? 'py-1 px-6 md:py-1 md:px-16 md:gap-16' : 'py-2.5 px-6 md:py-2.5 md:px-20 md:gap-20'
+        <div className={`transition-all duration-300 bg-base-light/90 border-b border-sand-accent/20 backdrop-blur-md md:backdrop-blur-none md:bg-transparent md:border-b-0 md:rounded-b-0 md:flex md:items-center flex items-center justify-between gap-2 relative z-10 ${
+          isScrolled ? 'py-1 px-4 md:py-1 md:px-16 md:gap-16' : 'py-2 px-4 md:py-2.5 md:px-20 md:gap-20'
         }`}>
           {/* Logo */}
-          <Link href="/" className="font-sans font-black italic tracking-tighter text-[26px] uppercase text-base-dark hover:opacity-90 transition-opacity flex items-center gap-2.5 shrink-0">
-            <img src="/monstera_leaf.png" alt="Tropical leaf" className="h-12 w-auto object-contain" />
+          <Link href="/" className="font-sans font-black italic tracking-tighter text-[19px] md:text-[26px] uppercase text-base-dark hover:opacity-90 transition-opacity flex items-center gap-1.5 md:gap-2.5 shrink-0">
+            <img src="/monstera_leaf.png" alt="Tropical leaf" className="h-8 md:h-12 w-auto object-contain" />
             SAN PANCHO <span className="text-accent-blue">TROPICAL</span>
           </Link>
 
@@ -239,37 +240,68 @@ export default function Navbar() {
           exit={{ opacity: 0, y: -10 }}
           className="md:hidden absolute top-full left-0 w-full bg-base-light border-b border-sand-accent/30 py-8 px-6 flex flex-col space-y-6 shadow-2xl backdrop-blur-lg"
         >
-          <Link 
-            href="/villas" 
-            onClick={() => setIsOpen(false)}
-            className={`font-sans tracking-widest text-xs font-semibold hover:text-accent-blue transition-colors ${
-              isVillasPage ? 'text-accent-blue font-bold' : 'text-base-dark'
-            }`}
-          >
-            VILLAS
-          </Link>
-          {/* Mobile villa sub-items */}
-          <div className="pl-4 space-y-4 border-l border-sand-accent/20">
-            {villaMenuItems.map((villa) => (
-              <Link
-                key={villa.id}
-                href={`/villas/${villa.id}`}
-                onClick={() => setIsOpen(false)}
-                className="flex items-center space-x-3 group"
+          {/* Villas Accordion Toggle */}
+          <div>
+            <button 
+              onClick={() => setMobileVillasExpanded(!mobileVillasExpanded)}
+              className={`w-full flex items-center justify-between font-sans tracking-widest text-xs font-semibold hover:text-accent-blue transition-colors uppercase text-left ${
+                isVillasPage ? 'text-accent-blue font-bold' : 'text-base-dark'
+              }`}
+            >
+              <span>VILLAS</span>
+              <svg 
+                className={`w-4 h-4 transform transition-transform duration-200 ${mobileVillasExpanded ? 'rotate-180' : ''}`} 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                stroke="currentColor"
               >
-                <div className="w-7 h-7 text-base-dark/50 group-hover:text-ocean-teal transition-colors">
-                  {villa.icon}
-                </div>
-                <div>
-                  <p className="font-sans font-medium text-xs text-base-dark group-hover:text-ocean-teal transition-colors">
-                    {villa.name} <span className="text-base-dark/40">{villa.unit}</span>
-                  </p>
-                  <p className="font-sans font-light text-[9px] text-base-dark/45">
-                    {villa.bedrooms} bedroom{villa.bedrooms !== 1 ? 's' : ''}
-                  </p>
-                </div>
-              </Link>
-            ))}
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            <AnimatePresence>
+              {mobileVillasExpanded && (
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="overflow-hidden pl-4 mt-4 space-y-4 border-l border-sand-accent/20"
+                >
+                  {villaMenuItems.map((villa) => (
+                    <Link
+                      key={villa.id}
+                      href={`/villas/${villa.id}`}
+                      onClick={() => setIsOpen(false)}
+                      className="flex items-center space-x-3 group"
+                    >
+                      <div className="w-7 h-7 text-base-dark/50 group-hover:text-ocean-teal transition-colors">
+                        {villa.icon}
+                      </div>
+                      <div>
+                        <p className="font-sans font-medium text-xs text-base-dark group-hover:text-ocean-teal transition-colors">
+                          {villa.name} <span className="text-base-dark/40">{villa.unit}</span>
+                        </p>
+                        <p className="font-sans font-light text-[9px] text-base-dark/45">
+                          {villa.bedrooms} bedroom{villa.bedrooms !== 1 ? 's' : ''}
+                        </p>
+                      </div>
+                    </Link>
+                  ))}
+                  
+                  {/* See All Villas Link */}
+                  <div className="pt-2 border-t border-sand-accent/10">
+                    <Link
+                      href="/villas"
+                      onClick={() => setIsOpen(false)}
+                      className="font-sans font-bold text-[10px] tracking-widest uppercase text-ocean-teal hover:text-accent-blue transition-colors block"
+                    >
+                      See All Villas →
+                    </Link>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           <Link 
             href="/about" 

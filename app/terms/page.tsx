@@ -9,11 +9,11 @@ export default function TermsPage() {
   return (
     <div className="bg-base-light text-base-dark min-h-screen pb-28">
       {/* Editorial Header */}
-      <div className="relative w-full h-[280px] md:h-[350px] overflow-hidden flex items-end justify-start bg-gradient-to-r from-base-dark to-[#30271C] pb-12">
+      <div className="relative w-full h-[200px] md:h-[350px] overflow-hidden flex items-end justify-start bg-gradient-to-r from-base-dark to-[#30271C] pb-8 md:pb-12">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent pointer-events-none" />
         
         {/* Text Overlay */}
-        <div className="relative z-10 max-w-5xl mx-auto w-full px-6 md:px-8 text-white">
+        <div className="relative z-10 max-w-5xl mx-auto w-full px-4 md:px-8 text-white">
           <Link
             href="/villas"
             className="inline-flex items-center space-x-2 text-xs font-sans font-bold tracking-wider uppercase text-white/60 hover:text-white transition-colors mb-4"
@@ -21,7 +21,7 @@ export default function TermsPage() {
             <span>←</span>
             <span>Back to Villas</span>
           </Link>
-          <h1 className="text-4xl md:text-6xl font-outfit font-black tracking-tight text-white leading-tight">
+          <h1 className="text-2xl md:text-6xl font-outfit font-black tracking-tight text-white leading-tight">
             {lang === 'es' ? 'Términos y Condiciones' : 'Terms of Service'}
           </h1>
           <p className="font-outfit font-light text-base md:text-lg text-white/80 leading-relaxed max-w-2xl mt-2">

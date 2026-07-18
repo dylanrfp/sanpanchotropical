@@ -8,7 +8,7 @@ export default function ContactPage() {
     <div className="bg-base-light text-base-dark min-h-screen pb-28 overflow-x-hidden">
       {/* ── Cinematic Banner Header ─────────────────────────────────────────── */}
       <div 
-        className="relative w-full overflow-hidden mb-12 flex items-center justify-center bg-base-dark" 
+        className="relative w-full overflow-hidden mb-6 md:mb-12 flex items-center justify-center bg-base-dark" 
         style={{ 
           aspectRatio: '2750 / 592',
           minHeight: '150px'
@@ -25,18 +25,18 @@ export default function ContactPage() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 pt-12">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 pt-6 md:pt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
           
           {/* Details & Info */}
           <div className="flex flex-col">
             <div>
-              <p className="font-outfit font-light text-[17px] md:text-[19px] text-base-dark/80 leading-relaxed mb-10 max-w-lg text-justify">
+              <p className="font-outfit font-light text-sm md:text-[19px] text-base-dark/80 leading-relaxed mb-6 md:mb-10 max-w-lg text-justify">
                 Whether you are inquiring about availability, need local recommendations, or have a special request for your upcoming stay, we are here to help.
               </p>
 
               {/* Contact Information Elements */}
-              <div className="space-y-8 mt-10">
+              <div className="space-y-5 md:space-y-8 mt-6 md:mt-10">
                 {/* Email Item */}
                 <div className="flex items-center space-x-6 border-b border-sand-accent/15 pb-6">
                   <div className="w-12 h-12 rounded-full bg-base-dark/[0.04] flex items-center justify-center flex-shrink-0">

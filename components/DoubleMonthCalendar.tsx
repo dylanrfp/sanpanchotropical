@@ -159,7 +159,7 @@ export default function DoubleMonthCalendar({
     const days = [];
     // Empty cells for days of prev month
     for (let i = 0; i < firstDayIndex; i++) {
-      days.push(<div key={`empty-${i}`} className="h-10 w-10"></div>);
+      days.push(<div key={`empty-${i}`} className="h-8 w-8 md:h-10 md:w-10"></div>);
     }
 
     // Days cells
@@ -190,7 +190,7 @@ export default function DoubleMonthCalendar({
       days.push(
         <div
           key={`day-${day}`}
-          className="relative h-10 w-10 flex items-center justify-center font-sans text-xs select-none"
+          className="relative h-8 w-8 md:h-10 md:w-10 flex items-center justify-center font-sans text-xs select-none"
           onMouseEnter={() => handleDateHover(date, isDisabled)}
           onMouseDown={() => handleDateMouseDown(date, isDisabled)}
           onMouseUp={() => handleDateMouseUp(date, isDisabled)}
@@ -204,7 +204,7 @@ export default function DoubleMonthCalendar({
             type="button"
             disabled={isDisabled}
             className={`
-              relative z-10 h-9 w-9 rounded-full flex items-center justify-center transition-all duration-150 font-medium
+              relative z-10 h-7 w-7 md:h-9 md:w-9 rounded-full flex items-center justify-center transition-all duration-150 font-medium
               ${isCheckIn || isCheckOut 
                 ? 'bg-[#F5A623] text-white font-bold scale-105 shadow-sm' 
                 : isDisabled 
@@ -228,9 +228,9 @@ export default function DoubleMonthCalendar({
         </h3>
         
         {/* Weekday Labels */}
-        <div className="grid grid-cols-7 gap-1 text-center font-sans text-[10px] uppercase tracking-wider text-base-dark/50 font-bold mb-1">
+        <div className="grid grid-cols-7 gap-1 text-center font-sans text-[9px] md:text-[10px] uppercase tracking-wider text-base-dark/50 font-bold mb-1">
           {daysOfWeek.map((day) => (
-            <div key={day} className="h-6 flex items-center justify-center">
+            <div key={day} className="h-5 md:h-6 flex items-center justify-center">
               {day}
             </div>
           ))}
@@ -245,7 +245,7 @@ export default function DoubleMonthCalendar({
   };
 
   return (
-    <div className="absolute top-full right-0 left-0 md:left-auto mt-4 bg-white border border-sand-accent/15 rounded-3xl p-4 md:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.08)] z-50 w-full md:w-[650px] animate-in fade-in slide-in-from-top-2 duration-200">
+    <div className="absolute top-full left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto md:right-0 mt-4 bg-white border border-sand-accent/15 rounded-3xl p-3 md:p-6 shadow-[0_20px_50px_rgba(0,0,0,0.08)] z-50 w-[92vw] sm:w-[350px] md:w-[650px] animate-in fade-in slide-in-from-top-2 duration-200">
       <div className="relative">
         
         {/* Navigation Header */}

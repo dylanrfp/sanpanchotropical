@@ -6,6 +6,7 @@ import VillaGallery from '@/components/VillaGallery';
 import VillaReviews from '@/components/VillaReviews';
 import CopyAddressButton from '@/components/CopyAddressButton';
 import BookingWidget from '@/components/BookingWidget';
+import MobileStickyBookNow from '@/components/MobileStickyBookNow';
 
 const getVillaParams = (id: string) => {
   switch (id) {
@@ -43,32 +44,32 @@ export default async function VillaDetailPage({ params }: PageProps) {
   }
 
   return (
-    <div className="bg-base-light text-base-dark min-h-screen pt-28 pb-28">
+    <div className="bg-base-light text-base-dark min-h-screen pt-20 md:pt-28 pb-28">
       
       {/* ── Header Block (Constrained) ─────────────────────────────────── */}
-      <div className="w-full pl-6 pr-4 md:pl-12 md:pr-6 lg:pl-16 lg:pr-8 mb-4">
+      <div className="w-full pl-4 pr-3 md:pl-12 md:pr-6 lg:pl-16 lg:pr-8 mb-3 md:mb-4">
         {/* Back Link */}
         <Link 
           href="/villas" 
-          className="inline-flex items-center space-x-2 text-sm font-sans font-bold tracking-wider uppercase text-ocean-teal hover:text-sand-accent transition-colors mb-3"
+          className="inline-flex items-center space-x-2 text-xs md:text-sm font-sans font-bold tracking-wider uppercase text-ocean-teal hover:text-sand-accent transition-colors mb-2 md:mb-3"
         >
           <span>←</span>
           <span>Back to All Villas</span>
         </Link>
 
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-6">
           <div>
-            <h1 className="text-5xl md:text-7xl font-sans font-black italic tracking-tighter uppercase text-accent-blue mb-2">
+            <h1 className="text-3xl md:text-7xl font-sans font-black italic tracking-tighter uppercase text-accent-blue mb-1 md:mb-2">
               {villa.name}
             </h1>
-            <p className="font-serif italic text-xl md:text-2xl text-base-dark/80 leading-relaxed max-w-3xl">
+            <p className="font-serif italic text-lg md:text-2xl text-base-dark/80 leading-relaxed max-w-3xl">
               {villa.tagline}
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center md:justify-end gap-3 shrink-0 md:mb-1">
+          <div className="flex flex-wrap items-center md:justify-end gap-2 md:gap-3 shrink-0 md:mb-1">
             {villa.unit && (
-              <span className="text-base font-sans font-bold tracking-wider text-base-light bg-sand-accent px-6 py-3 rounded-full shadow-sm">
+              <span className="text-sm md:text-base font-sans font-bold tracking-wider text-base-light bg-sand-accent px-4 md:px-6 py-2 md:py-3 rounded-full shadow-sm">
                 {villa.unit}
               </span>
             )}
@@ -84,16 +85,16 @@ export default async function VillaDetailPage({ params }: PageProps) {
       )}
 
       {/* ── Main Content (Constrained) ─────────────────────────────────── */}
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         
         {/* ── Dynamic Details & Description Layout (Airbnb style) ───────── */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
           
           {/* Left Column: Specs Row & Description (2/3 width) */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="lg:col-span-2 space-y-8 md:space-y-12">
             
             {/* Specs Row */}
-            <div className="flex flex-wrap items-center gap-6 border-b border-sand-accent/15 pb-6 text-sm font-sans font-semibold text-base-dark">
+            <div className="flex flex-wrap items-center gap-3 md:gap-6 border-b border-sand-accent/15 pb-4 md:pb-6 text-xs md:text-sm font-sans font-semibold text-base-dark">
               {/* Guests */}
               <div className="flex items-center gap-2">
                 <svg className="w-5 h-5 text-base-dark/80 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -178,8 +179,8 @@ export default async function VillaDetailPage({ params }: PageProps) {
             )}
 
             {/* The Amenities */}
-            <section className="space-y-6 pt-4 border-t border-sand-accent/10">
-              <h3 className="font-serif italic text-3xl text-base-dark">The Amenities</h3>
+            <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10">
+              <h3 className="font-serif italic text-2xl md:text-3xl text-base-dark">The Amenities</h3>
               
               {villa.amenityCategories ? (
                 <div className="space-y-8">
@@ -244,8 +245,8 @@ export default async function VillaDetailPage({ params }: PageProps) {
             </section>
 
             {/* Location & Getting Around */}
-            <section className="space-y-6 pt-4 border-t border-sand-accent/10">
-              <h3 className="font-serif italic text-3xl text-base-dark">Location & Getting Around</h3>
+            <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10">
+              <h3 className="font-serif italic text-2xl md:text-3xl text-base-dark">Location & Getting Around</h3>
               
               <div className="space-y-4">
                 <p className="font-sans font-light text-sm text-base-dark/80 leading-relaxed">
@@ -279,20 +280,20 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
             {/* House Rules & Commitments */}
             {villa.houseRules && (
-              <section className="space-y-6 pt-4 border-t border-sand-accent/10">
-                <div className="space-y-2">
-                  <h3 className="font-serif italic text-3xl text-base-dark">House Rules & Commitments</h3>
+              <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10">
+                <div className="space-y-1 md:space-y-2">
+                  <h3 className="font-serif italic text-2xl md:text-3xl text-base-dark">House Rules & Commitments</h3>
                   <p className="font-sans font-light text-sm text-base-dark/70">
                     To preserve the absolute peace, safety, and tranquility of our shared grounds, we kindly ask our guests to honor these estate guidelines:
                   </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                   {villa.houseRules.map((rule, idx) => {
                     const isCancellation = rule.title.toLowerCase().includes("cancellation");
                     return (
                       <div 
                         key={idx} 
-                        className={`bg-base-light border border-sand-accent/10 rounded-2xl p-6 space-y-3 ${
+                        className={`bg-base-light border border-sand-accent/10 rounded-xl md:rounded-2xl p-4 md:p-6 space-y-2 md:space-y-3 ${
                           isCancellation ? 'md:col-span-2' : ''
                         }`}
                       >
@@ -307,7 +308,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
           </div>
 
           {/* Right Column: Sticky Booking Widget (1/3 width) */}
-          <div className="lg:col-span-1 relative">
+          <div id="booking-section" className="lg:col-span-1 relative">
             <div className="sticky top-32 space-y-6">
               
               {/* Interactive Booking Widget */}
@@ -351,6 +352,9 @@ export default async function VillaDetailPage({ params }: PageProps) {
         {villa.reviews && <VillaReviews reviews={villa.reviews} />}
 
       </div>
+
+      {/* Mobile Sticky Book Now Bar */}
+      <MobileStickyBookNow targetId="booking-section" />
     </div>
   );
 }

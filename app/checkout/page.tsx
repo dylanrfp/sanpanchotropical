@@ -225,54 +225,54 @@ function CheckoutForm() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto px-6 py-12 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+    <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-12 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
       
       {/* Left Column: Form */}
-      <div className="lg:col-span-7 space-y-12">
+      <div className="lg:col-span-7 space-y-8 md:space-y-12">
         <div>
-          <Link href={`/villas/${villa.id}`} className="inline-flex items-center text-sm font-sans font-bold text-base-dark/60 hover:text-ocean-teal mb-6 transition-colors">
+          <Link href={`/villas/${villa.id}`} className="inline-flex items-center text-xs md:text-sm font-sans font-bold text-base-dark/60 hover:text-ocean-teal mb-4 md:mb-6 transition-colors">
             ← Back to {villa.name}
           </Link>
-          <h1 className="font-serif italic text-4xl md:text-5xl text-base-dark tracking-tight">Complete your request</h1>
-          <p className="font-sans text-base-dark/70 mt-3 text-lg font-light max-w-lg">
+          <h1 className="font-serif italic text-3xl md:text-5xl text-base-dark tracking-tight">Complete your request</h1>
+          <p className="font-sans text-base-dark/70 mt-2 md:mt-3 text-base md:text-lg font-light max-w-lg">
             Submit your details below. We will securely vault your card and manually confirm your dates before processing any charges.
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-10">
+        <form onSubmit={handleSubmit} className="space-y-8 md:space-y-10">
           
           {/* Contact Information */}
-          <section className="space-y-5">
-            <h2 className="font-sans font-bold text-xl text-base-dark border-b border-sand-accent/20 pb-3">Contact Information</h2>
-            <div className="space-y-4">
+          <section className="space-y-3 md:space-y-5">
+            <h2 className="font-sans font-bold text-lg md:text-xl text-base-dark border-b border-sand-accent/20 pb-2 md:pb-3">Contact Information</h2>
+            <div className="space-y-3 md:space-y-4">
               <div>
-                <label className="block font-sans font-bold text-[10px] uppercase tracking-wider text-base-dark/60 mb-1.5">Full Name</label>
-                <input required type="text" value={name} onChange={e => setName(e.target.value)} className="w-full bg-sand-accent/5 border border-sand-accent/20 rounded-xl px-4 py-3 text-base-dark font-sans focus:outline-none focus:ring-2 focus:ring-ocean-teal/20 transition-all" placeholder="Jane Doe" />
+                <label className="block font-sans font-bold text-[9px] md:text-[10px] uppercase tracking-wider text-base-dark/60 mb-1 md:mb-1.5">Full Name</label>
+                <input required type="text" value={name} onChange={e => setName(e.target.value)} className="w-full bg-sand-accent/5 border border-sand-accent/20 rounded-xl px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base text-base-dark font-sans focus:outline-none focus:ring-2 focus:ring-ocean-teal/20 transition-all" placeholder="Jane Doe" />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-4">
                 <div>
-                  <label className="block font-sans font-bold text-[10px] uppercase tracking-wider text-base-dark/60 mb-1.5">Email Address</label>
-                  <input required type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full bg-sand-accent/5 border border-sand-accent/20 rounded-xl px-4 py-3 text-base-dark font-sans focus:outline-none focus:ring-2 focus:ring-ocean-teal/20 transition-all" placeholder="jane@example.com" />
+                  <label className="block font-sans font-bold text-[9px] md:text-[10px] uppercase tracking-wider text-base-dark/60 mb-1 md:mb-1.5">Email Address</label>
+                  <input required type="email" value={email} onChange={e => setEmail(e.target.value)} className="w-full bg-sand-accent/5 border border-sand-accent/20 rounded-xl px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base text-base-dark font-sans focus:outline-none focus:ring-2 focus:ring-ocean-teal/20 transition-all" placeholder="jane@example.com" />
                 </div>
                 <div>
-                  <label className="block font-sans font-bold text-[10px] uppercase tracking-wider text-base-dark/60 mb-1.5">Phone Number</label>
-                  <input required type="tel" value={phone} onChange={e => setPhone(e.target.value)} className="w-full bg-sand-accent/5 border border-sand-accent/20 rounded-xl px-4 py-3 text-base-dark font-sans focus:outline-none focus:ring-2 focus:ring-ocean-teal/20 transition-all" placeholder="+1 (555) 000-0000" />
+                  <label className="block font-sans font-bold text-[9px] md:text-[10px] uppercase tracking-wider text-base-dark/60 mb-1 md:mb-1.5">Phone Number</label>
+                  <input required type="tel" value={phone} onChange={e => setPhone(e.target.value)} className="w-full bg-sand-accent/5 border border-sand-accent/20 rounded-xl px-3 md:px-4 py-2.5 md:py-3 text-sm md:text-base text-base-dark font-sans focus:outline-none focus:ring-2 focus:ring-ocean-teal/20 transition-all" placeholder="+1 (555) 000-0000" />
                 </div>
               </div>
             </div>
           </section>
 
           {/* Payment Vault */}
-          <section className="space-y-5">
-            <h2 className="font-sans font-bold text-xl text-base-dark border-b border-sand-accent/20 pb-3">Secure Payment</h2>
-            <p className="font-sans text-sm text-base-dark/60 font-light">Your card will not be charged immediately. We use Stripe to securely encrypt and vault your card details for manual processing.</p>
-            <div className="bg-sand-accent/5 border border-sand-accent/20 rounded-xl px-4 py-4 focus-within:ring-2 focus-within:ring-ocean-teal/20 transition-all">
+          <section className="space-y-3 md:space-y-5">
+            <h2 className="font-sans font-bold text-lg md:text-xl text-base-dark border-b border-sand-accent/20 pb-2 md:pb-3">Secure Payment</h2>
+            <p className="font-sans text-xs md:text-sm text-base-dark/60 font-light">Your card will not be charged immediately. We use Stripe to securely encrypt and vault your card details for manual processing.</p>
+            <div className="bg-sand-accent/5 border border-sand-accent/20 rounded-xl px-3 md:px-4 py-3 md:py-4 focus-within:ring-2 focus-within:ring-ocean-teal/20 transition-all">
               <CardElement options={CARD_ELEMENT_OPTIONS} />
             </div>
           </section>
 
           {/* Cancellation Policy */}
-          <section className="space-y-4 bg-red-50/25 rounded-2xl p-5 border border-red-200/40">
+          <section className="space-y-3 md:space-y-4 bg-red-50/25 rounded-xl md:rounded-2xl p-4 md:p-5 border border-red-200/40">
             <h3 className="font-sans font-bold text-xs text-base-dark uppercase tracking-wider">Cancellation Policy</h3>
             <p className="font-sans text-[13px] text-base-dark/85 leading-relaxed font-light text-justify">
               The deposit is refundable under the following conditions:<br />
@@ -283,8 +283,8 @@ function CheckoutForm() {
           </section>
 
           {/* Legal / Terms */}
-          <section className="pt-4">
-            <label className={`flex items-start gap-4 p-5 rounded-2xl border transition-colors cursor-pointer ${shake ? 'animate-shake border-red-500 bg-red-50' : 'border-sand-accent/20 hover:bg-sand-accent/5'}`}>
+          <section className="pt-2 md:pt-4">
+            <label className={`flex items-start gap-3 md:gap-4 p-4 md:p-5 rounded-xl md:rounded-2xl border transition-colors cursor-pointer ${shake ? 'animate-shake border-red-500 bg-red-50' : 'border-sand-accent/20 hover:bg-sand-accent/5'}`}>
               <div className="flex items-center h-5 mt-0.5">
                 <input 
                   type="checkbox" 
@@ -299,7 +299,7 @@ function CheckoutForm() {
                 </p>
               </div>
             </label>
-            {error && <p className="text-red-500 font-sans text-sm mt-4">{error}</p>}
+            {error && <p className="text-red-500 font-sans text-sm mt-3 md:mt-4">{error}</p>}
           </section>
 
           {/* Submit */}
@@ -315,9 +315,9 @@ function CheckoutForm() {
 
       {/* Right Column: Receipt */}
       <div className="lg:col-span-5 relative">
-        <div className="sticky top-32 border border-sand-accent/20 bg-white rounded-3xl p-8 shadow-[0_20px_60px_-15px_rgb(0,0,0,0.05)]">
-          <div className="flex gap-4 pb-6 border-b border-sand-accent/10">
-            <div className="w-24 h-24 bg-sand-accent/10 rounded-xl overflow-hidden shrink-0">
+        <div className="sticky top-32 border border-sand-accent/20 bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-[0_20px_60px_-15px_rgb(0,0,0,0.05)]">
+          <div className="flex gap-4 pb-4 md:pb-6 border-b border-sand-accent/10">
+            <div className="w-16 h-16 md:w-24 md:h-24 bg-sand-accent/10 rounded-xl overflow-hidden shrink-0">
               {villa.images && villa.images[0] && (
                 <img src={villa.images[0]} alt={villa.name} className="w-full h-full object-cover" />
               )}
@@ -421,11 +421,11 @@ function CheckoutForm() {
             )}
 
             {!isGolfCart && (
-              <div className="bg-gradient-to-br from-ocean-teal/5 to-ocean-teal/10 rounded-2xl p-6 border border-ocean-teal/20 mt-6 shadow-sm relative overflow-hidden">
-                <h4 className="font-serif italic text-2xl text-ocean-teal tracking-tight mb-2">
+              <div className="bg-gradient-to-br from-ocean-teal/5 to-ocean-teal/10 rounded-xl md:rounded-2xl p-4 md:p-6 border border-ocean-teal/20 mt-4 md:mt-6 shadow-sm relative overflow-hidden">
+                <h4 className="font-serif italic text-xl md:text-2xl text-ocean-teal tracking-tight mb-2">
                   {isIguana ? 'Add an additional 4-Seater Golf Cart' : 'Add a 4-Seater Golf Cart'}
                 </h4>
-                <p className="font-sans text-sm text-base-dark/80 leading-relaxed mb-4">
+                <p className="font-sans text-xs md:text-sm text-base-dark/80 leading-relaxed mb-3 md:mb-4">
                   Cruise San Pancho effortlessly for your {nights} night stay. Guarantee yours today! <a href="/golf-carts" target="_blank" className="text-ocean-teal font-semibold hover:underline">Visit the golf cart page to learn more →</a>
                 </p>
                 

@@ -372,7 +372,7 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
     <div className="space-y-6">
       
       {/* Booking Card */}
-      <div className="border border-sand-accent/15 bg-white rounded-[32px] p-6 shadow-[0_12px_40px_rgba(0,0,0,0.03)] space-y-6 relative">
+      <div id="booking-section" className="border border-sand-accent/15 bg-white rounded-[32px] p-6 shadow-[0_12px_40px_rgba(0,0,0,0.03)] space-y-6 relative">
         
         {/* Header / Title */}
         <div className="flex items-center justify-between">
@@ -392,7 +392,7 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
         <div className="grid grid-cols-2 gap-3 relative">
           
           {/* Dates Selector Pill */}
-          <div ref={calendarRef} className="relative col-span-1">
+          <div ref={calendarRef} className="col-span-1 static md:relative">
             <button
               onClick={() => setIsCalendarOpen(!isCalendarOpen)}
               className={`w-full flex items-center justify-between gap-2 px-4 py-3 rounded-full border bg-white hover:bg-sand-accent/5 transition-all text-left duration-200 cursor-pointer ${
@@ -418,13 +418,15 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
 
             {/* Custom Popover Calendar */}
             {isCalendarOpen && (
-              <DoubleMonthCalendar
-                checkIn={checkIn}
-                checkOut={checkOut}
-                blockedDates={blockedDates}
-                onSelectDates={handleSelectDates}
-                onClose={() => setIsCalendarOpen(false)}
-              />
+              <div className="static md:absolute md:top-full md:left-0 md:mt-3 md:z-50 w-full md:w-auto">
+                <DoubleMonthCalendar
+                  checkIn={checkIn}
+                  checkOut={checkOut}
+                  blockedDates={blockedDates}
+                  onSelectDates={handleSelectDates}
+                  onClose={() => setIsCalendarOpen(false)}
+                />
+              </div>
             )}
           </div>
 

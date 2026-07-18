@@ -145,7 +145,7 @@ export default function GolfCartBookingWidget() {
       </div>
 
       <div className="space-y-4">
-        <div ref={calendarRef} className="relative">
+        <div ref={calendarRef} className="static md:relative">
           <label className="block text-xs font-sans font-bold text-base-dark/60 uppercase tracking-wider mb-1.5 ml-1">Dates</label>
           <button
             onClick={() => setIsCalendarOpen(!isCalendarOpen)}
@@ -170,7 +170,7 @@ export default function GolfCartBookingWidget() {
           </button>
 
           {isCalendarOpen && (
-            <div className="absolute top-full right-0 mt-2 z-50">
+            <div className="static md:absolute md:top-full md:right-0 md:mt-2 md:z-50 w-full md:w-auto">
               <DoubleMonthCalendar
                 checkIn={checkIn}
                 checkOut={checkOut}

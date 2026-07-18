@@ -4,7 +4,7 @@ export default function AboutPage() {
   return (
     <div className="bg-base-light text-base-dark min-h-screen pb-28">
       {/* Editorial Story Header Banner */}
-      <div className="relative w-full h-[340px] md:h-[425px] overflow-hidden flex items-end justify-start bg-base-dark pb-8 md:pb-12">
+      <div className="relative w-full h-[240px] md:h-[425px] overflow-hidden flex items-end justify-start bg-base-dark pb-6 md:pb-12">
         {/* Background Image with Dark Overlay */}
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -15,13 +15,13 @@ export default function AboutPage() {
         {/* Text Overlay */}
         <div className="relative z-10 max-w-7xl mx-auto w-full px-4 md:px-6 lg:px-8 text-white">
           <h1 
-            className="text-[50px] md:text-[84px] font-outfit font-semibold tracking-tight mb-6 text-white leading-tight md:leading-none"
+            className="text-[32px] md:text-[84px] font-outfit font-semibold tracking-tight mb-3 md:mb-6 text-white leading-tight md:leading-none"
             style={{ textShadow: '3px 6px 12px rgba(0, 0, 0, 0.8)' }}
           >
             About SP Tropical
           </h1>
           <p 
-            className="font-outfit font-light text-[19px] md:text-[24px] text-white/95 leading-relaxed max-w-4xl"
+            className="font-outfit font-light text-sm md:text-[24px] text-white/95 leading-relaxed max-w-4xl"
             style={{ textShadow: '2px 4px 10px rgba(0, 0, 0, 0.95)' }}
           >
             We're a family who's lived in San Pancho for over 20 years, raising our kids in this beautiful town. As community members, we feel connected to our home and proudly share it with others.
@@ -29,15 +29,15 @@ export default function AboutPage() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
+      <div className="max-w-7xl mx-auto px-4 md:px-12 py-10 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text Column */}
           <div>
-            <h2 className="font-outfit font-black text-5xl md:text-6xl lg:text-[68px] text-base-dark tracking-tight leading-[1.1] mb-8">
+            <h2 className="font-outfit font-black text-3xl md:text-6xl lg:text-[68px] text-base-dark tracking-tight leading-[1.1] mb-5 md:mb-8">
               Your Hosts in<br />San Pancho
             </h2>
             <div className="space-y-6">
-              <p className="font-sans font-light text-[19px] md:text-[20px] text-base-dark/80 leading-relaxed text-justify">
+              <p className="font-sans font-light text-sm md:text-[20px] text-base-dark/80 leading-relaxed text-justify">
                 With more than 20 years of experience in the vacation rental industry, we are proud to offer four private villas in the charming town of San Pancho. As locals, we provide personal assistance and share our favorite local recommendations to ensure your stay is perfect. Each villa is thoughtfully designed with modern amenities, creating a warm and welcoming atmosphere that offers more space and independence than traditional hotels. Our convenient location is just a short walk from secluded beaches and top-notch restaurants, allowing you to enjoy an authentic local experience.
               </p>
               <p className="font-sans font-light text-[19px] md:text-[20px] text-base-dark/80 leading-relaxed text-justify">
