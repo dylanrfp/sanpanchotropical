@@ -58,7 +58,7 @@ export default function VillaGallery({ villa }: VillaGalleryProps) {
             {topRowImages.map((img, idx) => (
               <div 
                 key={idx}
-                className="relative aspect-[16/9] overflow-hidden cursor-pointer group"
+                className={`relative aspect-[16/9] overflow-hidden cursor-pointer group reveal-on-scroll reveal-scale reveal-delay-${idx + 1}`}
                 onClick={() => setIsModalOpen(true)}
               >
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors z-10" />
@@ -83,7 +83,7 @@ export default function VillaGallery({ villa }: VillaGalleryProps) {
               return (
                 <div 
                   key={idx + 2}
-                  className="relative aspect-[2/1] overflow-hidden cursor-pointer group"
+                  className={`relative aspect-[2/1] overflow-hidden cursor-pointer group reveal-on-scroll reveal-scale reveal-delay-${(idx % 3) + 1}`}
                   onClick={() => setIsModalOpen(true)}
                 >
                   <div className={`absolute inset-0 transition-colors z-10 ${showOverlay ? 'bg-black/40 hover:bg-black/50' : 'bg-black/0 group-hover:bg-black/10'}`} />

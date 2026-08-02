@@ -32,7 +32,7 @@ export default function TermsPage() {
         </div>
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 md:px-8 mt-12">
+      <div className="max-w-5xl mx-auto px-6 md:px-8 mt-12 reveal-on-scroll">
         {/* Language Toggle Control */}
         <div className="flex justify-end mb-10 border-b border-sand-accent/15 pb-4">
           <div className="inline-flex bg-base-dark/[0.04] p-1 rounded-full border border-sand-accent/10">

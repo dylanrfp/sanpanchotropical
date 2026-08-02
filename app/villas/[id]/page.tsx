@@ -57,7 +57,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
           <span>Back to All Villas</span>
         </Link>
 
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-6">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-3 md:gap-6 reveal-on-scroll">
           <div>
             <h1 className="text-3xl md:text-7xl font-sans font-black italic tracking-tighter uppercase text-accent-blue mb-1 md:mb-2">
               {villa.name}
@@ -79,7 +79,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
       {/* ── Full-Width Gallery (Unconstrained) ─────────────────────────── */}
       {villa.images && villa.images.length > 0 && (
-        <div className="mb-12 w-full">
+        <div className="mb-12 w-full reveal-on-scroll reveal-scale">
           <VillaGallery villa={villa} />
         </div>
       )}
@@ -91,7 +91,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-12 mb-8 md:mb-12">
           
           {/* Left Column: Specs Row & Description (2/3 width) */}
-          <div className="lg:col-span-2 space-y-8 md:space-y-12">
+          <div className="lg:col-span-2 space-y-8 md:space-y-12 reveal-on-scroll">
             
             {/* Specs Row */}
             <div className="flex flex-wrap items-center gap-3 md:gap-6 border-b border-sand-accent/15 pb-4 md:pb-6 text-xs md:text-sm font-sans font-semibold text-base-dark">
@@ -146,7 +146,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
             {villa.golfCartUpsell && (
               villa.id === 'villa-iguana' ? (
-                <div className="relative w-full max-w-[900px] mx-auto my-12">
+                <div className="relative w-full max-w-[900px] mx-auto my-12 reveal-on-scroll reveal-scale">
                   <img 
                     src="/golfcart_included.png" 
                     alt="Golf Cart Included" 
@@ -161,7 +161,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
                   </Link>
                 </div>
               ) : (
-                <div className="relative w-full max-w-[900px] mx-auto my-12">
+                <div className="relative w-full max-w-[900px] mx-auto my-12 reveal-on-scroll reveal-scale">
                   <img 
                     src="/addagolfcart.png" 
                     alt="Add a Golf Cart" 
@@ -179,7 +179,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
             )}
 
             {/* The Amenities */}
-            <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10">
+            <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10 reveal-on-scroll">
               <h3 className="font-serif italic text-2xl md:text-3xl text-base-dark">The Amenities</h3>
               
               {villa.amenityCategories ? (
@@ -245,7 +245,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
             </section>
 
             {/* Location & Getting Around */}
-            <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10">
+            <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10 reveal-on-scroll">
               <h3 className="font-serif italic text-2xl md:text-3xl text-base-dark">Location & Getting Around</h3>
               
               <div className="space-y-4">
@@ -280,7 +280,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
 
             {/* House Rules & Commitments */}
             {villa.houseRules && (
-              <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10">
+              <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10 reveal-on-scroll">
                 <div className="space-y-1 md:space-y-2">
                   <h3 className="font-serif italic text-2xl md:text-3xl text-base-dark">House Rules & Commitments</h3>
                   <p className="font-sans font-light text-sm text-base-dark/70">
@@ -308,7 +308,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
           </div>
 
           {/* Right Column: Sticky Booking Widget (1/3 width) */}
-          <div id="booking-section" className="lg:col-span-1 relative">
+          <div id="booking-section" className="lg:col-span-1 relative reveal-on-scroll reveal-right">
             <div className="sticky top-32 space-y-6">
               
               {/* Interactive Booking Widget */}
@@ -349,7 +349,11 @@ export default async function VillaDetailPage({ params }: PageProps) {
         </div>
 
         {/* Customer Reviews Carousel (Full Width) */}
-        {villa.reviews && <VillaReviews reviews={villa.reviews} />}
+        {villa.reviews && (
+          <div className="reveal-on-scroll">
+            <VillaReviews reviews={villa.reviews} />
+          </div>
+        )}
 
       </div>
 

@@ -228,7 +228,7 @@ function CheckoutForm() {
     <div className="max-w-6xl mx-auto px-4 md:px-6 py-6 md:py-12 lg:py-24 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-24">
       
       {/* Left Column: Form */}
-      <div className="lg:col-span-7 space-y-8 md:space-y-12">
+      <div className="lg:col-span-7 space-y-8 md:space-y-12 reveal-on-scroll reveal-left">
         <div>
           <Link href={`/villas/${villa.id}`} className="inline-flex items-center text-xs md:text-sm font-sans font-bold text-base-dark/60 hover:text-ocean-teal mb-4 md:mb-6 transition-colors">
             ← Back to {villa.name}
@@ -314,7 +314,7 @@ function CheckoutForm() {
       </div>
 
       {/* Right Column: Receipt */}
-      <div className="lg:col-span-5 relative">
+      <div className="lg:col-span-5 relative reveal-on-scroll reveal-right">
         <div className="sticky top-32 border border-sand-accent/20 bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 shadow-[0_20px_60px_-15px_rgb(0,0,0,0.05)]">
           <div className="flex gap-4 pb-4 md:pb-6 border-b border-sand-accent/10">
             <div className="w-16 h-16 md:w-24 md:h-24 bg-sand-accent/10 rounded-xl overflow-hidden shrink-0">

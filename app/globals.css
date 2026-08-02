@@ -60,3 +60,36 @@ body {
 .animate-shake {
   animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
 }
+
+/* ── Reveal-on-Scroll GPU Spring Animations ───────────────────────────────── */
+.reveal-on-scroll {
+  opacity: 0 !important;
+  transform: translateY(60px) scale(0.95);
+  transition: 
+    opacity 0.85s cubic-bezier(0.34, 1.56, 0.64, 1),
+    transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+  will-change: transform, opacity;
+}
+
+.reveal-on-scroll.reveal-left {
+  transform: translateX(-70px) translateY(20px) scale(0.95);
+}
+
+.reveal-on-scroll.reveal-right {
+  transform: translateX(70px) translateY(20px) scale(0.95);
+}
+
+.reveal-on-scroll.reveal-scale {
+  transform: scale(0.82) translateY(30px);
+}
+
+.reveal-on-scroll.revealed {
+  opacity: 1 !important;
+  transform: translateY(0) translateX(0) scale(1) !important;
+}
+
+/* Stagger Delays for Grid Elements */
+.reveal-delay-1 { transition-delay: 0.1s !important; }
+.reveal-delay-2 { transition-delay: 0.2s !important; }
+.reveal-delay-3 { transition-delay: 0.3s !important; }
+.reveal-delay-4 { transition-delay: 0.4s !important; }

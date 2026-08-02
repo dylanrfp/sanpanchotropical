@@ -3,6 +3,7 @@ import { Inter_Tight, Inter, Outfit } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ScrollRevealObserver from '@/components/ScrollRevealObserver'
 
 const interDisplay = Inter_Tight({ 
   subsets: ['latin'], 
@@ -29,6 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${interDisplay.variable} ${inter.variable} ${outfit.variable} bg-base-light text-base-dark antialiased min-h-screen flex flex-col`}>
+        <ScrollRevealObserver />
         <Navbar />
         <div className="flex-grow">
           {children}

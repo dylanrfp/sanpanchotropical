@@ -32,7 +32,7 @@ export default function AboutPage() {
       <div className="max-w-7xl mx-auto px-4 md:px-12 py-10 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Text Column */}
-          <div>
+          <div className="reveal-on-scroll reveal-left">
             <h2 className="font-outfit font-black text-3xl md:text-6xl lg:text-[68px] text-base-dark tracking-tight leading-[1.1] mb-5 md:mb-8">
               Your Hosts in<br />San Pancho
             </h2>
@@ -47,7 +47,7 @@ export default function AboutPage() {
           </div>
 
           {/* Image Column */}
-          <div className="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl">
+          <div className="relative w-full aspect-[4/5] lg:aspect-[3/4] rounded-[2.5rem] overflow-hidden shadow-2xl reveal-on-scroll reveal-right">
             <img 
               src="/beach_aboutphoto.png" 
               alt="San Pancho Beach" 
@@ -66,11 +66,11 @@ export default function AboutPage() {
       </div>
 
       {/* Stats Section */}
-      <div className="w-full bg-white border-y border-base-dark/5 py-20 md:py-28 my-8">
+      <div className="w-full bg-white border-y border-base-dark/5 py-20 md:py-28 my-8 reveal-on-scroll">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 text-center">
             {/* Stat 1 */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center reveal-on-scroll reveal-scale">
               <span className="font-outfit font-black text-6xl md:text-7xl lg:text-8xl text-base-dark tracking-tight leading-none mb-4">
                 25+
               </span>
@@ -79,7 +79,7 @@ export default function AboutPage() {
               </span>
             </div>
             {/* Stat 2 */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center reveal-on-scroll reveal-scale">
               <span className="font-outfit font-black text-6xl md:text-7xl lg:text-8xl text-base-dark tracking-tight leading-none mb-4">
                 1000+
               </span>
@@ -88,7 +88,7 @@ export default function AboutPage() {
               </span>
             </div>
             {/* Stat 3 */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center reveal-on-scroll reveal-scale">
               <span className="font-outfit font-black text-6xl md:text-7xl lg:text-8xl text-base-dark tracking-tight leading-none mb-4">
                 100%
               </span>

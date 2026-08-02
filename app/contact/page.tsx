@@ -29,7 +29,7 @@ export default function ContactPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 lg:gap-24 items-center">
           
           {/* Details & Info */}
-          <div className="flex flex-col">
+          <div className="flex flex-col reveal-on-scroll reveal-left">
             <div>
               <p className="font-outfit font-light text-sm md:text-[19px] text-base-dark/80 leading-relaxed mb-6 md:mb-10 max-w-lg text-justify">
                 Whether you are inquiring about availability, need local recommendations, or have a special request for your upcoming stay, we are here to help.
@@ -105,7 +105,7 @@ export default function ContactPage() {
           </div>
 
           {/* Inquiry Form */}
-          <div className="bg-white border border-sand-accent/15 rounded-[2.5rem] p-10 md:p-14 lg:p-16 shadow-xl flex flex-col justify-center lg:mt-0 w-full">
+          <div className="bg-white border border-sand-accent/15 rounded-[2.5rem] p-10 md:p-14 lg:p-16 shadow-xl flex flex-col justify-center lg:mt-0 w-full reveal-on-scroll reveal-right">
             <h3 className="font-outfit font-black text-3xl md:text-4xl text-base-dark tracking-tight mb-8">Message Us</h3>
             
             <form className="space-y-7" onSubmit={(e) => e.preventDefault()}>

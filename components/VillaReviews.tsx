@@ -52,8 +52,8 @@ export default function VillaReviews({ reviews }: VillaReviewsProps) {
   if (!reviews || reviews.length === 0) return null;
 
   return (
-    <section className="space-y-8 pt-12 border-t border-sand-accent/10">
-      <div className="flex flex-col items-center text-center space-y-2">
+    <section className="space-y-8 pt-12 border-t border-sand-accent/10 reveal-on-scroll">
+      <div className="flex flex-col items-center text-center space-y-2 reveal-on-scroll">
         <h4 className="font-sans font-bold text-[10px] uppercase tracking-widest text-base-dark">Reviews</h4>
         <h3 className="font-sans font-black tracking-tight text-3xl md:text-4xl text-base-dark">What our Customers Say</h3>
       </div>
@@ -90,7 +90,7 @@ export default function VillaReviews({ reviews }: VillaReviewsProps) {
           {reviews.map((review, idx) => (
             <div 
               key={idx}
-              className="snap-center shrink-0 w-80 md:w-96 bg-white border border-sand-accent/15 rounded-2xl p-8 flex flex-col items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)]"
+              className={`snap-center shrink-0 w-80 md:w-96 bg-white border border-sand-accent/15 rounded-2xl p-8 flex flex-col items-center text-center shadow-[0_8px_30px_rgb(0,0,0,0.04)] reveal-on-scroll reveal-scale reveal-delay-${(idx % 3) + 1}`}
             >
               {/* Avatar */}
               <div className={`w-16 h-16 rounded-full flex items-center justify-center text-white font-sans font-bold text-xl mb-4 shadow-sm border-2 border-white ring-2 ring-orange-400/50 ${getAvatarColor(review.guestName)}`}>

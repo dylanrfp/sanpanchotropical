@@ -39,12 +39,12 @@ export default function GolfCartsPage() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
 
           {/* Left Column: 360 Viewer */}
-          <div className="lg:col-span-7 w-full">
+          <div className="lg:col-span-7 w-full reveal-on-scroll reveal-left">
             <GolfCart360Viewer />
           </div>
 
           {/* Right Column: Title, Pricing, and Booking */}
-          <div className="lg:col-span-5 space-y-4 md:space-y-5 lg:-mt-12">
+          <div className="lg:col-span-5 space-y-4 md:space-y-5 lg:-mt-12 reveal-on-scroll reveal-right">
             <div>
               <h1 className="text-3xl md:text-5xl font-sans font-light tracking-tight text-base-dark leading-none mb-1 md:mb-2">
                 4 Seater Golfcart
@@ -80,7 +80,7 @@ export default function GolfCartsPage() {
       </div>
 
       {/* Grid Image Gallery */}
-      <div className="max-w-7xl mx-auto px-4 md:px-6 mb-10 md:mb-16">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 mb-10 md:mb-16 reveal-on-scroll reveal-scale">
         <h2 className="font-serif italic text-2xl md:text-4xl text-base-dark mb-5 md:mb-8 text-center">Cart Gallery & Details</h2>
         <div className="w-full">
           <VillaGallery villa={cartData} />
@@ -89,7 +89,7 @@ export default function GolfCartsPage() {
 
       {/* Rules & Policies */}
       {cartData.houseRules && (
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 reveal-on-scroll">
           <section className="space-y-4 md:space-y-6 pt-8 md:pt-12 border-t border-sand-accent/10">
             <h3 className="font-serif italic text-2xl md:text-3xl text-base-dark">Rules & Policies</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">

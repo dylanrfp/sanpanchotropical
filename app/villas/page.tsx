@@ -67,7 +67,9 @@ export default function VillasPage() {
               {/* Card Thumbnail - Clickable */}
               <Link 
                 href={`/villas/${villa.id}`}
-                className="w-full lg:w-1/2 bg-base-light border border-sand-accent/20 p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgba(48,41,47,0.03)] hover:shadow-2xl transition-all duration-500 flex group cursor-pointer"
+                className={`w-full lg:w-1/2 bg-base-light border border-sand-accent/20 p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-[0_8px_30px_rgba(48,41,47,0.03)] hover:shadow-2xl transition-all duration-500 flex group cursor-pointer reveal-on-scroll ${
+                  idx % 2 === 0 ? 'reveal-left' : 'reveal-right'
+                }`}
               >
                 <div 
                   className="w-full h-52 md:h-[400px] bg-base-dark/5 rounded-xl md:rounded-2xl flex flex-col justify-between p-5 md:p-8 relative overflow-hidden transition-all duration-500 bg-cover bg-center"
@@ -108,7 +110,9 @@ export default function VillasPage() {
               </Link>
 
               {/* Text Information */}
-              <div className="w-full lg:w-1/2 flex flex-col justify-between relative">
+              <div className={`w-full lg:w-1/2 flex flex-col justify-between relative reveal-on-scroll ${
+                idx % 2 === 0 ? 'reveal-right' : 'reveal-left'
+              }`}>
                 <div>
                   <Link href={`/villas/${villa.id}`}>
                     <h2 className="text-3xl md:text-5xl font-sans font-black italic tracking-tighter uppercase text-accent-blue mb-2 md:mb-4 hover:text-ocean-teal transition-colors cursor-pointer">
@@ -181,7 +185,7 @@ export default function VillasPage() {
         </div>
 
         {/* Global Operational Policies & Rules */}
-        <div className="border-t border-sand-accent/30 pt-10 md:pt-16">
+        <div className="border-t border-sand-accent/30 pt-10 md:pt-16 reveal-on-scroll">
           <div className="max-w-4xl mb-8 md:mb-12">
             <span className="text-xs md:text-sm font-sans tracking-widest uppercase text-ocean-teal font-semibold block mb-3 md:mb-4">OPERATIONAL STANDARDS</span>
             <h2 className="text-3xl md:text-6xl font-sans font-black italic tracking-tighter uppercase text-accent-blue leading-none">
@@ -189,10 +193,10 @@ export default function VillasPage() {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-            {globalPolicies.map((policy) => (
+            {globalPolicies.map((policy, pIdx) => (
               <div 
                 key={policy.id}
-                className="bg-base-light border border-sand-accent/20 p-5 md:p-8 rounded-xl md:rounded-2xl shadow-[0_4px_20px_rgba(48,41,47,0.02)] flex flex-col justify-between"
+                className={`bg-base-light border border-sand-accent/20 p-5 md:p-8 rounded-xl md:rounded-2xl shadow-[0_4px_20px_rgba(48,41,47,0.02)] flex flex-col justify-between reveal-on-scroll reveal-scale reveal-delay-${(pIdx % 3) + 1}`}
               >
                 <div className="flex flex-col space-y-4">
                   <div className="flex items-center space-x-2">
@@ -209,7 +213,7 @@ export default function VillasPage() {
             ))}
             
             {/* The 6th slot: Beach Chairs Illustration */}
-            <div className="flex items-center justify-center p-4">
+            <div className="flex items-center justify-center p-4 reveal-on-scroll reveal-scale reveal-delay-3">
               <img 
                 src="/beach_chairs.png" 
                 alt="Beach chairs illustration" 
