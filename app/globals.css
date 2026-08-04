@@ -11,6 +11,16 @@
   --color-base-dark: #30292F;
   --color-accent-gold: #FCD385;
   --color-accent-blue: #3A86E9;
+
+  --color-primary: #003461;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #004b87;
+  --color-[#f4fafd]: #f4fafd;
+  --color-background: #f4fafd;
+  --color-surface-container-low: #eef5f7;
+  --color-surface-container-lowest: #ffffff;
+  --color-on-surface-variant: #424750;
+  --color-on-surface: #161d1f;
 }
 
 body {
@@ -93,3 +103,46 @@ body {
 .reveal-delay-2 { transition-delay: 0.2s !important; }
 .reveal-delay-3 { transition-delay: 0.3s !important; }
 .reveal-delay-4 { transition-delay: 0.4s !important; }
+
+/* ── Stitch Coastal Luxury Design System Utilities ─────────────────────────── */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.ambient-shadow {
+  box-shadow: 0 30px 60px rgba(0, 52, 97, 0.1);
+}
+
+.hover-lift {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 40px 80px rgba(0, 52, 97, 0.15);
+}
+
+.organic-shape {
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  transition: border-radius 8s ease-in-out infinite alternate;
+}
+
+@keyframes morph {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+.organic-morph {
+  animation: morph 8s ease-in-out infinite;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

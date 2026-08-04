@@ -11,15 +11,15 @@ import MobileStickyBookNow from '@/components/MobileStickyBookNow';
 const getVillaParams = (id: string) => {
   switch (id) {
     case 'villa-palmas':
-      return { guests: '2 guests maximum', bedsRooms: '1 bedroom • 1 King bed', baths: '1 bathroom' };
-    case 'villa-iguana':
-      return { guests: '8 guests maximum', bedsRooms: '4 bedrooms • 4 beds', baths: '4 bathrooms' };
-    case 'villa-sunset':
-      return { guests: '2 to 4 guests', bedsRooms: '2 bedrooms • 2 beds', baths: '2 bathrooms' };
-    case 'villa-papaya':
-      return { guests: '4 guests maximum', bedsRooms: '2 bedrooms • 3 beds', baths: '1.5 bathrooms' };
-    case 'villa-cocos':
       return { guests: '2 guests maximum', bedsRooms: '1 bedroom • 1 bed', baths: '1 bathroom' };
+    case 'villa-iguana':
+      return { guests: '8 guests maximum', bedsRooms: '4 bedrooms • 5 beds', baths: '4 bathrooms' };
+    case 'villa-sunset':
+      return { guests: '6 guests maximum', bedsRooms: '3 bedrooms • 5 beds', baths: '2.5 bathrooms' };
+    case 'villa-papaya':
+      return { guests: '4 guests maximum', bedsRooms: '2 bedrooms • 3 beds', baths: '2.5 bathrooms' };
+    case 'villa-cocos':
+      return { guests: '5 guests maximum', bedsRooms: '3 bedrooms • 4 beds', baths: '2 bathrooms' };
     default:
       return { guests: '2 guests', bedsRooms: '1 bedroom', baths: '1 bathroom' };
   }

@@ -7,9 +7,6 @@ export default function ScrollRevealObserver() {
   const pathname = usePathname();
 
   useEffect(() => {
-    // ⚠️ Exception: Do NOT run technique on the main homepage
-    if (pathname === '/') return;
-
     let observer: IntersectionObserver | null = null;
     let idleTimer: NodeJS.Timeout | null = null;
 

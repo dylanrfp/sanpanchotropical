@@ -8,6 +8,10 @@ export interface Villa {
   descriptionTitle?: string;
   targetAudience: string;
   capacity: string;
+  maxGuests?: number;
+  minGuests?: number;
+  minNights?: number;
+  idealGuests?: { min: number; max: number };
   size: string;
   rooms: string;
   beds: string;
@@ -59,6 +63,10 @@ export const villasData: Villa[] = [
     descriptionTitle: "Your Private Ground-Level Escape",
     targetAudience: "Ideal for couples, solo travelers, or digital nomads seeking a stylized neighborhood footprint.",
     capacity: "2 guests maximum",
+    maxGuests: 2,
+    minGuests: 1,
+    minNights: 2,
+    idealGuests: { min: 1, max: 2 },
     size: "431 sq. ft. (40 m²)",
     rooms: "1 private bedroom, 1 full bathroom, and an open-concept living room layout featuring an integrated sofa bed.",
     beds: "King bed layout options available.",
@@ -263,6 +271,10 @@ export const villasData: Villa[] = [
     descriptionTitle: "Spacious San Pancho Retreat with Private Pool",
     targetAudience: "Designed beautifully for families and groups.",
     capacity: "8 guests maximum",
+    maxGuests: 8,
+    minGuests: 1,
+    minNights: 3,
+    idealGuests: { min: 6, max: 8 },
     size: "Sprawling 4-bedroom home",
     rooms: "4 Bedrooms, 4 Bathrooms",
     beds: "1 King, 1 Queen, 1 Double, 2 Twins",
@@ -478,6 +490,10 @@ export const villasData: Villa[] = [
     designConcept: "Find your relaxing retreat at Villa Sunset, located on the second floor of Villa Esperanza. Featuring a private entrance, an air-conditioned layout, and an exclusive rooftop palapa with jungle and ocean views, you are perfectly located just three blocks from the beach and two blocks from Main Street.",
     targetAudience: "Perfect for families or groups seeking a spacious, private retreat with exclusive rooftop palapa views.",
     capacity: "6 guests maximum",
+    maxGuests: 6,
+    minGuests: 1,
+    minNights: 2,
+    idealGuests: { min: 4, max: 6 },
     size: "Spacious 1,400 sq ft layout",
     rooms: "3 Bedrooms, 2.5 Bathrooms.",
     beds: "1 Queen, 2 Doubles, 2 Twins.",
@@ -669,6 +685,10 @@ export const villasData: Villa[] = [
     designConcept: "Find your tranquil retreat on the first floor of Villa Esperanza. Featuring a spacious, air-conditioned layout, a fully equipped kitchen, and private decks, you are perfectly located just three blocks from the beach and two blocks from Main Street. Weekly housekeeping is included.",
     targetAudience: "Perfect for small groups or families looking for a spacious, private retreat with multiple decks.",
     capacity: "4 guests maximum",
+    maxGuests: 4,
+    minGuests: 1,
+    minNights: 2,
+    idealGuests: { min: 2, max: 4 },
     size: "Spacious 1,800 sq ft layout",
     rooms: "2 Bedrooms, 2.5 Bathrooms.",
     beds: "1 King Bed, 2 Full Beds.",
@@ -794,6 +814,10 @@ export const villasData: Villa[] = [
     designConcept: "Discover a peaceful, three-bedroom sanctuary offering the best of both worlds. Enjoy a modern, air-conditioned living space and a fully equipped kitchen. You are perfectly positioned just a three-block stroll from a secluded beach and two blocks from the vibrant local dining on Main Street. Step outside to your private tropical patio and settle right in, complete with the comfort of weekly housekeeping.",
     targetAudience: "Perfect for families or groups desiring highly walkable town access, privacy, and full modern comforts.",
     capacity: "5 guests maximum",
+    maxGuests: 5,
+    minGuests: 1,
+    minNights: 2,
+    idealGuests: { min: 3, max: 5 },
     size: "Stand-alone three-bedroom layout",
     rooms: "3 Bedrooms, 2 Bathrooms.",
     beds: "1 Queen Bed, 3 Twin Beds.",
