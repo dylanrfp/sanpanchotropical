@@ -1,8 +1,22 @@
-import React from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { villasData, globalPolicies } from '@/data/villas';
 
 export default function VillasPage() {
+  const [guests, setGuests] = useState<number>(2);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const query = new URLSearchParams(window.location.search);
+      const guestsParam = parseInt(query.get('guests') || '2', 10);
+      if (!isNaN(guestsParam) && guestsParam > 0) {
+        setGuests(guestsParam);
+      }
+    }
+  }, []);
+
   const order = ['villa-iguana', 'villa-cocos', 'villa-sunset', 'villa-papaya', 'villa-palmas'];
   const orderedVillas = [...villasData]
     .filter((v) => v.id !== 'golf-cart')
@@ -85,6 +99,11 @@ export default function VillasPage() {
                     {villa.unit && (
                       <span className="text-xs font-sans font-bold tracking-widest text-base-light bg-sand-accent px-3 py-1.5 rounded-full shadow-sm">
                         {villa.unit}
+                      </span>
+                    )}
+                    {guests >= (villa.idealGuests?.min || 1) && guests <= (villa.idealGuests?.max || 8) && (
+                      <span className="text-xs font-sans font-bold tracking-wider text-white bg-[#003461] px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">
+                        ✨ Ideal Match ({guests} Guests)
                       </span>
                     )}
                   </div>

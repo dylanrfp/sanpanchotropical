@@ -180,12 +180,18 @@ export default function DoubleMonthCalendar({
         isInRange = date > start && date <= hoverDate;
       }
 
-      const isToday = new Date().toISOString().split('T')[0] === dateStr;
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
 
-      // Disable past dates and blocked dates
-      const isPast = date < new Date(new Date().setHours(0, 0, 0, 0));
+      const minCheckIn = new Date(today);
+      minCheckIn.setDate(minCheckIn.getDate() + 2);
+
+      const isToday = today.toISOString().split('T')[0] === dateStr;
+
+      // Disable dates sooner than 2 days from today (no same-day or next-day bookings)
+      const isTooSoon = date < minCheckIn;
       const isBlocked = blockedDates.includes(dateStr);
-      const isDisabled = isPast || isBlocked;
+      const isDisabled = isTooSoon || isBlocked;
 
       days.push(
         <div
