@@ -114,11 +114,9 @@ export default function Navbar() {
           isScrolled ? 'py-3 px-4 md:py-1 md:px-16 md:gap-16' : 'py-4.5 px-4 md:py-2.5 md:px-20 md:gap-20'
         }`}>
           {/* Logo */}
-          <Link href="/" className="font-sans font-black italic tracking-tighter text-[22px] md:text-[28px] uppercase text-base-dark hover:opacity-95 transition-all flex items-center gap-2 md:gap-3 shrink-0 group">
-            <div className="relative flex items-center justify-center p-1 md:p-1.5 bg-gradient-to-br from-white via-sky-50 to-[#418de2]/15 rounded-2xl shadow-md border border-[#003461]/15 group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
-              <img src="/monstera_leaf.png" alt="Tropical leaf" className="h-10 md:h-14 w-auto object-contain drop-shadow-md" />
-            </div>
-            <span>SAN PANCHO <span className="text-accent-blue font-black tracking-tight">TROPICAL</span></span>
+          <Link href="/" className="font-sans font-black italic tracking-tighter text-[20px] md:text-[26px] uppercase text-base-dark hover:opacity-90 transition-opacity flex items-center gap-1.5 md:gap-2.5 shrink-0">
+            <img src="/monstera_leaf.png" alt="Tropical leaf" className="h-9 md:h-12 w-auto object-contain" />
+            SAN PANCHO <span className="text-accent-blue">TROPICAL</span>
           </Link>
 
         {/* Desktop Menu */}
