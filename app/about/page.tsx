@@ -16,14 +16,6 @@ export default function AboutPage() {
         {/* Centered Hero Content */}
         <div className="relative z-10 max-w-5xl mx-auto px-4 md:px-6 flex flex-col items-center justify-center text-center">
           
-          {/* Popping Big Logo Emblem in Hero */}
-          <div className="w-24 h-24 md:w-36 md:h-36 bg-white/95 backdrop-blur-md rounded-3xl shadow-[0_12px_40px_rgba(0,0,0,0.25)] p-3 md:p-4 border-2 border-white/90 flex items-center justify-center mb-5 md:mb-6 hover:scale-105 transition-all duration-300">
-            <img 
-              src="/SPtropical_logo.png" 
-              alt="San Pancho Tropical Logo" 
-              className="w-full h-full object-contain"
-            />
-          </div>
 
           <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md text-white border border-white/30 px-4 py-1.5 rounded-full text-xs md:text-sm font-bold uppercase tracking-widest mb-3 shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#418de2]"></span>
@@ -130,8 +122,10 @@ export default function AboutPage() {
             
             {/* Feature 1 */}
             <div className="bg-white rounded-3xl p-8 shadow-lg border border-[#003461]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-[#003461]/10 text-[#003461] flex items-center justify-center text-2xl font-bold">
-                🌴
+              <div className="w-14 h-14 rounded-2xl bg-[#003461]/10 text-[#003461] flex items-center justify-center">
+                <svg className="w-7 h-7 text-[#003461]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
               </div>
               <h4 className="text-xl font-bold text-[#003461]">20+ Years Local Heritage</h4>
               <p className="text-sm text-[#161d1f]/80 leading-relaxed">
@@ -141,8 +135,11 @@ export default function AboutPage() {
 
             {/* Feature 2 */}
             <div className="bg-white rounded-3xl p-8 shadow-lg border border-[#003461]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-[#003461]/10 text-[#003461] flex items-center justify-center text-2xl font-bold">
-                🌊
+              <div className="w-14 h-14 rounded-2xl bg-[#003461]/10 text-[#003461] flex items-center justify-center">
+                <svg className="w-7 h-7 text-[#003461]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
               </div>
               <h4 className="text-xl font-bold text-[#003461]">3 Blocks to the Beach</h4>
               <p className="text-sm text-[#161d1f]/80 leading-relaxed">
@@ -152,8 +149,10 @@ export default function AboutPage() {
 
             {/* Feature 3 */}
             <div className="bg-white rounded-3xl p-8 shadow-lg border border-[#003461]/10 hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 space-y-4">
-              <div className="w-14 h-14 rounded-2xl bg-[#003461]/10 text-[#003461] flex items-center justify-center text-2xl font-bold">
-                🏡
+              <div className="w-14 h-14 rounded-2xl bg-[#003461]/10 text-[#003461] flex items-center justify-center">
+                <svg className="w-7 h-7 text-[#003461]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
               </div>
               <h4 className="text-xl font-bold text-[#003461]">Saltwater Pool & Carts</h4>
               <p className="text-sm text-[#161d1f]/80 leading-relaxed">
