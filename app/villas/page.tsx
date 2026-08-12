@@ -101,11 +101,6 @@ export default function VillasPage() {
                         {villa.unit}
                       </span>
                     )}
-                    {guests >= (villa.idealGuests?.min || 1) && guests <= (villa.idealGuests?.max || 8) && (
-                      <span className="text-xs font-sans font-bold tracking-wider text-white bg-[#003461] px-3 py-1.5 rounded-full shadow-sm flex items-center gap-1">
-                        ✨ Ideal Match ({guests} Guests)
-                      </span>
-                    )}
                   </div>
 
                   {/* Mid Title Overlay */}

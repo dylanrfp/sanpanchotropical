@@ -18,8 +18,8 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: 'San Pancho Tropical | Eco-Luxe Sanctuary',
-  description: 'Experience the tropics in our beautiful eco-luxe sanctuary.',
+  title: 'San Pancho Tropical | Beach-Town Villas',
+  description: 'Discover private beach-town villas in San Pancho, Mexico. Book your stay with local hosts who have called San Pancho home for over 20 years.',
 }
 
 export default function RootLayout({

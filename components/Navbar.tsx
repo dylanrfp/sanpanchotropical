@@ -144,7 +144,7 @@ export default function Navbar() {
 
           {/* Villas with Hover Dropdown */}
           <div
-            className="relative py-1"
+            className="relative py-1 z-50"
             onMouseEnter={() => setVillasHovered(true)}
             onMouseLeave={() => setVillasHovered(false)}
           >
@@ -166,7 +166,7 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 8, scale: 0.97 }}
                   transition={{ duration: 0.18, ease: 'easeOut' }}
-                  className="absolute top-full left-0 mt-3 w-72 bg-base-light rounded-2xl shadow-[0_8px_40px_rgba(48,41,47,0.12)] border border-sand-accent/15 overflow-hidden"
+                  className="absolute top-full left-0 mt-3 w-72 bg-base-light rounded-2xl shadow-[0_8px_40px_rgba(48,41,47,0.12)] border border-sand-accent/15 overflow-hidden z-[9999]"
                 >
                   <div className="py-3">
                     {villaMenuItems.map((villa) => (

@@ -209,7 +209,7 @@ export default function Home() {
         <div className="shrink-0 h-4 md:h-8" />
 
         {/* Hero Title & Floating Search Box */}
-        <div className="relative z-50 text-center px-5 md:px-8 max-w-5xl mx-auto w-full my-auto py-6">
+        <div className="relative z-10 text-center px-5 md:px-8 max-w-5xl mx-auto w-full my-auto py-6">
           <h1 className="text-white drop-shadow-2xl mb-6 tracking-tight text-4xl sm:text-6xl md:text-7xl font-bold leading-tight">
             Your Private Paradise <br />
             in San Pancho
@@ -219,7 +219,7 @@ export default function Home() {
           </p>
 
           {/* Search Calculator Floating Glass Card */}
-          <div className="relative max-w-4xl mx-auto z-50">
+          <div className="relative max-w-4xl mx-auto z-10">
             {/* Validation Warning Popup */}
             {validationMessage && (
               <div className="absolute -top-14 left-1/2 -translate-x-1/2 z-[110] bg-[#003461] text-white px-5 py-2.5 rounded-full shadow-2xl border border-[#418de2]/40 flex items-center gap-2 text-xs md:text-sm font-semibold animate-in fade-in slide-in-from-bottom-2 duration-300 whitespace-nowrap">
@@ -459,7 +459,7 @@ export default function Home() {
                           <div>
                             <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
                             <p className="font-black text-[#003461] text-base leading-tight">
-                              ${getVillaLowestPrice(villaObj.id)} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                              ${getVillaLowestPrice(villaObj.id)}* USD<span className="text-xs font-normal text-[#424750]">/night</span>
                             </p>
                             <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
                           </div>
@@ -530,7 +530,7 @@ export default function Home() {
                           <div>
                             <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
                             <p className="font-black text-[#003461] text-base leading-tight">
-                              ${getVillaLowestPrice(villaObj.id)} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                              ${getVillaLowestPrice(villaObj.id)}* USD<span className="text-xs font-normal text-[#424750]">/night</span>
                             </p>
                             <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
                           </div>
@@ -647,7 +647,7 @@ export default function Home() {
                     <div>
                       <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
                       <p className="font-black text-[#003461] text-lg leading-tight">
-                        ${topVilla1.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                        ${topVilla1.price}* USD<span className="text-xs font-normal text-[#424750]">/night</span>
                       </p>
                       <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
                     </div>
@@ -685,7 +685,7 @@ export default function Home() {
                     <div>
                       <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
                       <p className="font-black text-[#003461] text-lg leading-tight">
-                        ${topVilla2.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                        ${topVilla2.price}* USD<span className="text-xs font-normal text-[#424750]">/night</span>
                       </p>
                       <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
                     </div>
@@ -740,7 +740,7 @@ export default function Home() {
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
                     <p className="font-black text-[#003461] text-lg leading-tight">
-                      ${bottomVilla1.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                      ${bottomVilla1.price}* USD<span className="text-xs font-normal text-[#424750]">/night</span>
                     </p>
                     <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
                   </div>
@@ -778,7 +778,7 @@ export default function Home() {
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
                     <p className="font-black text-[#003461] text-lg leading-tight">
-                      ${bottomVilla2.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                      ${bottomVilla2.price}* USD<span className="text-xs font-normal text-[#424750]">/night</span>
                     </p>
                     <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
                   </div>
@@ -816,7 +816,7 @@ export default function Home() {
                   <div>
                     <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
                     <p className="font-black text-[#003461] text-lg leading-tight">
-                      ${bottomVilla3.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                      ${bottomVilla3.price}* USD<span className="text-xs font-normal text-[#424750]">/night</span>
                     </p>
                     <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
                   </div>

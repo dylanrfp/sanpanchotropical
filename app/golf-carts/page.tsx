@@ -8,6 +8,7 @@ import VillaGallery from '@/components/VillaGallery';
 import GolfCartBookingWidget from '@/components/GolfCartBookingWidget';
 import GolfCart360Viewer from '@/components/GolfCart360Viewer';
 import MobileStickyBookNow from '@/components/MobileStickyBookNow';
+import GolfCartPolicyNotice from '@/components/GolfCartPolicyNotice';
 
 export default function GolfCartsPage() {
   const cartData = villasData.find((v) => v.id === 'golf-cart');
@@ -81,38 +82,16 @@ export default function GolfCartsPage() {
 
       {/* Grid Image Gallery */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 mb-10 md:mb-16 reveal-on-scroll reveal-scale">
-        <h2 className="font-serif italic text-2xl md:text-4xl text-base-dark mb-5 md:mb-8 text-center">Cart Gallery & Details</h2>
+        <h2 className="font-serif italic text-2xl md:text-4xl text-base-dark mb-5 md:mb-8 text-center">Cart Gallery &amp; Details</h2>
         <div className="w-full">
           <VillaGallery villa={cartData} />
         </div>
       </div>
 
-      {/* Rules & Policies */}
-      {cartData.houseRules && (
-        <div className="max-w-7xl mx-auto px-4 md:px-6 reveal-on-scroll">
-          <section className="space-y-4 md:space-y-6 pt-8 md:pt-12 border-t border-sand-accent/10">
-            <h3 className="font-serif italic text-2xl md:text-3xl text-base-dark">Rules & Policies</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-              {cartData.houseRules.map((rule, idx) => {
-                const isCancellation = rule.title.toLowerCase().includes("cancellation");
-                return (
-                  <div 
-                    key={idx} 
-                    className={`bg-white border border-sand-accent/10 rounded-xl md:rounded-2xl p-4 md:p-6 space-y-2 md:space-y-3 shadow-sm ${
-                      isCancellation ? 'md:col-span-2' : ''
-                    }`}
-                  >
-                    <h4 className="font-sans font-bold text-sm text-base-dark">{rule.title}</h4>
-                    <p className="font-sans font-light text-sm text-base-dark/80 leading-relaxed text-justify">{rule.description}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-        </div>
-      )}
-
-
+      {/* Consolidated Policy, Rules & Terms Notice */}
+      <div className="max-w-7xl mx-auto px-4 md:px-6 mb-12">
+        <GolfCartPolicyNotice />
+      </div>
 
       {/* Mobile Sticky Reserve Bar */}
       <MobileStickyBookNow targetId="golf-cart-booking" label="RESERVE A CART" />

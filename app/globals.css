@@ -71,26 +71,26 @@ body {
   animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
 }
 
-/* ── Reveal-on-Scroll GPU Spring Animations ───────────────────────────────── */
+/* ── Reveal-on-Scroll GPU Animations ───────────────────────────────── */
 .reveal-on-scroll {
   opacity: 0 !important;
-  transform: translateY(60px) scale(0.95);
+  transform: translateY(28px);
   transition: 
-    opacity 0.85s cubic-bezier(0.34, 1.56, 0.64, 1),
-    transform 0.85s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    opacity 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
   will-change: transform, opacity;
 }
 
 .reveal-on-scroll.reveal-left {
-  transform: translateX(-70px) translateY(20px) scale(0.95);
+  transform: translateX(-36px) translateY(12px);
 }
 
 .reveal-on-scroll.reveal-right {
-  transform: translateX(70px) translateY(20px) scale(0.95);
+  transform: translateX(36px) translateY(12px);
 }
 
 .reveal-on-scroll.reveal-scale {
-  transform: scale(0.82) translateY(30px);
+  transform: scale(0.94) translateY(20px);
 }
 
 .reveal-on-scroll.revealed {
@@ -99,10 +99,10 @@ body {
 }
 
 /* Stagger Delays for Grid Elements */
-.reveal-delay-1 { transition-delay: 0.1s !important; }
-.reveal-delay-2 { transition-delay: 0.2s !important; }
-.reveal-delay-3 { transition-delay: 0.3s !important; }
-.reveal-delay-4 { transition-delay: 0.4s !important; }
+.reveal-delay-1 { transition-delay: 0.05s !important; }
+.reveal-delay-2 { transition-delay: 0.10s !important; }
+.reveal-delay-3 { transition-delay: 0.15s !important; }
+.reveal-delay-4 { transition-delay: 0.20s !important; }
 
 /* ── Stitch Coastal Luxury Design System Utilities ─────────────────────────── */
 .glass-panel {
