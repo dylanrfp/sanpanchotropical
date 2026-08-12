@@ -24,12 +24,23 @@ export default function Home() {
   const palmas = villasData.find((v) => v.id === 'villa-palmas') || villasData[4];
 
   const allVillas = [
-    { villa: iguana, price: 450, rating: '5.0' },
-    { villa: sunset, price: 240, rating: '4.98' },
-    { villa: papaya, price: 200, rating: '4.95' },
-    { villa: cocos, price: 180, rating: '4.92' },
-    { villa: palmas, price: 150, rating: '4.89' },
+    { villa: iguana, price: 200, rating: '5.0' },
+    { villa: sunset, price: 100, rating: '4.98' },
+    { villa: papaya, price: 100, rating: '4.95' },
+    { villa: cocos, price: 95, rating: '4.92' },
+    { villa: palmas, price: 50, rating: '4.89' },
   ];
+
+  const getVillaLowestPrice = (id: string) => {
+    switch (id) {
+      case 'villa-iguana': return 200;
+      case 'villa-sunset': return 100;
+      case 'villa-papaya': return 100;
+      case 'villa-cocos': return 95;
+      case 'villa-palmas': return 50;
+      default: return 100;
+    }
+  };
 
   const [carouselIndex, setCarouselIndex] = useState(0);
 
@@ -444,11 +455,15 @@ export default function Home() {
                         <p className="text-[#424750] text-xs mb-2">
                           {villaObj.capacity} · {villaObj.rooms}
                         </p>
-                        <div className="flex justify-between items-center pt-2 border-t border-gray-100">
-                          <p className="font-black text-[#003461] text-lg">
-                            $240<span className="text-xs font-normal text-[#424750]">/night</span>
-                          </p>
-                          <div className="flex items-center text-blue-500 font-bold text-xs md:text-sm">
+                        <div className="flex justify-between items-end pt-2 border-t border-gray-100">
+                          <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
+                            <p className="font-black text-[#003461] text-base leading-tight">
+                              ${getVillaLowestPrice(villaObj.id)} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                            </p>
+                            <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
+                          </div>
+                          <div className="flex items-center text-blue-500 font-bold text-xs md:text-sm shrink-0 mb-1">
                             <span className="mr-1 text-sky-500">★</span> 4.95
                           </div>
                         </div>
@@ -511,10 +526,14 @@ export default function Home() {
                         <p className="text-[#424750] text-xs mb-2">
                           {villaObj.capacity} · {villaObj.rooms}
                         </p>
-                        <div className="flex justify-between items-center pt-2 border-t border-gray-100">
-                          <p className="font-black text-[#003461] text-lg">
-                            $240<span className="text-xs font-normal text-[#424750]">/night</span>
-                          </p>
+                        <div className="flex justify-between items-end pt-2 border-t border-gray-100">
+                          <div>
+                            <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
+                            <p className="font-black text-[#003461] text-base leading-tight">
+                              ${getVillaLowestPrice(villaObj.id)} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                            </p>
+                            <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
+                          </div>
                           <button
                             type="button"
                             onClick={() => {
@@ -624,11 +643,15 @@ export default function Home() {
                   <p className="text-[#424750] text-sm mb-3">
                     {topVilla1.villa.capacity} · {topVilla1.villa.rooms}
                   </p>
-                  <div className="flex justify-between items-center pt-2">
-                    <p className="font-black text-[#003461] text-lg">
-                      ${topVilla1.price}<span className="text-xs font-normal text-[#424750]">/night</span>
-                    </p>
-                    <div className="flex items-center text-blue-500 font-bold text-sm">
+                  <div className="flex justify-between items-end pt-2">
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
+                      <p className="font-black text-[#003461] text-lg leading-tight">
+                        ${topVilla1.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                      </p>
+                      <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
+                    </div>
+                    <div className="flex items-center text-blue-500 font-bold text-sm shrink-0 mb-1">
                       <span className="mr-1 text-sky-500">★</span> {topVilla1.rating}
                     </div>
                   </div>
@@ -658,11 +681,15 @@ export default function Home() {
                   <p className="text-[#424750] text-sm mb-3">
                     {topVilla2.villa.capacity} · {topVilla2.villa.rooms}
                   </p>
-                  <div className="flex justify-between items-center pt-2">
-                    <p className="font-black text-[#003461] text-lg">
-                      ${topVilla2.price}<span className="text-xs font-normal text-[#424750]">/night</span>
-                    </p>
-                    <div className="flex items-center text-blue-500 font-bold text-sm">
+                  <div className="flex justify-between items-end pt-2">
+                    <div>
+                      <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
+                      <p className="font-black text-[#003461] text-lg leading-tight">
+                        ${topVilla2.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                      </p>
+                      <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
+                    </div>
+                    <div className="flex items-center text-blue-500 font-bold text-sm shrink-0 mb-1">
                       <span className="mr-1 text-sky-500">★</span> {topVilla2.rating}
                     </div>
                   </div>
@@ -709,11 +736,15 @@ export default function Home() {
                 <p className="text-[#424750] text-sm mb-3">
                   {bottomVilla1.villa.capacity} · {bottomVilla1.villa.rooms}
                 </p>
-                <div className="flex justify-between items-center pt-2">
-                  <p className="font-black text-[#003461] text-lg">
-                    ${bottomVilla1.price}<span className="text-xs font-normal text-[#424750]">/night</span>
-                  </p>
-                  <div className="flex items-center text-blue-500 font-bold text-sm">
+                <div className="flex justify-between items-end pt-2">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
+                    <p className="font-black text-[#003461] text-lg leading-tight">
+                      ${bottomVilla1.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                    </p>
+                    <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
+                  </div>
+                  <div className="flex items-center text-blue-500 font-bold text-sm shrink-0 mb-1">
                     <span className="mr-1 text-sky-500">★</span> {bottomVilla1.rating}
                   </div>
                 </div>
@@ -743,11 +774,15 @@ export default function Home() {
                 <p className="text-[#424750] text-sm mb-3">
                   {bottomVilla2.villa.capacity} · {bottomVilla2.villa.rooms}
                 </p>
-                <div className="flex justify-between items-center pt-2">
-                  <p className="font-black text-[#003461] text-lg">
-                    ${bottomVilla2.price}<span className="text-xs font-normal text-[#424750]">/night</span>
-                  </p>
-                  <div className="flex items-center text-blue-500 font-bold text-sm">
+                <div className="flex justify-between items-end pt-2">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
+                    <p className="font-black text-[#003461] text-lg leading-tight">
+                      ${bottomVilla2.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                    </p>
+                    <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
+                  </div>
+                  <div className="flex items-center text-blue-500 font-bold text-sm shrink-0 mb-1">
                     <span className="mr-1 text-sky-500">★</span> {bottomVilla2.rating}
                   </div>
                 </div>
@@ -777,11 +812,15 @@ export default function Home() {
                 <p className="text-[#424750] text-sm mb-3">
                   {bottomVilla3.villa.capacity} · {bottomVilla3.villa.rooms}
                 </p>
-                <div className="flex justify-between items-center pt-2">
-                  <p className="font-black text-[#003461] text-lg">
-                    ${bottomVilla3.price}<span className="text-xs font-normal text-[#424750]">/night</span>
-                  </p>
-                  <div className="flex items-center text-blue-500 font-bold text-sm">
+                <div className="flex justify-between items-end pt-2">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-[#424750]/70 leading-none mb-0.5">As low as</p>
+                    <p className="font-black text-[#003461] text-lg leading-tight">
+                      ${bottomVilla3.price} USD<span className="text-xs font-normal text-[#424750]">/night</span>
+                    </p>
+                    <p className="text-[9px] text-[#424750]/60 italic leading-none mt-0.5">*September rates</p>
+                  </div>
+                  <div className="flex items-center text-blue-500 font-bold text-sm shrink-0 mb-1">
                     <span className="mr-1 text-sky-500">★</span> {bottomVilla3.rating}
                   </div>
                 </div>
