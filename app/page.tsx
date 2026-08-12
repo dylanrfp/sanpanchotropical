@@ -211,8 +211,8 @@ export default function Home() {
           <div className="relative max-w-4xl mx-auto z-50">
             {/* Validation Warning Popup */}
             {validationMessage && (
-              <div className="absolute -top-14 left-1/2 -translate-x-1/2 z-[110] bg-[#003461] text-white px-5 py-2.5 rounded-full shadow-2xl border border-amber-400/50 flex items-center gap-2 text-xs md:text-sm font-semibold animate-in fade-in slide-in-from-bottom-2 duration-300 whitespace-nowrap">
-                <svg className="w-4 h-4 text-amber-400 shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+              <div className="absolute -top-14 left-1/2 -translate-x-1/2 z-[110] bg-[#003461] text-white px-5 py-2.5 rounded-full shadow-2xl border border-[#418de2]/40 flex items-center gap-2 text-xs md:text-sm font-semibold animate-in fade-in slide-in-from-bottom-2 duration-300 whitespace-nowrap">
+                <svg className="w-4 h-4 text-[#418de2] shrink-0" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                 </svg>
                 <span>{validationMessage}</span>
@@ -422,8 +422,8 @@ export default function Home() {
                       <Link href={`/villas/${villaObj.id}`} className="block">
                         <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden mb-3 bg-gray-100">
                           {bestIdealVillaIds.includes(villaObj.id) && (
-                            <div className="absolute top-3 left-3 z-20 bg-[#003461] text-[#f4fafd] text-[10px] md:text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg border border-amber-400/40 flex items-center gap-1.5">
-                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                            <div className="absolute top-3 left-3 z-20 bg-[#003461] text-[#f4fafd] text-[10px] md:text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg border border-[#418de2]/40 flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-[#418de2]"></span>
                               IDEAL MATCH
                             </div>
                           )}
@@ -449,7 +449,7 @@ export default function Home() {
                             $240<span className="text-xs font-normal text-[#424750]">/night</span>
                           </p>
                           <div className="flex items-center text-blue-500 font-bold text-xs md:text-sm">
-                            <span className="mr-1 text-amber-400">★</span> 4.95
+                            <span className="mr-1 text-sky-500">★</span> 4.95
                           </div>
                         </div>
                       </div>
@@ -465,11 +465,11 @@ export default function Home() {
 
             {/* 2. DEDICATED IDEAL VILLAS FOR GROUP (Booked on selected dates) */}
             {bookedIdealVillas.length > 0 && (
-              <div className="bg-gradient-to-br from-amber-500/5 via-white to-sky-50 rounded-[2.5rem] md:rounded-[3rem] p-5 md:p-6 shadow-2xl border border-amber-300/40">
-                <div className="mb-5 pb-4 border-b border-amber-200/50">
+              <div className="bg-gradient-to-br from-[#418de2]/5 via-white to-sky-50 rounded-[2.5rem] md:rounded-[3rem] p-5 md:p-6 shadow-2xl border border-[#418de2]/30">
+                <div className="mb-5 pb-4 border-b border-[#418de2]/20">
                   <div className="flex items-center gap-2 mb-2">
-                    <span className="w-2 h-2 rounded-full bg-amber-500"></span>
-                    <span className="text-[10px] md:text-xs font-black tracking-widest text-amber-700 uppercase">RECOMMENDED FOR YOUR GROUP SIZE</span>
+                    <span className="w-2 h-2 rounded-full bg-[#418de2]"></span>
+                    <span className="text-[10px] md:text-xs font-black tracking-widest text-[#003461] uppercase">RECOMMENDED FOR YOUR GROUP SIZE</span>
                   </div>
                   <h3 className="text-[#003461] text-xl md:text-2xl font-bold tracking-tight">
                     Ideal Villas for {totalGuests} {totalGuests === 1 ? 'Guest' : 'Guests'}
@@ -483,13 +483,13 @@ export default function Home() {
                   {bookedIdealVillas.map((villaObj) => (
                     <div 
                       key={villaObj.id}
-                      className="bg-white rounded-3xl overflow-hidden border border-amber-300/40 p-3 md:p-4 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative"
+                      className="bg-white rounded-3xl overflow-hidden border border-[#418de2]/30 p-3 md:p-4 shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between group relative"
                     >
                       <Link href={`/villas/${villaObj.id}`} className="block">
                         <div className="relative h-40 md:h-48 rounded-2xl overflow-hidden mb-3 bg-gray-100">
                           
                           {/* SLEEK IDEAL GROUP FIT BADGE */}
-                          <div className="absolute top-3 left-3 z-20 bg-amber-500 text-white text-[10px] md:text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg border border-white/40 flex items-center gap-1.5">
+                          <div className="absolute top-3 left-3 z-20 bg-[#003461] text-white text-[10px] md:text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full shadow-lg border border-white/40 flex items-center gap-1.5">
                             <span className="w-1.5 h-1.5 rounded-full bg-white"></span>
                             IDEAL GROUP FIT
                           </div>
@@ -629,7 +629,7 @@ export default function Home() {
                       ${topVilla1.price}<span className="text-xs font-normal text-[#424750]">/night</span>
                     </p>
                     <div className="flex items-center text-blue-500 font-bold text-sm">
-                      <span className="mr-1 text-amber-400">★</span> {topVilla1.rating}
+                      <span className="mr-1 text-sky-500">★</span> {topVilla1.rating}
                     </div>
                   </div>
                 </div>
@@ -663,7 +663,7 @@ export default function Home() {
                       ${topVilla2.price}<span className="text-xs font-normal text-[#424750]">/night</span>
                     </p>
                     <div className="flex items-center text-blue-500 font-bold text-sm">
-                      <span className="mr-1 text-amber-400">★</span> {topVilla2.rating}
+                      <span className="mr-1 text-sky-500">★</span> {topVilla2.rating}
                     </div>
                   </div>
                 </div>
@@ -714,7 +714,7 @@ export default function Home() {
                     ${bottomVilla1.price}<span className="text-xs font-normal text-[#424750]">/night</span>
                   </p>
                   <div className="flex items-center text-blue-500 font-bold text-sm">
-                    <span className="mr-1 text-amber-400">★</span> {bottomVilla1.rating}
+                    <span className="mr-1 text-sky-500">★</span> {bottomVilla1.rating}
                   </div>
                 </div>
               </div>
@@ -748,7 +748,7 @@ export default function Home() {
                     ${bottomVilla2.price}<span className="text-xs font-normal text-[#424750]">/night</span>
                   </p>
                   <div className="flex items-center text-blue-500 font-bold text-sm">
-                    <span className="mr-1 text-amber-400">★</span> {bottomVilla2.rating}
+                    <span className="mr-1 text-sky-500">★</span> {bottomVilla2.rating}
                   </div>
                 </div>
               </div>
@@ -782,7 +782,7 @@ export default function Home() {
                     ${bottomVilla3.price}<span className="text-xs font-normal text-[#424750]">/night</span>
                   </p>
                   <div className="flex items-center text-blue-500 font-bold text-sm">
-                    <span className="mr-1 text-amber-400">★</span> {bottomVilla3.rating}
+                    <span className="mr-1 text-sky-500">★</span> {bottomVilla3.rating}
                   </div>
                 </div>
               </div>

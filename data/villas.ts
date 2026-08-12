@@ -267,7 +267,7 @@ export const villasData: Villa[] = [
     name: "Villa Iguana",
     unit: "Unit #5",
     tagline: "Spacious San Pancho Retreat with Private Pool",
-    designConcept: "A sprawling 4-bedroom, 4-bathroom home that perfectly balances absolute privacy with effortless convenience.",
+    designConcept: "A sprawling 4-bedroom, 3.5-bathroom home that perfectly balances absolute privacy with effortless convenience.",
     descriptionTitle: "Spacious San Pancho Retreat with Private Pool",
     targetAudience: "Designed beautifully for families and groups.",
     capacity: "8 guests maximum",
@@ -276,19 +276,19 @@ export const villasData: Villa[] = [
     minNights: 3,
     idealGuests: { min: 6, max: 8 },
     size: "Sprawling 4-bedroom home",
-    rooms: "4 Bedrooms, 4 Bathrooms",
+    rooms: "4 Bedrooms, 3.5 Bathrooms",
     beds: "1 King, 1 Queen, 1 Double, 2 Twins",
     beachDistance: "Positioned just three blocks from the ocean waves.",
     townProximity: "Tucked within a lush garden setting close to the beach and local boutiques/restaurants.",
     walkability: "Three blocks from the beach and an easy walk to town.",
-    specs: ["8 Guests", "4 Beds / 4 Baths", "3 Blocks to Beach", "Emerald Saltwater Pool", "4-Seater Golf Cart Included", "AC Throughout"],
+    specs: ["8 Guests", "4 Beds / 3.5 Baths", "3 Blocks to Beach", "Emerald Saltwater Pool", "4-Seater Golf Cart Included", "AC Throughout"],
     highlights: [
       "The Space: A sprawling 4-bedroom sanctuary featuring private balconies and en-suite bathrooms, ensuring total privacy for up to eight guests.",
       "The Location: Nestled in a lush, secluded garden setting that sits exactly three blocks from the beach.",
       "The Routine: Spend your mornings by your private emerald saltwater pool, and enjoy the effortless comfort of included weekly housekeeping service."
     ],
     longDescription: [
-      "Discover the ultimate coastal getaway designed beautifully for families and groups. Tucked within a lush garden setting, Villa Iguana #5 is a sprawling 4-bedroom, 4-bathroom home that perfectly balances absolute privacy with effortless convenience.",
+      "Discover the ultimate coastal getaway designed beautifully for families and groups. Tucked within a lush garden setting, Villa Iguana #5 is a sprawling 4-bedroom, 3.5-bathroom home that perfectly balances absolute privacy with effortless convenience.",
       "Unwind in your own enclosed sanctuary, take a refreshing dip in the stunning emerald saltwater pool, or cook a meal in the fully-equipped kitchen featuring stainless steel appliances. You are positioned just three blocks from the ocean waves. While the secluded beach is perfect for a quiet afternoon, the expansive comfort and cooling A/C of your private villa will always be calling you back."
     ],
     golfCartUpsell: {
@@ -305,7 +305,7 @@ export const villasData: Villa[] = [
         items: [
           "Accommodates 8 Guests",
           "1 King, 1 Queen, 1 Double, 2 Twins",
-          "4 Full Bathrooms",
+          "3 Full & 1 Half Bathrooms",
           "Washer & Dryer"
         ]
       },

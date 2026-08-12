@@ -13,7 +13,7 @@ const getVillaParams = (id: string) => {
     case 'villa-palmas':
       return { guests: '2 guests maximum', bedsRooms: '1 bedroom • 1 bed', baths: '1 bathroom' };
     case 'villa-iguana':
-      return { guests: '8 guests maximum', bedsRooms: '4 bedrooms • 5 beds', baths: '4 bathrooms' };
+      return { guests: '8 guests maximum', bedsRooms: '4 bedrooms • 5 beds', baths: '3.5 bathrooms' };
     case 'villa-sunset':
       return { guests: '6 guests maximum', bedsRooms: '3 bedrooms • 5 beds', baths: '2.5 bathrooms' };
     case 'villa-papaya':
