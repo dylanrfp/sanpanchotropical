@@ -21,7 +21,7 @@ const villaMenuItems = [
     id: 'villa-cocos',
     name: 'Villa Cocos',
     unit: '#4',
-    bedrooms: 1,
+    bedrooms: 3,
     icon: (
       <svg viewBox="19 161 111 104" className="w-8 h-8">
   <defs>
@@ -38,7 +38,7 @@ const villaMenuItems = [
     id: 'villa-sunset',
     name: 'Villa Sunset',
     unit: '#3',
-    bedrooms: 2,
+    bedrooms: 3,
     icon: (
       <svg viewBox="0 283.5 165.5 111" className="w-8 h-8">
         <use href="/tropical_icons.svg#icon-sunset" />
