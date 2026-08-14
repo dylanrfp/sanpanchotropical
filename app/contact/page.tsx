@@ -14,11 +14,22 @@ export default function ContactPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copiedEmail, setCopiedEmail] = useState(false);
   const [submittedData, setSubmittedData] = useState<{ name: string; email: string } | null>(null);
   const [status, setStatus] = useState<{
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
+
+  const handleCopyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('vicky@mexicosta.com');
+      setCopiedEmail(true);
+      setTimeout(() => setCopiedEmail(false), 2200);
+    } catch (err) {
+      console.error('Failed to copy email:', err);
+    }
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -127,18 +138,51 @@ export default function ContactPage() {
 
               {/* Contact Information Elements */}
               <div className="space-y-5 md:space-y-8 mt-6 md:mt-10">
-                {/* Email Item */}
-                <div className="flex items-center space-x-6 border-b border-sand-accent/15 pb-6">
-                  <div className="w-12 h-12 rounded-full bg-base-dark/[0.04] flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-base-dark/70" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                    </svg>
+                {/* Email Item - Click to copy */}
+                <div 
+                  onClick={handleCopyEmail}
+                  className="group flex items-center justify-between border-b border-sand-accent/15 pb-6 cursor-pointer select-none transition-all hover:bg-base-dark/[0.02] -mx-3 px-3 rounded-2xl"
+                  title="Click to copy email address"
+                >
+                  <div className="flex items-center space-x-6">
+                    <div className="w-12 h-12 rounded-full bg-base-dark/[0.04] group-hover:bg-ocean-teal/10 flex items-center justify-center flex-shrink-0 transition-colors">
+                      <svg className="w-5 h-5 text-base-dark/70 group-hover:text-ocean-teal transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 className="font-outfit font-semibold text-[10px] md:text-xs tracking-widest text-base-dark/45 uppercase mb-1">Email</h4>
+                      <span className="font-outfit font-medium text-lg text-base-dark group-hover:text-ocean-teal transition-colors block">
+                        vicky@mexicosta.com
+                      </span>
+                    </div>
                   </div>
-                  <div>
-                    <h4 className="font-outfit font-semibold text-[10px] md:text-xs tracking-widest text-base-dark/45 uppercase mb-1">Email</h4>
-                    <a href="mailto:vicky@mexicosta.com" className="font-outfit font-medium text-lg text-base-dark hover:text-ocean-teal transition-colors">
-                      vicky@mexicosta.com
-                    </a>
+
+                  {/* Copy button / badge indicator */}
+                  <div className="flex items-center">
+                    <span 
+                      className={`inline-flex items-center space-x-1.5 text-xs font-outfit font-semibold px-3.5 py-1.5 rounded-full transition-all duration-200 ${
+                        copiedEmail 
+                          ? 'bg-emerald-600 text-white shadow-sm scale-105' 
+                          : 'bg-base-dark/[0.05] text-base-dark/60 group-hover:bg-ocean-teal group-hover:text-white'
+                      }`}
+                    >
+                      {copiedEmail ? (
+                        <>
+                          <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                          </svg>
+                          <span>Copied!</span>
+                        </>
+                      ) : (
+                        <>
+                          <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H5.25m14.25 8.25v-3.375c0-.621-.504-1.125-1.125-1.125h-9.75a1.125 1.125 0 00-1.125 1.125v10.5c0 .621.504 1.125 1.125 1.125h9.75a1.125 1.125 0 001.125-1.125V16.5zM16.5 12h3.375c.621 0 1.125-.504 1.125-1.125V1.125c0-.621-.504-1.125-1.125-1.125H11.25a1.125 1.125 0 00-1.125 1.125V3" />
+                          </svg>
+                          <span className="hidden sm:inline">Copy Email</span>
+                        </>
+                      )}
+                    </span>
                   </div>
                 </div>
 
