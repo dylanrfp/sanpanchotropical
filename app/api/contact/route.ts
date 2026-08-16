@@ -4,7 +4,62 @@ import nodemailer from 'nodemailer';
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { name, email, subject, message } = body;
+    const { 
+      name, 
+      email, 
+      subject, 
+      message, 
+      recaptchaToken,
+      website_hp,
+      formLoadedAt 
+    } = body;
+
+    // 1. Honeypot Bot Trap: If filled, silently reject bot spam
+    if (website_hp && website_hp.trim().length > 0) {
+      console.warn('[Anti-Spam] Honeypot field filled by automated bot.');
+      return NextResponse.json({ success: true, message: 'Inquiry received.' });
+    }
+
+    // 2. Time-gate verification: Bot submitted faster than humanly possible (< 1.2 seconds)
+    if (formLoadedAt && (Date.now() - Number(formLoadedAt) < 1200)) {
+      console.warn('[Anti-Spam] Form submitted too fast (< 1.2s). Potential spam bot.');
+      return NextResponse.json(
+        { error: 'Form submitted too quickly. Please take a moment and try again.' },
+        { status: 400 }
+      );
+    }
+
+    // 3. Security Verification Check
+    const token = body.captchaToken || body.turnstileToken || body.recaptchaToken;
+    if (!token) {
+      return NextResponse.json(
+        { error: 'Please complete the security puzzle verification before submitting.' },
+        { status: 400 }
+      );
+    }
+
+    // Validate reCAPTCHA with Google
+    const recaptchaSecret = process.env.RECAPTCHA_SECRET_KEY;
+    if (recaptchaSecret) {
+      const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${recaptchaSecret}&response=${token}`;
+      try {
+        const recaptchaRes = await fetch(verifyUrl, { method: 'POST' });
+        const recaptchaData = await recaptchaRes.json();
+        if (!recaptchaData.success) {
+          console.warn('[Anti-Spam] Invalid reCAPTCHA token:', recaptchaData);
+          return NextResponse.json(
+            { error: 'Security verification failed. Please try again.' },
+            { status: 400 }
+          );
+        }
+      } catch (err) {
+        console.error('[Anti-Spam] reCAPTCHA validation error:', err);
+        return NextResponse.json(
+          { error: 'Failed to validate security verification. Please try again.' },
+          { status: 500 }
+        );
+      }
+    }
 
     // Validate required fields
     if (!name || !email || !message) {

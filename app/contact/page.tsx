@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -14,12 +15,22 @@ export default function ContactPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showCaptchaModal, setShowCaptchaModal] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
   const [copiedEmail, setCopiedEmail] = useState(false);
   const [submittedData, setSubmittedData] = useState<{ name: string; email: string } | null>(null);
   const [status, setStatus] = useState<{
     type: 'success' | 'error' | null;
     message: string;
   }>({ type: null, message: '' });
+
+  // Anti-Spam State
+  const [honeypot, setHoneypot] = useState('');
+  const [formLoadedAt, setFormLoadedAt] = useState<number>(Date.now());
+
+  React.useEffect(() => {
+    setFormLoadedAt(Date.now());
+  }, []);
 
   const handleCopyEmail = async () => {
     try {
@@ -43,9 +54,17 @@ export default function ContactPage() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus({ type: null, message: '' });
+
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setStatus({
+        type: 'error',
+        message: 'Please fill in all required fields.',
+      });
+      return;
+    }
 
     if (!formData.privacyConsent) {
       setStatus({
@@ -55,6 +74,18 @@ export default function ContactPage() {
       return;
     }
 
+    // Instead of failing if no token, pop up the Captcha modal!
+    if (!captchaToken) {
+      setShowCaptchaModal(true);
+      return;
+    }
+
+    // If we already have a token, proceed with submission
+    submitInquiry(captchaToken);
+  };
+
+  const submitInquiry = async (token: string) => {
+    setShowCaptchaModal(false);
     setIsSubmitting(true);
 
     try {
@@ -68,6 +99,9 @@ export default function ContactPage() {
           email: formData.email,
           subject: formData.subject,
           message: formData.message,
+          captchaToken: token,
+          website_hp: honeypot,
+          formLoadedAt,
         }),
       });
 
@@ -91,6 +125,7 @@ export default function ContactPage() {
         message: '',
         privacyConsent: false,
       });
+      setCaptchaToken(null);
     } catch (err: any) {
       setStatus({
         type: 'error',
@@ -320,7 +355,7 @@ export default function ContactPage() {
               )}
             </AnimatePresence>
 
-            <form className="space-y-7" onSubmit={handleSubmit}>
+            <form className="space-y-7" onSubmit={handleFormSubmit}>
               <div>
                 <label className="block font-outfit text-xs tracking-wider text-base-dark/60 font-semibold mb-1">FULL NAME *</label>
                 <input 
@@ -372,6 +407,18 @@ export default function ContactPage() {
                 />
               </div>
 
+              {/* Hidden honeypot field for bot trapping */}
+              <div className="hidden" aria-hidden="true">
+                <input 
+                  type="text" 
+                  name="website_hp" 
+                  value={honeypot} 
+                  onChange={(e) => setHoneypot(e.target.value)} 
+                  tabIndex={-1} 
+                  autoComplete="off" 
+                />
+              </div>
+
               {/* Privacy Notice Consent */}
               <div className="flex items-start space-x-3 pt-2">
                 <input 
@@ -406,6 +453,53 @@ export default function ContactPage() {
                 )}
               </button>
             </form>
+
+            {/* reCAPTCHA Modal Overlay */}
+            <AnimatePresence>
+              {showCaptchaModal && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="fixed inset-0 z-[100] flex items-center justify-center bg-base-dark/60 backdrop-blur-sm p-4"
+                >
+                  <motion.div
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.95, opacity: 0 }}
+                    className="bg-white rounded-3xl p-6 shadow-2xl relative max-w-sm w-full mx-auto flex flex-col items-center border border-sand-accent/20"
+                  >
+                    <button
+                      onClick={() => setShowCaptchaModal(false)}
+                      className="absolute top-4 right-4 text-base-dark/50 hover:text-base-dark transition-colors"
+                      aria-label="Close Captcha"
+                    >
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </button>
+                    
+                    <h3 className="font-outfit font-semibold text-base-dark text-lg mb-2 mt-2">Security Verification</h3>
+                    <p className="text-sm text-base-dark/60 text-center mb-6">
+                      Please verify you are human to send your inquiry.
+                    </p>
+
+                    <ReCAPTCHA
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
+                      onChange={(token) => {
+                        setCaptchaToken(token);
+                        if (token) {
+                          setStatus({ type: null, message: '' });
+                          submitInquiry(token);
+                        }
+                      }}
+                      onExpired={() => setCaptchaToken(null)}
+                    />
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
           </div>
 
         </div>
