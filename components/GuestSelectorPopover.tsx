@@ -50,7 +50,7 @@ export default function GuestSelectorPopover({
   return (
     <div
       ref={containerRef}
-      className="absolute top-full right-0 mt-3 z-[100] bg-white rounded-[2rem] p-6 shadow-[0_20px_50px_rgba(0,52,97,0.25)] border border-sand-accent/20 w-72 md:w-80 text-base-dark animate-in fade-in zoom-in-95 duration-200"
+      className="absolute top-full left-1/2 -translate-x-1/2 md:left-auto md:right-0 md:translate-x-0 mt-3 z-[100] bg-white rounded-[2rem] p-6 shadow-[0_25px_60px_rgba(0,52,97,0.3)] border border-sand-accent/20 w-[92vw] max-w-xs sm:w-72 md:w-80 text-base-dark animate-in fade-in zoom-in-95 duration-200"
     >
       <h4 className="font-bold text-[#003461] text-base mb-4 uppercase tracking-wide">
         Select Guests

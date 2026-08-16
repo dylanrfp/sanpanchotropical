@@ -38,7 +38,7 @@ function CheckoutForm() {
     villa.id === 'villa-papaya' ? 100 : 
     villa.id === 'villa-palmas' ? 50 : 
     75;
-  const taxRate = (isIguana || isCocos) ? 0.20 : 0.16;
+  const taxRate = (isIguana || isCocos) ? 0.21 : 0.16;
   const rawTotal = Number(total) || 0;
   const calculatedSubtotal = rawTotal > cleaningFee ? Math.round((rawTotal - cleaningFee) / (1 + taxRate)) : 0;
   const calculatedTaxes = Math.round(calculatedSubtotal * taxRate);
@@ -359,7 +359,7 @@ function CheckoutForm() {
                 </div>
               )}
               <div className="flex justify-between">
-                <span>Taxes {(isIguana || isCocos) ? '(16% IVA + 4% Hotel)' : '(16%)'}</span>
+                <span>Taxes {(isIguana || isCocos) ? '(16% IVA + 5% ISH)' : '(16%)'}</span>
                 <span>${calculatedTaxes || '---'}</span>
               </div>
               {isIguana && (

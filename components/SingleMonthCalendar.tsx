@@ -194,7 +194,7 @@ export default function SingleMonthCalendar({
   return (
     <div 
       ref={containerRef}
-      className="absolute top-full left-0 mt-3 z-[100] bg-white rounded-[2rem] p-5 shadow-[0_20px_50px_rgba(0,52,97,0.25)] border border-sand-accent/20 w-80 md:w-96 text-base-dark animate-in fade-in zoom-in-95 duration-200"
+      className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 mt-3 z-[100] bg-white rounded-[2rem] p-5 shadow-[0_25px_60px_rgba(0,52,97,0.3)] border border-sand-accent/20 w-[92vw] max-w-sm sm:w-80 md:w-96 text-base-dark animate-in fade-in zoom-in-95 duration-200"
     >
       {/* Month View */}
       {renderMonth(currentMonth)}

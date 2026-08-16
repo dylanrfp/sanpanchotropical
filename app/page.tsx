@@ -194,7 +194,7 @@ export default function Home() {
     <main className="bg-[#f4fafd] text-[#161d1f] min-h-screen antialiased selection:bg-[#004b87] selection:text-white">
 
       {/* ── 1. Hero Section ─────────────────────────────────────────────────── */}
-      <section className="relative min-h-[100vh] flex flex-col items-center justify-between pt-24 pb-20 md:pb-28 w-full">
+      <section className="relative min-h-[100vh] flex flex-col items-center justify-between pt-24 pb-20 md:pb-28 w-full z-30">
         
         {/* Hero Image Background */}
         <div className="absolute inset-0 z-0 overflow-hidden">
@@ -209,7 +209,7 @@ export default function Home() {
         <div className="shrink-0 h-4 md:h-8" />
 
         {/* Hero Title & Floating Search Box */}
-        <div className="relative z-10 text-center px-5 md:px-8 max-w-5xl mx-auto w-full my-auto py-6">
+        <div className="relative z-30 text-center px-5 md:px-8 max-w-5xl mx-auto w-full my-auto py-6">
           <h1 className="text-white drop-shadow-2xl mb-6 tracking-tight text-4xl sm:text-6xl md:text-7xl font-bold leading-tight">
             Your Private Paradise <br />
             in San Pancho
@@ -219,7 +219,7 @@ export default function Home() {
           </p>
 
           {/* Search Calculator Floating Glass Card */}
-          <div className="relative max-w-4xl mx-auto z-10">
+          <div className="relative max-w-4xl mx-auto z-30">
             {/* Validation Warning Popup */}
             {validationMessage && (
               <div className="absolute -top-14 left-1/2 -translate-x-1/2 z-[110] bg-[#003461] text-white px-5 py-2.5 rounded-full shadow-2xl border border-[#418de2]/40 flex items-center gap-2 text-xs md:text-sm font-semibold animate-in fade-in slide-in-from-bottom-2 duration-300 whitespace-nowrap">
@@ -557,7 +557,7 @@ export default function Home() {
       })()}
 
       {/* ── 2. Villa Construction / Narrative Section ──────────────────────── */}
-      <section className="py-24 w-full overflow-hidden bg-[#eef5f7] relative -mt-12 md:-mt-16 pt-28 md:pt-36 pb-32 rounded-t-[4rem] z-20 reveal-on-scroll">
+      <section className="py-24 w-full overflow-hidden bg-[#eef5f7] relative -mt-12 md:-mt-16 pt-28 md:pt-36 pb-32 rounded-t-[4rem] z-10 reveal-on-scroll">
         <div className="px-6 max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             

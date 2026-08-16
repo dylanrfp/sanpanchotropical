@@ -287,7 +287,7 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
             villaId === 'villa-papaya' ? 100 : 
             villaId === 'villa-palmas' ? 50 : 
             75;
-          const taxRate = (villaId === 'villa-iguana' || villaId === 'villa-cocos') ? 0.20 : 0.16;
+          const taxRate = (villaId === 'villa-iguana' || villaId === 'villa-cocos') ? 0.21 : 0.16;
           const taxes = finalSubtotal * taxRate;
           setTotal(Math.round(finalSubtotal + cleaning + taxes));
         } else {
@@ -521,8 +521,8 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
               </span>
             </div>
             <div className="flex justify-between font-sans text-xs text-base-dark/75">
-              <span className="underline decoration-sand-accent/30 underline-offset-4">Taxes {(villaId === 'villa-iguana' || villaId === 'villa-cocos') ? '(16% IVA + 4% Hotel)' : '(16%)'}</span>
-              <span>${Math.round(subtotal * ((villaId === 'villa-iguana' || villaId === 'villa-cocos') ? 0.20 : 0.16))}</span>
+              <span className="underline decoration-sand-accent/30 underline-offset-4">Taxes {(villaId === 'villa-iguana' || villaId === 'villa-cocos') ? '(16% IVA + 5% ISH)' : '(16%)'}</span>
+              <span>${Math.round(subtotal * ((villaId === 'villa-iguana' || villaId === 'villa-cocos') ? 0.21 : 0.16))}</span>
             </div>
             <div className="pt-3 mt-1 border-t border-sand-accent/10 flex justify-between font-sans font-bold text-sm text-base-dark">
               <span>Total</span>

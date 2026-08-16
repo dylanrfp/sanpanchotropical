@@ -175,12 +175,7 @@ export default function ContactPage() {
                           <span>Copied!</span>
                         </>
                       ) : (
-                        <>
-                          <svg className="w-3.5 h-3.5 opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 17.25v3.375c0 .621-.504 1.125-1.125 1.125h-9.75a1.125 1.125 0 01-1.125-1.125V7.875c0-.621.504-1.125 1.125-1.125H5.25m14.25 8.25v-3.375c0-.621-.504-1.125-1.125-1.125h-9.75a1.125 1.125 0 00-1.125 1.125v10.5c0 .621.504 1.125 1.125 1.125h9.75a1.125 1.125 0 001.125-1.125V16.5zM16.5 12h3.375c.621 0 1.125-.504 1.125-1.125V1.125c0-.621-.504-1.125-1.125-1.125H11.25a1.125 1.125 0 00-1.125 1.125V3" />
-                          </svg>
-                          <span className="hidden sm:inline">Copy Email</span>
-                        </>
+                        <span className="hidden sm:inline">Copy Email</span>
                       )}
                     </span>
                   </div>
