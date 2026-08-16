@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Villa } from '@/data/villas';
 
 interface VillaGalleryProps {
@@ -27,7 +28,12 @@ const getGallerySubtitle = (villa: Villa) => {
 export default function VillaGallery({ villa }: VillaGalleryProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
   const images = villa.images || [];
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Lock body scroll when modal is open
   useEffect(() => {
@@ -139,8 +145,8 @@ export default function VillaGallery({ villa }: VillaGalleryProps) {
       </div>
 
       {/* Full-Screen Scroll Grid Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 z-[100] bg-base-light flex flex-col">
+      {mounted && isModalOpen && createPortal(
+        <div className="fixed inset-0 z-[99999] bg-base-light flex flex-col">
           {/* Modal Header */}
           <div className="flex-shrink-0 border-b border-sand-accent/15 bg-base-light px-6 py-4 flex items-center justify-center sticky top-0 z-10 shadow-sm relative">
             <div className="text-center">
@@ -183,23 +189,24 @@ export default function VillaGallery({ villa }: VillaGalleryProps) {
               ))}
             </div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       {/* Lightbox Modal (For single photo detailed view) */}
-      {activeLightboxIndex !== null && (
+      {mounted && activeLightboxIndex !== null && createPortal(
         <div 
-          className="fixed inset-0 z-[110] bg-white flex flex-col justify-between p-6"
+          className="fixed inset-0 z-[99999] bg-black/95 backdrop-blur-md flex flex-col justify-between p-6"
           onClick={() => setActiveLightboxIndex(null)}
         >
           {/* Header block (Counter & Close) */}
-          <div className="flex items-center justify-between text-base-dark z-20" onClick={(e) => e.stopPropagation()}>
-            <span className="font-sans font-semibold text-sm">
+          <div className="flex items-center justify-between text-base-light z-20" onClick={(e) => e.stopPropagation()}>
+            <span className="font-sans font-semibold text-sm opacity-80">
               {activeLightboxIndex + 1} / {images.length}
             </span>
             <button
               onClick={() => setActiveLightboxIndex(null)}
-              className="w-10 h-10 rounded-full bg-sand-accent/10 hover:bg-sand-accent/20 flex items-center justify-center text-base-dark transition-colors"
+              className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-base-light transition-colors"
               aria-label="Close photo"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -217,7 +224,7 @@ export default function VillaGallery({ villa }: VillaGalleryProps) {
                 e.stopPropagation();
                 setActiveLightboxIndex((prev) => (prev !== null ? (prev - 1 + images.length) % images.length : null));
               }}
-              className="absolute left-2 md:left-6 w-12 h-12 rounded-full bg-sand-accent/10 hover:bg-sand-accent/20 flex items-center justify-center text-base-dark text-3xl font-light transition-all select-none z-20"
+              className="absolute left-2 md:left-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-base-light text-3xl font-light transition-all select-none z-20"
               aria-label="Previous photo"
             >
               ‹
@@ -228,7 +235,7 @@ export default function VillaGallery({ villa }: VillaGalleryProps) {
               <img
                 src={images[activeLightboxIndex]}
                 alt={`${villa.name} photo ${activeLightboxIndex + 1}`}
-                className="max-w-full max-h-[80vh] object-contain shadow-xl"
+                className="max-w-full max-h-[80vh] object-contain shadow-2xl rounded-sm"
               />
             </div>
 
@@ -238,7 +245,7 @@ export default function VillaGallery({ villa }: VillaGalleryProps) {
                 e.stopPropagation();
                 setActiveLightboxIndex((prev) => (prev !== null ? (prev + 1) % images.length : null));
               }}
-              className="absolute right-2 md:right-6 w-12 h-12 rounded-full bg-sand-accent/10 hover:bg-sand-accent/20 flex items-center justify-center text-base-dark text-3xl font-light transition-all select-none z-20"
+              className="absolute right-2 md:right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-base-light text-3xl font-light transition-all select-none z-20"
               aria-label="Next photo"
             >
               ›
@@ -246,7 +253,8 @@ export default function VillaGallery({ villa }: VillaGalleryProps) {
           </div>
           
           <div className="h-6" /> {/* Spacer at bottom */}
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );
