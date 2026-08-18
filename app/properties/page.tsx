@@ -14,9 +14,9 @@ const mockProperties = [
     id: 2,
     title: "CASA DE LAS PALMAS",
     location: "Bahía de Banderas, Nayarit",
-    description: "A luxury coastal sanctuary focusing on environmental sustainability. Featuring natural cross-ventilation systems, a saltwater infinity pool, and native landscape paths.",
+    description: "A luxury coastal sanctuary focusing on environmental sustainability. Featuring natural cross-ventilation systems, an infinity pool, and native landscape paths.",
     price: "$380 USD / night",
-    specs: ["2 Bedrooms", "2 Baths", "Saltwater Pool", "Chef Services"],
+    specs: ["2 Bedrooms", "2 Baths", "Pool", "Chef Services"],
     tag: "ECO SANCTUARY"
   },
   {

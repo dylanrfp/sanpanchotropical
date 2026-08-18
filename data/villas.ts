@@ -281,15 +281,15 @@ export const villasData: Villa[] = [
     beachDistance: "Positioned just three blocks from the ocean waves.",
     townProximity: "Tucked within a lush garden setting close to the beach and local boutiques/restaurants.",
     walkability: "Three blocks from the beach and an easy walk to town.",
-    specs: ["8 Guests", "4 Beds / 3.5 Baths", "3 Blocks to Beach", "Emerald Saltwater Pool", "4-Seater Golf Cart Included", "AC Throughout"],
+    specs: ["8 Guests", "4 Beds / 3.5 Baths", "3 Blocks to Beach", "Emerald Pool", "4-Seater Golf Cart Included", "AC Throughout"],
     highlights: [
       "The Space: A sprawling 4-bedroom sanctuary featuring private balconies and en-suite bathrooms, ensuring total privacy for up to eight guests.",
       "The Location: Nestled in a lush, secluded garden setting that sits exactly three blocks from the beach.",
-      "The Routine: Spend your mornings by your private emerald saltwater pool, and enjoy the effortless comfort of included weekly housekeeping service."
+      "The Routine: Spend your mornings by your private emerald pool, and enjoy the effortless comfort of included weekly housekeeping service."
     ],
     longDescription: [
       "Discover the ultimate coastal getaway designed beautifully for families and groups. Tucked within a lush garden setting, Villa Iguana #5 is a sprawling 4-bedroom, 3.5-bathroom home that perfectly balances absolute privacy with effortless convenience.",
-      "Unwind in your own enclosed sanctuary, take a refreshing dip in the stunning emerald saltwater pool, or cook a meal in the fully-equipped kitchen featuring stainless steel appliances. You are positioned just three blocks from the ocean waves. While the secluded beach is perfect for a quiet afternoon, the expansive comfort and cooling A/C of your private villa will always be calling you back."
+      "Unwind in your own enclosed sanctuary, take a refreshing dip in the stunning emerald pool, or cook a meal in the fully-equipped kitchen featuring stainless steel appliances. You are positioned just three blocks from the ocean waves. While the secluded beach is perfect for a quiet afternoon, the expansive comfort and cooling A/C of your private villa will always be calling you back."
     ],
     golfCartUpsell: {
       title: "Golf Cart Included!",
@@ -330,7 +330,7 @@ export const villasData: Villa[] = [
       {
         title: "Essential Features",
         items: [
-          "Outdoor Living: Private emerald saltwater pool, fully enclosed patio, and private upper balconies",
+          "Outdoor Living: Private emerald pool, fully enclosed patio, and private upper balconies",
           "Family & Convenience: Kid-friendly layout with dedicated private parking on-site"
         ]
       }
@@ -476,7 +476,7 @@ export const villasData: Villa[] = [
       {
         guestName: "Liz Evans",
         date: "OCTOBER 2021",
-        text: "Villa iguana #5 in San Pancho was a dream come true. The house was better than the pictures. Salt water pool perfect for a quiet vacation, but walking distance to any thing you need or want. The golf cart a real treat for a quick trip to the market, a gelato, and shopping for souvenirs. The beach is a short 3-4 block walk. We will definitely add the villa to our return trip. Bob and Vicky are on WhatsApp so only a text away. Even set up Covid testing to happen right at the villa for our return to the states."
+        text: "Villa iguana #5 in San Pancho was a dream come true. The house was better than the pictures. Pool perfect for a quiet vacation, but walking distance to any thing you need or want. The golf cart a real treat for a quick trip to the market, a gelato, and shopping for souvenirs. The beach is a short 3-4 block walk. We will definitely add the villa to our return trip. Bob and Vicky are on WhatsApp so only a text away. Even set up Covid testing to happen right at the villa for our return to the states."
       }
     ]
   },

@@ -58,7 +58,7 @@ export default function AboutPage() {
             </p>
 
             <p className="font-sans text-base md:text-lg text-[#161d1f]/85 leading-relaxed text-justify">
-              Staying in our private villas gives you the unique opportunity to enjoy a vacation with more space, tranquility, and independence than traditional hotels. Each villa is fully equipped with modern air conditioning, full kitchens, private outdoor spaces, and access to our saltwater pool and golf carts.
+              Staying in our private villas gives you the unique opportunity to enjoy a vacation with more space, tranquility, and independence than traditional hotels. Each villa is fully equipped with modern air conditioning, full kitchens, private outdoor spaces, and access to our pool and golf carts.
             </p>
 
             <div className="pt-4 flex flex-wrap items-center gap-4">
@@ -154,9 +154,9 @@ export default function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                 </svg>
               </div>
-              <h4 className="text-xl font-bold text-[#003461]">Saltwater Pool & Carts</h4>
+              <h4 className="text-xl font-bold text-[#003461]">Pool & Carts</h4>
               <p className="text-sm text-[#161d1f]/80 leading-relaxed">
-                Unwind in your private enclave with an emerald saltwater pool, lush gardens, full kitchens, and electric golf cart rentals ready at your door.
+                Unwind in your private enclave with an emerald pool, lush gardens, full kitchens, and electric golf cart rentals ready at your door.
               </p>
             </div>
 
