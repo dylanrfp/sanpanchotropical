@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Inter_Tight, Inter, Outfit } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/Navbar'
@@ -29,6 +30,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth">
+      <head>
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-2YJCQH8LLY"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-2YJCQH8LLY');
+          `}
+        </Script>
+      </head>
       <body className={`${interDisplay.variable} ${inter.variable} ${outfit.variable} bg-base-light text-base-dark antialiased min-h-screen flex flex-col`}>
         <ScrollRevealObserver />
         <Navbar />
