@@ -6,8 +6,6 @@ import VillaGallery from '@/components/VillaGallery';
 import VillaReviews from '@/components/VillaReviews';
 import CopyAddressButton from '@/components/CopyAddressButton';
 import BookingWidget from '@/components/BookingWidget';
-import MobileStickyBookNow from '@/components/MobileStickyBookNow';
-
 const getVillaParams = (id: string) => {
   switch (id) {
     case 'villa-palmas':
@@ -178,6 +176,40 @@ export default async function VillaDetailPage({ params }: PageProps) {
               )
             )}
 
+            {/* Mobile Booking Widget (Inserted Below Golf Cart / Description) */}
+            <div id="booking-section" className="block lg:hidden w-full relative reveal-on-scroll mt-8 mb-8 space-y-6">
+              <BookingWidget villaId={villa.id} baseRate={villa.id === 'villa-iguana' ? 450 : 180} />
+              
+              <div className="border border-sand-accent/20 bg-white rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.02)] flex items-center justify-between gap-5">
+                <div className="space-y-1">
+                  <h4 className="font-sans font-bold text-sm text-base-dark">Ask the host anything</h4>
+                  <p className="font-sans text-[13px] text-base-dark/65 leading-relaxed">
+                    Do you have a question about this home or the local area?{' '}
+                    <a 
+                      href="https://wa.me/523221177974" 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="text-ocean-teal hover:underline font-semibold block mt-1 text-[13.5px]"
+                    >
+                      Message the host: +52 322 117 7974
+                    </a>
+                  </p>
+                </div>
+                <a 
+                  href="https://wa.me/523221177974" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="shrink-0 hover:scale-105 transition-transform"
+                >
+                  <img 
+                    src="/WhatsApp_icon.png" 
+                    alt="WhatsApp" 
+                    className="w-14 h-14 object-contain"
+                  />
+                </a>
+              </div>
+            </div>
+
             {/* The Amenities */}
             <section className="space-y-4 md:space-y-6 pt-4 border-t border-sand-accent/10 reveal-on-scroll">
               <h3 className="font-serif italic text-2xl md:text-3xl text-base-dark">The Amenities</h3>
@@ -308,7 +340,7 @@ export default async function VillaDetailPage({ params }: PageProps) {
           </div>
 
           {/* Right Column: Sticky Booking Widget (1/3 width) */}
-          <div id="booking-section" className="lg:col-span-1 relative reveal-on-scroll reveal-right">
+          <div id="booking-section-desktop" className="hidden lg:block lg:col-span-1 relative reveal-on-scroll reveal-right">
             <div className="sticky top-32 space-y-6">
               
               {/* Interactive Booking Widget */}
@@ -356,9 +388,6 @@ export default async function VillaDetailPage({ params }: PageProps) {
         )}
 
       </div>
-
-      {/* Mobile Sticky Book Now Bar */}
-      <MobileStickyBookNow targetId="booking-section" />
     </div>
   );
 }

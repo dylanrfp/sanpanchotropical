@@ -12,7 +12,7 @@ const villaMenuItems = [
     unit: '#5',
     bedrooms: 4,
     icon: (
-      <svg viewBox="10 0 141 142" className="w-8 h-8">
+      <svg viewBox="10 0 141 142" className="w-full h-full">
         <use href="/tropical_icons.svg#icon-iguana" />
       </svg>
     ),
@@ -23,7 +23,7 @@ const villaMenuItems = [
     unit: '#4',
     bedrooms: 3,
     icon: (
-      <svg viewBox="19 161 111 104" className="w-8 h-8">
+      <svg viewBox="19 161 111 104" className="w-full h-full">
   <defs>
     <filter x="0%" y="0%" width="100%" height="100%" id="342bc43baf"><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0" colorInterpolationFilters="sRGB" /></filter>
 <filter x="0%" y="0%" width="100%" height="100%" id="e536439486"><feColorMatrix values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0.2126 0.7152 0.0722 0 0" colorInterpolationFilters="sRGB" /></filter>
@@ -40,7 +40,7 @@ const villaMenuItems = [
     unit: '#3',
     bedrooms: 3,
     icon: (
-      <svg viewBox="0 283.5 165.5 111" className="w-8 h-8">
+      <svg viewBox="0 283.5 165.5 111" className="w-full h-full">
         <use href="/tropical_icons.svg#icon-sunset" />
       </svg>
     ),
@@ -51,7 +51,7 @@ const villaMenuItems = [
     unit: '#2',
     bedrooms: 2,
     icon: (
-      <svg viewBox="25 410 124 130" className="w-8 h-8">
+      <svg viewBox="25 410 124 130" className="w-full h-full">
         <use href="/tropical_icons.svg#icon-papaya" />
       </svg>
     ),
@@ -62,7 +62,7 @@ const villaMenuItems = [
     unit: '#1',
     bedrooms: 1,
     icon: (
-      <svg viewBox="18 545 111 121" className="w-8 h-8">
+      <svg viewBox="18 545 111 121" className="w-full h-full">
         <use href="/tropical_icons.svg#icon-palmas" />
       </svg>
     ),
@@ -219,11 +219,11 @@ export default function Navbar() {
         {/* Mobile Hamburger / Menu Button */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden flex items-center gap-2 border-2 border-accent-blue bg-accent-blue px-4 py-2 rounded-full text-white hover:bg-accent-blue/90 active:scale-95 transition-all duration-200 focus:outline-none shadow-md"
+          className="md:hidden flex items-center gap-2 border-2 border-accent-blue bg-accent-blue px-6 py-2.5 rounded-full text-white hover:bg-accent-blue/90 active:scale-95 transition-all duration-200 focus:outline-none shadow-md"
           aria-label="Toggle Menu"
         >
-          <span className="font-sans font-black text-[11.5px] tracking-widest uppercase leading-none">Menu</span>
-          <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <span className="font-sans font-black text-[15px] tracking-widest uppercase leading-none">Menu</span>
+          <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             {isOpen ? (
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
             ) : (
@@ -245,7 +245,7 @@ export default function Navbar() {
           <div>
             <button 
               onClick={() => setMobileVillasExpanded(!mobileVillasExpanded)}
-              className={`w-full flex items-center justify-between font-sans tracking-widest text-xs font-semibold hover:text-accent-blue transition-colors uppercase text-left ${
+              className={`w-full flex items-center justify-between font-sans tracking-widest text-base font-semibold hover:text-accent-blue transition-colors uppercase text-left ${
                 isVillasPage ? 'text-accent-blue font-bold' : 'text-base-dark'
               }`}
             >
@@ -267,23 +267,23 @@ export default function Navbar() {
                   animate={{ height: 'auto', opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="overflow-hidden pl-4 mt-4 space-y-4 border-l border-sand-accent/20"
+                  className="overflow-hidden pl-4 mt-4 space-y-7 border-l border-sand-accent/20"
                 >
                   {villaMenuItems.map((villa) => (
                     <Link
                       key={villa.id}
                       href={`/villas/${villa.id}`}
                       onClick={() => setIsOpen(false)}
-                      className="flex items-center space-x-3 group"
+                      className="flex items-center space-x-5 group"
                     >
-                      <div className="w-7 h-7 text-base-dark/50 group-hover:text-ocean-teal transition-colors">
+                      <div className="w-12 h-12 shrink-0 text-base-dark/50 group-hover:text-ocean-teal transition-colors flex items-center justify-center">
                         {villa.icon}
                       </div>
                       <div>
-                        <p className="font-sans font-medium text-xs text-base-dark group-hover:text-ocean-teal transition-colors">
+                        <p className="font-sans font-semibold text-lg text-base-dark group-hover:text-ocean-teal transition-colors">
                           {villa.name} <span className="text-base-dark/40">{villa.unit}</span>
                         </p>
-                        <p className="font-sans font-light text-[9px] text-base-dark/45">
+                        <p className="font-sans font-light text-sm text-base-dark/45">
                           {villa.bedrooms} bedroom{villa.bedrooms !== 1 ? 's' : ''}
                         </p>
                       </div>
@@ -295,7 +295,7 @@ export default function Navbar() {
                     <Link
                       href="/villas"
                       onClick={() => setIsOpen(false)}
-                      className="font-sans font-bold text-[10px] tracking-widest uppercase text-ocean-teal hover:text-accent-blue transition-colors block"
+                      className="font-sans font-bold text-sm tracking-widest uppercase text-ocean-teal hover:text-accent-blue transition-colors block"
                     >
                       See All Villas →
                     </Link>
@@ -307,14 +307,14 @@ export default function Navbar() {
           <Link 
             href="/about" 
             onClick={() => setIsOpen(false)}
-            className="font-sans tracking-widest text-xs font-semibold text-base-dark hover:text-accent-blue transition-colors"
+            className="font-sans tracking-widest text-base font-semibold text-base-dark hover:text-accent-blue transition-colors"
           >
             ABOUT
           </Link>
           <Link 
             href="/golf-carts" 
             onClick={() => setIsOpen(false)}
-            className={`font-sans tracking-widest text-xs font-semibold hover:text-accent-blue transition-colors ${
+            className={`font-sans tracking-widest text-base font-semibold hover:text-accent-blue transition-colors ${
               isGolfCartsPage ? 'text-accent-blue font-bold' : 'text-base-dark'
             }`}
           >
@@ -323,7 +323,7 @@ export default function Navbar() {
           <Link 
             href="/contact" 
             onClick={() => setIsOpen(false)}
-            className="font-sans tracking-widest text-xs font-semibold text-base-dark hover:text-accent-blue transition-colors"
+            className="font-sans tracking-widest text-base font-semibold text-base-dark hover:text-accent-blue transition-colors"
           >
             CONTACT
           </Link>

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function AboutPage() {
   return (
-    <div className="bg-[#f4fafd] text-[#161d1f] min-h-screen pb-24 font-sans">
+    <div className="bg-[#f4fafd] text-[#161d1f] min-h-screen pt-20 md:pt-0 pb-24 font-sans">
       {/* ── 1. Hero Header Banner ─────────────────────────────────────────────── */}
       <div className="relative w-full h-[320px] md:h-[480px] overflow-hidden flex items-center justify-center bg-[#003461] text-center">
         {/* Background Image with Dark Gradient Overlay */}

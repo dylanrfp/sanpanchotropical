@@ -137,7 +137,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="bg-base-light text-base-dark min-h-screen pb-28 overflow-x-hidden">
+    <div className="bg-base-light text-base-dark min-h-screen pt-20 md:pt-0 pb-28 overflow-x-hidden">
       {/* ── Cinematic Banner Header ─────────────────────────────────────────── */}
       <div 
         className="relative w-full overflow-hidden mb-6 md:mb-12 flex items-center justify-center bg-base-dark" 

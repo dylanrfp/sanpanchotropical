@@ -25,44 +25,36 @@ export default function VillasPage() {
   return (
     <div className="bg-base-light text-base-dark min-h-screen pt-12 pb-0 overflow-x-hidden">
       {/* ── Cinematic Banner Header ─────────────────────────────────────────── */}
-      <div className="relative w-full overflow-hidden border-b border-sand-accent/20 mb-6 md:mb-12" style={{ height: '180px' }}>
+      <div className="relative w-full overflow-hidden border-b border-sand-accent/20 mb-4 md:mb-12 h-[70px] md:h-[180px]">
 
         {/* LAYER 1 — background photo (behind text) */}
         <div
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full bg-no-repeat bg-right-bottom md:bg-right-top bg-[length:auto_25%] md:bg-[length:auto_120%] translate-y-1 md:translate-y-[25px]"
           style={{
             zIndex: 0,
             backgroundImage: "url('/beach_hero3.png')",
-            backgroundSize: 'auto 120%',
-            backgroundPosition: 'right top',
-            backgroundRepeat: 'no-repeat',
-            transform: 'translateY(25px)',
           }}
         />
 
         {/* LAYER 2 — text (middle) */}
-        <div className="absolute inset-0 flex flex-col justify-center px-4 md:px-16" style={{ zIndex: 10, transform: 'translateY(-25px)' }}>
-          <span className="text-[9px] md:text-[10px] font-sans font-bold tracking-[0.3em] uppercase text-ocean-teal mb-2 md:mb-3">
+        <div className="absolute inset-0 flex flex-col justify-center px-4 md:px-16 z-10 -translate-y-2 md:-translate-y-6">
+          <span className="text-[9px] md:text-[10px] font-sans font-bold tracking-[0.3em] uppercase text-ocean-teal mb-1.5 md:mb-3">
             PORTFOLIO
           </span>
           <h1
             className="font-sans font-black italic uppercase leading-none tracking-tighter text-accent-blue whitespace-nowrap"
-            style={{ fontSize: 'clamp(1.8rem, 7.16vw, 5.82rem)' }}
+            style={{ fontSize: 'clamp(1.5rem, 6.5vw, 5.82rem)' }}
           >
             The Villas Collection
           </h1>
         </div>
 
-        {/* LAYER 3 — foreground hillside (solid overlap in front of text) */}
+        {/* LAYER 3 — foreground hillside (solid overlap in front of text on desktop only) */}
         <div
-          className="absolute inset-0 w-full h-full"
+          className="hidden md:block absolute inset-0 w-full h-full bg-no-repeat bg-right-top md:bg-[length:auto_120%] md:translate-y-[25px] pointer-events-none"
           style={{
             zIndex: 20,
             backgroundImage: "url('/beach_hero3.png')",
-            backgroundSize: 'auto 120%',
-            backgroundPosition: 'right top',
-            backgroundRepeat: 'no-repeat',
-            transform: 'translateY(25px)',
           }}
         />
 
