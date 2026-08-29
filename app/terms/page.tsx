@@ -67,7 +67,7 @@ export default function TermsPage() {
               <div>
                 <h2 className="font-outfit font-black text-2xl text-base-dark mb-4 tracking-tight">1. Reservaciones, Pagos y Depósitos</h2>
                 <p className="text-justify mb-4">
-                  Al confirmar una reserva a través de nuestro sitio web, usted acepta cumplir con las políticas de pago aplicables. Para asegurar cualquier reservación de propiedad o carrito de golf se requiere un depósito equivalente al <strong>50% del total</strong> de la estancia. El saldo restante (50% final) deberá liquidarse en su totalidad a más tardar <strong>30 días antes</strong> de su fecha programada de llegada. Si la reserva se realiza con menos de 30 días de anticipación al check-in, se requerirá el pago del 100% al momento de la reserva.
+                  Al confirmar una reserva a través de nuestro sitio web, usted acepta cumplir con las políticas de pago aplicables. Para asegurar cualquier reservación de propiedad o carrito de golf se requiere un depósito equivalente al <strong>25% del total</strong> de la estancia.
                 </p>
               </div>
 
@@ -77,7 +77,7 @@ export default function TermsPage() {
                   Entendemos que los planes de viaje pueden cambiar. Las solicitudes de cancelación de reservas se procesan bajo los siguientes lineamientos específicos:
                 </p>
                 <ul className="list-disc pl-6 space-y-2 mb-4">
-                  <li>El depósito del 50% es completamente reembolsable si la solicitud de cancelación se realiza dentro de los 30 días posteriores a la fecha en que se recibió dicho depósito.</li>
+                  <li>El depósito del 25% es completamente reembolsable si la solicitud de cancelación se realiza dentro de los 30 días posteriores a la fecha en que se recibió dicho depósito.</li>
                   <li>Adicionalmente, la cancelación debe ocurrir con más de 60 días de anticipación a la fecha programada de su llegada (check-in).</li>
                   <li>Cualquier reembolso o cambio de reserva estará sujeto a un cargo del <strong>10% por gastos administrativos</strong> sobre el total pagado.</li>
                   <li>Las cancelaciones que no cumplan con ambos plazos estipulados no serán elegibles para reembolsos.</li>
@@ -132,7 +132,7 @@ export default function TermsPage() {
               <div>
                 <h2 className="font-outfit font-black text-2xl text-base-dark mb-4 tracking-tight">1. Reservations, Payments, and Deposits</h2>
                 <p className="text-justify mb-4">
-                  By confirming a booking through our website, you agree to comply with our payment policy. To secure any villa or golf cart booking, an initial deposit equal to <strong>50% of the total reservation cost</strong> is required. The remaining 50% balance must be paid in full at least <strong>30 days prior</strong> to your scheduled check-in date. Bookings made within 30 days of arrival must be paid in full (100%) at the time of reservation.
+                  By confirming a booking through our website, you agree to comply with our payment policy. To secure any villa or golf cart booking, an initial deposit equal to <strong>25% of the total reservation cost</strong> is required.
                 </p>
               </div>
 
@@ -142,7 +142,7 @@ export default function TermsPage() {
                   We understand that travel plans can change. Cancellations are processed according to the following specific guidelines:
                 </p>
                 <ul className="list-disc pl-6 space-y-2 mb-4">
-                  <li>The 50% deposit is fully refundable if the cancellation request is made within 30 days of the date the deposit was received.</li>
+                  <li>The 25% deposit is fully refundable if the cancellation request is made within 30 days of the date the deposit was received.</li>
                   <li>Additionally, the cancellation request must be received more than 60 days before your scheduled check-in date.</li>
                   <li>Any cancellation or booking modification will incur a <strong>10% administration fee</strong> based on the total amount paid.</li>
                   <li>Cancellations that do not meet both criteria are not eligible for a refund.</li>

@@ -54,6 +54,22 @@ export default function DoubleMonthCalendar({
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
   };
 
+  const hasBlockedDatesBetween = (startStr: string, endStr: string): boolean => {
+    const start = new Date(startStr + 'T00:00:00');
+    const end = new Date(endStr + 'T00:00:00');
+    if (start >= end) return true;
+
+    const temp = new Date(start);
+    while (temp < end) {
+      const dStr = temp.toISOString().split('T')[0];
+      if (blockedDates.includes(dStr)) {
+        return true;
+      }
+      temp.setDate(temp.getDate() + 1);
+    }
+    return false;
+  };
+
   const handleDateMouseDown = (date: Date, isDisabled: boolean) => {
     if (isDisabled) return;
     const dateStr = date.toISOString().split('T')[0];
@@ -84,10 +100,18 @@ export default function DoubleMonthCalendar({
       // Select the check-out date
       const checkInDate = new Date(checkIn + 'T00:00:00');
       if (date > checkInDate) {
-        onSelectDates(checkIn, dateStr);
+        if (!hasBlockedDatesBetween(checkIn, dateStr)) {
+          onSelectDates(checkIn, dateStr);
+        } else {
+          // If there are blocked dates in between, start a new check-in date instead
+          onSelectDates(dateStr, null);
+          setIsDragging(true);
+          setHoverDate(null);
+        }
       } else {
         onSelectDates(dateStr, null);
         setIsDragging(true);
+        setHoverDate(null);
       }
     }
   };
@@ -100,7 +124,7 @@ export default function DoubleMonthCalendar({
         // Finalize a regular range drag selection
         const checkInDate = new Date(checkIn + 'T00:00:00');
         const dateStr = date.toISOString().split('T')[0];
-        if (date > checkInDate) {
+        if (date > checkInDate && !hasBlockedDatesBetween(checkIn, dateStr)) {
           onSelectDates(checkIn, dateStr);
         }
       }
@@ -117,17 +141,22 @@ export default function DoubleMonthCalendar({
       // Adjust check-in or check-out boundary on the fly
       if (activeDragHandle === 'checkIn' && checkOut) {
         const checkOutDate = new Date(checkOut + 'T00:00:00');
-        if (date < checkOutDate) {
+        if (date < checkOutDate && !hasBlockedDatesBetween(dateStr, checkOut)) {
           onSelectDates(dateStr, checkOut);
         }
       } else if (activeDragHandle === 'checkOut' && checkIn) {
         const checkInDate = new Date(checkIn + 'T00:00:00');
-        if (date > checkInDate) {
+        if (date > checkInDate && !hasBlockedDatesBetween(checkIn, dateStr)) {
           onSelectDates(checkIn, dateStr);
         }
       }
     } else if (checkIn && !checkOut) {
-      setHoverDate(date);
+      const checkInDate = new Date(checkIn + 'T00:00:00');
+      if (date > checkInDate && !hasBlockedDatesBetween(checkIn, dateStr)) {
+        setHoverDate(date);
+      } else {
+        setHoverDate(null);
+      }
     } else {
       setHoverDate(null);
     }
@@ -172,12 +201,13 @@ export default function DoubleMonthCalendar({
       
       let isInRange = false;
       if (checkIn && checkOut) {
-        const start = new Date(checkIn);
-        const end = new Date(checkOut);
-        isInRange = date > start && date < end;
+        const start = new Date(checkIn + 'T00:00:00');
+        const end = new Date(checkOut + 'T00:00:00');
+        isInRange = date > start && date < end && !hasBlockedDatesBetween(checkIn, checkOut);
       } else if (checkIn && hoverDate) {
-        const start = new Date(checkIn);
-        isInRange = date > start && date <= hoverDate;
+        const start = new Date(checkIn + 'T00:00:00');
+        const hoverStr = hoverDate.toISOString().split('T')[0];
+        isInRange = date > start && date <= hoverDate && !hasBlockedDatesBetween(checkIn, hoverStr);
       }
 
       const today = new Date();

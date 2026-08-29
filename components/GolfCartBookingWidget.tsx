@@ -58,6 +58,8 @@ export default function GolfCartBookingWidget() {
     return rate;
   };
 
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     if (checkIn && checkOut) {
       const start = new Date(checkIn + 'T00:00:00');
@@ -67,6 +69,26 @@ export default function GolfCartBookingWidget() {
       
       if (diffDays > 0) {
         setNights(diffDays);
+
+        let hasBlockedInStay = false;
+        let checkBlockedDate = new Date(start);
+        for (let i = 0; i < diffDays; i++) {
+          const dStr = checkBlockedDate.toISOString().split('T')[0];
+          if (blockedDates.includes(dStr)) {
+            hasBlockedInStay = true;
+            break;
+          }
+          checkBlockedDate.setDate(checkBlockedDate.getDate() + 1);
+        }
+
+        if (hasBlockedInStay) {
+          setError('Selected dates include unavailable days. Please select an available range.');
+        } else if (diffDays < 3) {
+          setError('Minimum rental is 3 days.');
+        } else {
+          setError(null);
+        }
+
         let calculatedSubtotal = 0;
         let tempDate = new Date(start);
 
@@ -88,13 +110,15 @@ export default function GolfCartBookingWidget() {
         setNights(0);
         setTotal(0);
         setSubtotal(0);
+        setError(null);
       }
     } else {
       setNights(0);
       setTotal(0);
       setSubtotal(0);
+      setError(null);
     }
-  }, [checkIn, checkOut, quantity]);
+  }, [checkIn, checkOut, quantity, blockedDates]);
 
   const handleSelectDates = (start: string | null, end: string | null) => {
     setCheckIn(start);
@@ -104,6 +128,9 @@ export default function GolfCartBookingWidget() {
   const handleBookNow = () => {
     if (!checkIn || !checkOut) {
       setIsCalendarOpen(true);
+      return;
+    }
+    if (error) {
       return;
     }
     const searchParams = new URLSearchParams({
@@ -239,9 +266,19 @@ export default function GolfCartBookingWidget() {
         </div>
       )}
 
+      {error && (
+        <div className="bg-red-50 text-red-700 p-4 rounded-2xl border border-red-200 text-xs font-sans font-medium flex items-start gap-2.5 leading-relaxed">
+          <svg className="w-4.5 h-4.5 text-red-600 shrink-0 mt-0.5" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+          </svg>
+          <span>{error}</span>
+        </div>
+      )}
+
       <button
         onClick={handleBookNow}
-        className="w-full bg-base-dark hover:bg-ocean-teal text-base-light font-sans font-semibold tracking-widest text-[13px] py-4 rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(48,41,47,0.15)] hover:shadow-[0_6px_20px_rgba(48,41,47,0.2)] mt-2 uppercase"
+        disabled={!!error}
+        className="w-full bg-base-dark hover:bg-ocean-teal disabled:bg-sand-accent/30 disabled:text-base-dark/30 disabled:cursor-not-allowed text-base-light font-sans font-semibold tracking-widest text-[13px] py-4 rounded-full transition-all duration-300 shadow-[0_4px_12px_rgba(48,41,47,0.15)] hover:shadow-[0_6px_20px_rgba(48,41,47,0.2)] mt-2 uppercase cursor-pointer"
       >
         Rent Golf Cart
       </button>

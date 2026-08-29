@@ -38,11 +38,11 @@ function CheckoutForm() {
     villa.id === 'villa-papaya' ? 100 : 
     villa.id === 'villa-palmas' ? 50 : 
     75;
-  const taxRate = (isIguana || isCocos) ? 0.21 : 0.16;
+  const taxRate = isGolfCart ? 0.16 : 0.21;
   const rawTotal = Number(total) || 0;
   const calculatedSubtotal = rawTotal > cleaningFee ? Math.round((rawTotal - cleaningFee) / (1 + taxRate)) : 0;
   const calculatedTaxes = Math.round(calculatedSubtotal * taxRate);
-  const deposit = (isIguana || isCocos || isGolfCart) ? Math.round(rawTotal * 0.25) : Math.round(rawTotal * 0.50);
+  const deposit = Math.round(rawTotal * 0.25);
   const balance = rawTotal - deposit;
 
   let nights = 0;
@@ -75,41 +75,6 @@ function CheckoutForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [shake, setShake] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
-  const [upsellQuantity, setUpsellQuantity] = useState(0);
-
-  const calculateGolfCartPrice = () => {
-    if (!checkIn || !checkOut || nights <= 0 || upsellQuantity <= 0) {
-      return { subtotal: 0, taxes: 0, total: 0 };
-    }
-    const start = new Date(checkIn + 'T00:00:00');
-    let base = 0;
-    
-    for (let i = 0; i < nights; i++) {
-      let tempDate = new Date(start);
-      tempDate.setDate(tempDate.getDate() + i);
-      const month = tempDate.getMonth() + 1;
-      const isSummer = month >= 4 && month <= 9;
-      
-      let rate = 0;
-      if (nights >= 7) {
-        rate = isSummer ? 6000 / 7 : 7000 / 7;
-      } else {
-        rate = isSummer ? 900 : 1100;
-      }
-      base += rate;
-    }
-    
-    base = base * upsellQuantity;
-    const taxes = base * 0.16;
-    return {
-      subtotal: Math.round(base),
-      taxes: Math.round(taxes),
-      total: Math.round(base + taxes)
-    };
-  };
-  
-  const golfCartPricing = calculateGolfCartPrice();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -182,10 +147,7 @@ function CheckoutForm() {
         name,
         email,
         phone,
-        stripeSetupIntentId: verifiedSetupIntentId,
-        addedGolfCart: upsellQuantity > 0,
-        upsellGolfCartQuantity: upsellQuantity,
-        golfCartTotalMXN: golfCartPricing.total
+        stripeSetupIntentId: verifiedSetupIntentId
       };
 
       const submitRes = await fetch('/api/checkout/submit-booking', {
@@ -200,9 +162,17 @@ function CheckoutForm() {
         throw new Error(submitData.error || 'Failed to submit booking to ReservationKey');
       }
       
-      // Simulate success and redirect back or to success page
-      alert('Booking Request Sent Successfully! It has been synced to ReservationKey.');
-      router.push(isGolfCart ? '/golf-carts' : `/villas/${villa.id}`);
+      const transactionId = `TXN-${Math.random().toString(36).substring(2, 10).toUpperCase()}`;
+      const successParams = new URLSearchParams({
+        transactionId,
+        villaId,
+        checkIn: checkIn || '',
+        checkOut: checkOut || '',
+        guests: isGolfCart ? quantity : (guests || '2'),
+        total: total || '0',
+        currency
+      });
+      router.push(`/success?${successParams.toString()}`);
 
     } catch (err: any) {
       setError(err.message || 'An error occurred during booking.');
@@ -359,7 +329,7 @@ function CheckoutForm() {
                 </div>
               )}
               <div className="flex justify-between">
-                <span>Taxes {(isIguana || isCocos) ? '(16% IVA + 5% ISH)' : '(16%)'}</span>
+                <span>Taxes {isGolfCart ? '(16% IVA)' : '(16% IVA + 5% ISH)'}</span>
                 <span>${calculatedTaxes || '---'}</span>
               </div>
               {isIguana && (
@@ -377,99 +347,34 @@ function CheckoutForm() {
               <span className="font-sans font-black text-2xl text-base-dark">${total || '0'}</span>
             </div>
 
-            {(isIguana || isCocos || isGolfCart) ? (
-              <div className="bg-sand-accent/5 rounded-2xl p-4 space-y-2 text-xs font-sans">
-                <div className="flex justify-between font-semibold text-base-dark">
-                  <span>Deposit Due Now (25%)</span>
-                  <span>${deposit}</span>
-                </div>
-                {isCocos ? (
-                  <>
-                    <div className="flex justify-between text-base-dark/65 font-medium">
-                      <span>25% Due 3 Months Prior</span>
-                      <span>${deposit}</span>
-                    </div>
-                    <div className="flex justify-between text-base-dark/65">
-                      <span>50% Balance Due at Arrival</span>
-                      <span>${rawTotal - deposit - deposit}</span>
-                    </div>
-                  </>
-                ) : (
-                  <div className="flex justify-between text-base-dark/65">
-                    <span>75% Balance Due at Arrival</span>
-                    <span>${rawTotal - deposit}</span>
-                  </div>
-                )}
-                <p className="text-[10px] text-base-dark/50 italic pt-1 border-t border-sand-accent/10 mt-1">
-                  Currency: All rates in {isMXN ? 'Mexican Pesos (MXN)' : 'US Dollars (USD)'}. Note: Until confirmed, rates are subject to change without notice.
-                </p>
+            <div className="bg-sand-accent/5 rounded-2xl p-4 space-y-2 text-xs font-sans">
+              <div className="flex justify-between font-semibold text-base-dark">
+                <span>Deposit Due Now (25%)</span>
+                <span>${deposit}</span>
               </div>
-            ) : (
-              <div className="bg-sand-accent/5 rounded-2xl p-4 space-y-2 text-xs font-sans">
-                <div className="flex justify-between font-semibold text-base-dark">
-                  <span>Deposit Due Now (50%)</span>
-                  <span>${deposit}</span>
-                </div>
+              {isCocos ? (
+                <>
+                  <div className="flex justify-between text-base-dark/65 font-medium">
+                    <span>25% Due 3 Months Prior</span>
+                    <span>${deposit}</span>
+                  </div>
+                  <div className="flex justify-between text-base-dark/65">
+                    <span>50% Balance Due at Arrival</span>
+                    <span>${rawTotal - deposit - deposit}</span>
+                  </div>
+                </>
+              ) : (
                 <div className="flex justify-between text-base-dark/65">
-                  <span>50% Balance Due at Arrival</span>
+                  <span>75% Balance Due at Arrival</span>
                   <span>${rawTotal - deposit}</span>
                 </div>
-                <p className="text-[10px] text-base-dark/50 italic pt-1 border-t border-sand-accent/10 mt-1">
-                  Currency: All rates in {isMXN ? 'Mexican Pesos (MXN)' : 'US Dollars (USD)'}. Note: Until confirmed, rates are subject to change without notice.
-                </p>
-              </div>
-            )}
+              )}
+              <p className="text-[10px] text-base-dark/50 italic pt-1 border-t border-sand-accent/10 mt-1">
+                Currency: All rates in {isMXN ? 'Mexican Pesos (MXN)' : 'US Dollars (USD)'}. Note: Until confirmed, rates are subject to change without notice.
+              </p>
+            </div>
 
-            {!isGolfCart && (
-              <div className="bg-gradient-to-br from-ocean-teal/5 to-ocean-teal/10 rounded-xl md:rounded-2xl p-4 md:p-6 border border-ocean-teal/20 mt-4 md:mt-6 shadow-sm relative overflow-hidden">
-                <h4 className="font-serif italic text-xl md:text-2xl text-ocean-teal tracking-tight mb-2">
-                  {isIguana ? 'Add an additional 4-Seater Golf Cart' : 'Add a 4-Seater Golf Cart'}
-                </h4>
-                <p className="font-sans text-xs md:text-sm text-base-dark/80 leading-relaxed mb-3 md:mb-4">
-                  Cruise San Pancho effortlessly for your {nights} night stay. Guarantee yours today! <a href="/golf-carts" target="_blank" className="text-ocean-teal font-semibold hover:underline">Visit the golf cart page to learn more →</a>
-                </p>
-                
-                <div className="flex items-center justify-between">
-                  <span className="font-sans font-bold text-sm text-base-dark">Quantity:</span>
-                  <div className="flex items-center gap-4 bg-white border border-ocean-teal/30 rounded-full px-4 py-1.5 shadow-sm">
-                    <button type="button" onClick={() => setUpsellQuantity(Math.max(0, upsellQuantity - 1))} className="text-base-dark/60 hover:text-ocean-teal font-medium w-6 h-6 flex items-center justify-center text-lg">-</button>
-                    <span className="font-sans font-bold text-base text-base-dark w-4 text-center">{upsellQuantity}</span>
-                    <button 
-                      type="button" 
-                      onClick={() => setUpsellQuantity(Math.min(maxCartsAllowed, upsellQuantity + 1))} 
-                      disabled={upsellQuantity >= maxCartsAllowed}
-                      className="text-base-dark/60 hover:text-ocean-teal disabled:opacity-30 disabled:cursor-not-allowed font-medium w-6 h-6 flex items-center justify-center text-lg"
-                    >+</button>
-                  </div>
-                </div>
 
-                {upsellQuantity >= maxCartsAllowed && (
-                  <p className="text-[10px] text-ocean-teal/80 mt-2 font-medium italic text-right">
-                    Maximum carts reached for this villa.
-                  </p>
-                )}
-
-                {upsellQuantity > 0 && (
-                  <div className="mt-5 pt-4 border-t border-ocean-teal/15 space-y-2.5 font-sans text-sm">
-                    <div className="flex justify-between text-base-dark/80">
-                      <span>Base Rate ({upsellQuantity} cart{upsellQuantity !== 1 ? 's' : ''})</span>
-                      <span>${golfCartPricing.subtotal} MXN</span>
-                    </div>
-                    <div className="flex justify-between text-base-dark/80">
-                      <span>Taxes (16% IVA)</span>
-                      <span>${golfCartPricing.taxes} MXN</span>
-                    </div>
-                    <div className="flex justify-between items-end pt-2">
-                      <span className="font-bold text-base-dark">Golf Cart Total</span>
-                      <div className="text-right">
-                        <span className="font-black text-xl text-ocean-teal block leading-none">${golfCartPricing.total}</span>
-                        <span className="text-[10px] text-ocean-teal/70 font-semibold uppercase tracking-widest mt-1 block">Pesos (MXN)</span>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </div>
-            )}
           </div>
         </div>
       </div>

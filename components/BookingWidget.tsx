@@ -262,7 +262,20 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
             tempDate.setDate(tempDate.getDate() + 1);
           }
 
-          if (diffDays < requiredMinStay) {
+          let hasBlockedInStay = false;
+          let checkBlockedDate = new Date(start);
+          for (let i = 0; i < diffDays; i++) {
+            const dStr = checkBlockedDate.toISOString().split('T')[0];
+            if (blockedDates.includes(dStr)) {
+              hasBlockedInStay = true;
+              break;
+            }
+            checkBlockedDate.setDate(checkBlockedDate.getDate() + 1);
+          }
+
+          if (hasBlockedInStay) {
+            setMinStayError('Selected dates include unavailable/occupied days. Please choose an available date range.');
+          } else if (diffDays < requiredMinStay) {
             setMinStayError(`Minimum stay is ${requiredMinStay} nights during ${firstNightRateInfo.categoryName}.`);
           } else {
             setMinStayError(null);
@@ -287,12 +300,27 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
             villaId === 'villa-papaya' ? 100 : 
             villaId === 'villa-palmas' ? 50 : 
             75;
-          const taxRate = (villaId === 'villa-iguana' || villaId === 'villa-cocos') ? 0.21 : 0.16;
+          const taxRate = villaId === 'golf-cart' ? 0.16 : 0.21;
           const taxes = finalSubtotal * taxRate;
           setTotal(Math.round(finalSubtotal + cleaning + taxes));
         } else {
           // Standard baseRate logic for other villas
-          setMinStayError(null);
+          let hasBlockedInStay = false;
+          let checkBlockedDate = new Date(start);
+          for (let i = 0; i < diffDays; i++) {
+            const dStr = checkBlockedDate.toISOString().split('T')[0];
+            if (blockedDates.includes(dStr)) {
+              hasBlockedInStay = true;
+              break;
+            }
+            checkBlockedDate.setDate(checkBlockedDate.getDate() + 1);
+          }
+
+          if (hasBlockedInStay) {
+            setMinStayError('Selected dates include unavailable/occupied days. Please choose an available date range.');
+          } else {
+            setMinStayError(null);
+          }
           setAverageNightlyRate(baseRate);
           const calculatedSubtotal = diffDays * baseRate;
           setSubtotal(calculatedSubtotal);
@@ -303,7 +331,8 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
             villaId === 'villa-papaya' ? 100 : 
             villaId === 'villa-palmas' ? 50 : 
             75;
-          const taxes = calculatedSubtotal * 0.16;
+          const taxRate = villaId === 'golf-cart' ? 0.16 : 0.21;
+          const taxes = calculatedSubtotal * taxRate;
           setTotal(Math.round(calculatedSubtotal + cleaning + taxes));
         }
       } else {
@@ -342,6 +371,9 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
   const handleBookNow = () => {
     if (!checkIn || !checkOut) {
       setIsCalendarOpen(true);
+      return;
+    }
+    if (minStayError) {
       return;
     }
     const searchParams = new URLSearchParams({
@@ -521,39 +553,37 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
               </span>
             </div>
             <div className="flex justify-between font-sans text-xs text-base-dark/75">
-              <span className="underline decoration-sand-accent/30 underline-offset-4">Taxes {(villaId === 'villa-iguana' || villaId === 'villa-cocos') ? '(16% IVA + 5% ISH)' : '(16%)'}</span>
-              <span>${Math.round(subtotal * ((villaId === 'villa-iguana' || villaId === 'villa-cocos') ? 0.21 : 0.16))}</span>
+              <span className="underline decoration-sand-accent/30 underline-offset-4">Taxes {villaId === 'golf-cart' ? '(16% IVA)' : '(16% IVA + 5% ISH)'}</span>
+              <span>${Math.round(subtotal * (villaId === 'golf-cart' ? 0.16 : 0.21))}</span>
             </div>
             <div className="pt-3 mt-1 border-t border-sand-accent/10 flex justify-between font-sans font-bold text-sm text-base-dark">
               <span>Total</span>
               <span>${total}</span>
             </div>
             
-            {(villaId === 'villa-iguana' || villaId === 'villa-cocos' || villaId === 'golf-cart') && (
-              <div className="bg-sand-accent/5 rounded-xl p-3 space-y-1 mt-2 text-[11px] font-sans">
-                <div className="flex justify-between font-semibold text-base-dark">
-                  <span>25% Deposit Due Now</span>
-                  <span>${Math.round(total * 0.25)}</span>
-                </div>
-                {villaId === 'villa-cocos' ? (
-                  <>
-                    <div className="flex justify-between text-base-dark/65">
-                      <span>25% Due 3 Months Prior</span>
-                      <span>${Math.round(total * 0.25)}</span>
-                    </div>
-                    <div className="flex justify-between text-base-dark/65">
-                      <span>50% Balance Due at Arrival</span>
-                      <span>${total - Math.round(total * 0.25) - Math.round(total * 0.25)}</span>
-                    </div>
-                  </>
-                ) : (
-                  <div className="flex justify-between text-base-dark/65">
-                    <span>75% Balance Due at Arrival</span>
-                    <span>${total - Math.round(total * 0.25)}</span>
-                  </div>
-                )}
+            <div className="bg-sand-accent/5 rounded-xl p-3 space-y-1 mt-2 text-[11px] font-sans">
+              <div className="flex justify-between font-semibold text-base-dark">
+                <span>25% Deposit Due Now</span>
+                <span>${Math.round(total * 0.25)}</span>
               </div>
-            )}
+              {villaId === 'villa-cocos' ? (
+                <>
+                  <div className="flex justify-between text-base-dark/65">
+                    <span>25% Due 3 Months Prior</span>
+                    <span>${Math.round(total * 0.25)}</span>
+                  </div>
+                  <div className="flex justify-between text-base-dark/65">
+                    <span>50% Balance Due at Arrival</span>
+                    <span>${total - Math.round(total * 0.25) - Math.round(total * 0.25)}</span>
+                  </div>
+                </>
+              ) : (
+                <div className="flex justify-between text-base-dark/65">
+                  <span>75% Balance Due at Arrival</span>
+                  <span>${total - Math.round(total * 0.25)}</span>
+                </div>
+              )}
+            </div>
           </div>
         )}
 
@@ -582,51 +612,47 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
             <span>Currency</span>
             <span className="font-medium text-base-dark/70">All rates in US Dollars (USD)</span>
           </p>
-          {(villaId === 'villa-iguana' || villaId === 'villa-cocos' || villaId === 'golf-cart') ? (
+          {villaId === 'golf-cart' ? (
             <>
-              {villaId === 'golf-cart' ? (
-                <>
-                  <p className="flex justify-between">
-                    <span>Pricing</span>
-                    <span className="font-medium text-base-dark/70">Winter $1,100/wk | Summer $900/wk (3-day min)</span>
-                  </p>
-                  <p className="flex justify-between">
-                    <span>Payment</span>
-                    <span className="font-medium text-base-dark/70">25% deposit to book. Balance at arrival</span>
-                  </p>
-                </>
-              ) : villaId === 'villa-iguana' ? (
-                <>
-                  <p className="flex justify-between">
-                    <span>Base Rate</span>
-                    <span className="font-medium text-base-dark/70">For up to 6 guests (+ $20 USD/night extra, max 8)</span>
-                  </p>
-                  <p className="flex justify-between text-ocean-teal/90">
-                    <span>Included Amenity</span>
-                    <span className="font-medium">4-seater electric golf cart is included</span>
-                  </p>
-                  <p className="flex justify-between">
-                    <span>Payment</span>
-                    <span className="font-medium text-base-dark/70">25% deposit to book. Balance at arrival</span>
-                  </p>
-                </>
-              ) : (
-                <>
-                  <p className="flex justify-between">
-                    <span>Base Rate</span>
-                    <span className="font-medium text-base-dark/70">For up to 5 guests (maximum occupancy 5)</span>
-                  </p>
-                  <p className="flex justify-between">
-                    <span>Payment</span>
-                    <span className="font-medium text-base-dark/70">25% now, 25% 3mo prior, 50% at arrival</span>
-                  </p>
-                </>
-              )}
+              <p className="flex justify-between">
+                <span>Pricing</span>
+                <span className="font-medium text-base-dark/70">Winter $1,100/wk | Summer $900/wk (3-day min)</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Payment</span>
+                <span className="font-medium text-base-dark/70">25% deposit to book. Balance at arrival</span>
+              </p>
+            </>
+          ) : villaId === 'villa-iguana' ? (
+            <>
+              <p className="flex justify-between">
+                <span>Base Rate</span>
+                <span className="font-medium text-base-dark/70">For up to 6 guests (+ $20 USD/night extra, max 8)</span>
+              </p>
+              <p className="flex justify-between text-ocean-teal/90">
+                <span>Included Amenity</span>
+                <span className="font-medium">4-seater electric golf cart is included</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Payment</span>
+                <span className="font-medium text-base-dark/70">25% deposit to book. Balance at arrival</span>
+              </p>
+            </>
+          ) : villaId === 'villa-cocos' ? (
+            <>
+              <p className="flex justify-between">
+                <span>Base Rate</span>
+                <span className="font-medium text-base-dark/70">For up to 5 guests (maximum occupancy 5)</span>
+              </p>
+              <p className="flex justify-between">
+                <span>Payment</span>
+                <span className="font-medium text-base-dark/70">25% now, 25% 3mo prior, 50% at arrival</span>
+              </p>
             </>
           ) : (
             <p className="flex justify-between">
               <span>Payment</span>
-              <span className="font-medium text-base-dark/70">50% deposit to book. Balance 30 days prior</span>
+              <span className="font-medium text-base-dark/70">25% deposit to book. Balance at arrival</span>
             </p>
           )}
           <p className="italic text-[10px] text-base-dark/40 pt-1 text-center">Until confirmed, rates are subject to change without notice.</p>

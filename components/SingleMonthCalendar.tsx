@@ -51,6 +51,22 @@ export default function SingleMonthCalendar({
     setCurrentMonth(new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1));
   };
 
+  const hasBlockedDatesBetween = (startStr: string, endStr: string): boolean => {
+    const start = new Date(startStr + 'T00:00:00');
+    const end = new Date(endStr + 'T00:00:00');
+    if (start >= end) return true;
+
+    const temp = new Date(start);
+    while (temp < end) {
+      const dStr = temp.toISOString().split('T')[0];
+      if (blockedDates.includes(dStr)) {
+        return true;
+      }
+      temp.setDate(temp.getDate() + 1);
+    }
+    return false;
+  };
+
   const handleDateClick = (date: Date, isDisabled: boolean) => {
     if (isDisabled) return;
     const dateStr = date.toISOString().split('T')[0];
@@ -70,14 +86,24 @@ export default function SingleMonthCalendar({
       const diffTime = date.getTime() - checkInDate.getTime();
       const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-      if (diffDays >= minNights) {
-        onSelectDates(checkIn, dateStr);
-      } else if (diffDays > 0 && diffDays < minNights) {
-        // Automatically enforce minimum nights stay
-        const targetMinOut = new Date(checkInDate);
-        targetMinOut.setDate(targetMinOut.getDate() + minNights);
-        const minOutStr = targetMinOut.toISOString().split('T')[0];
-        onSelectDates(checkIn, minOutStr);
+      if (diffDays > 0) {
+        if (!hasBlockedDatesBetween(checkIn, dateStr)) {
+          if (diffDays >= minNights) {
+            onSelectDates(checkIn, dateStr);
+          } else {
+            const targetMinOut = new Date(checkInDate);
+            targetMinOut.setDate(targetMinOut.getDate() + minNights);
+            const minOutStr = targetMinOut.toISOString().split('T')[0];
+            if (!hasBlockedDatesBetween(checkIn, minOutStr)) {
+              onSelectDates(checkIn, minOutStr);
+            } else {
+              onSelectDates(checkIn, dateStr);
+            }
+          }
+        } else {
+          // If there are blocked dates in between, restart selection from this date
+          onSelectDates(dateStr, null);
+        }
       } else {
         onSelectDates(dateStr, null);
       }
@@ -119,10 +145,11 @@ export default function SingleMonthCalendar({
       const dateTime = date.getTime();
 
       let inRange = false;
-      if (checkInTime && checkOutTime) {
-        inRange = dateTime > checkInTime && dateTime < checkOutTime;
-      } else if (checkInTime && hoverTime && !checkOutTime) {
-        inRange = dateTime > checkInTime && dateTime <= hoverTime;
+      if (checkIn && checkOut) {
+        inRange = dateTime > (checkInTime || 0) && dateTime < (checkOutTime || 0) && !hasBlockedDatesBetween(checkIn, checkOut);
+      } else if (checkIn && hoverDate && !checkOut) {
+        const hoverStr = hoverDate.toISOString().split('T')[0];
+        inRange = dateTime > (checkInTime || 0) && dateTime <= (hoverTime || 0) && !hasBlockedDatesBetween(checkIn, hoverStr);
       }
 
       let btnClass = 'text-base-dark hover:bg-ocean-teal/10 font-semibold';
