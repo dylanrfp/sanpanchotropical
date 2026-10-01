@@ -142,16 +142,16 @@ export default function BookingWidget({ villaId, baseRate = 180 }: BookingWidget
     };
 
     const cocosRates: Record<string, RateRow> = {
-      'jan-mar': { night: 190, week: 1150, fourWeeks: 4000, minStay: 4 },
-      'april': { night: 170, week: 1000, fourWeeks: 3500, minStay: 3 },
+      'jan-mar': { night: 200, week: 1200, fourWeeks: 3600, minStay: 4 },
+      'april': { night: 180, week: 1080, fourWeeks: 3240, minStay: 3 },
       'may': { night: 150, week: 900, fourWeeks: 2700, minStay: 3 },
       'jun-aug': { night: 115, week: 700, fourWeeks: 2100, minStay: 4 },
       'september': { night: 95, week: 570, fourWeeks: 1700, minStay: 3 },
       'october': { night: 95, week: 570, fourWeeks: 1700, minStay: 3 },
-      'november': { night: 170, week: 1000, fourWeeks: 3500, minStay: 3 },
-      'december': { night: 170, week: 1000, fourWeeks: 4200, minStay: 3 },
-      'christmas': { night: 210, week: 1450, fourWeeks: 4200, minStay: 7 },
-      'easter': { night: 210, week: 1300, fourWeeks: 3500, minStay: 5 }
+      'november': { night: 180, week: 1080, fourWeeks: 3240, minStay: 3 },
+      'december': { night: 180, week: 1080, fourWeeks: 4000, minStay: 3 },
+      'christmas': { night: 220, week: 1320, fourWeeks: 4000, minStay: 7 },
+      'easter': { night: 200, week: 1200, fourWeeks: 3240, minStay: 5 }
     };
 
     const sunsetRates: Record<string, RateRow> = {
