@@ -58,7 +58,7 @@ export default function AboutPage() {
             </p>
 
             <p className="font-sans text-base md:text-lg text-[#161d1f]/85 leading-relaxed text-justify">
-              Staying in our private villas gives you the unique opportunity to enjoy a vacation with more space, tranquility, and independence than traditional hotels. Each villa is fully equipped with modern air conditioning, full kitchens, private outdoor spaces, and access to our pool and golf carts.
+              Staying in our private villas gives you the unique opportunity to enjoy a vacation with more space, tranquility, and independence than traditional hotels. Each villa is fully equipped with modern air conditioning, full kitchens and private outdoor spaces.
             </p>
 
             <div className="pt-4 flex flex-wrap items-center gap-4">
